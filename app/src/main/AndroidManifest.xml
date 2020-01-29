@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".CreerCarte"></activity>
+        <activity android:name=".AfficherCarte"></activity>
     </application>
 
 </manifest>

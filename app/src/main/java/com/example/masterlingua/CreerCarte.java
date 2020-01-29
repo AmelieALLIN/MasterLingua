@@ -1,7 +1,7 @@
 package com.example.masterlingua;
 
 import android.content.Context;
-//import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,14 +109,19 @@ public class CreerCarte extends AppCompatActivity {
         // en faire un logger
         /*System.out.println(carte.getQuestion());
         System.out.println(carte.getReponse());*/
+       /* Carte cc = carte;
 
-        /*Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
+        Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
         Bundle bundle = new Bundle();
+        bundle.putSerializable("carte", (Serializable) carte);
         afficherCarte.putExtras(bundle);
-        afficherCarte.putExtra(carte.getQuestion(),1);
-        startActivity(afficherCarte);
-        finish();*/
+        if(!carte.getReponse(1).isEmpty()) afficherCarte.putExtra("rep1",carte.getReponse(1));
+        if(!carte.getReponse(2).isEmpty()) afficherCarte.putExtra("rep2",carte.getReponse(2));
+        if(!carte.getReponse(3).isEmpty()) afficherCarte.putExtra("rep3",carte.getReponse(3));*/
+        //afficherCarte.putExtra("bonne_rep",cc.getBonne_rep());
 
+        /*startActivity(afficherCarte);
+        finish();*/
     }
 
     public void onCheckBoxClicked(View view){

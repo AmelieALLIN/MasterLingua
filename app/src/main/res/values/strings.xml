@@ -19,4 +19,5 @@
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="warning_good_answer">Une seule réponse peut être correcte</string>
     <string name="card_created">Votre carte a bien été créée</string>
+    <string name="carte">Carte</string>
 </resources>
