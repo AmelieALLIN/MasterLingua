@@ -1,34 +1,38 @@
 package com.example.masterlingua;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Carte {
     private String question;
-    private Map<String, Boolean> reponses = new HashMap<String,Boolean>();
+    private List<String> reponses = new ArrayList<>();
+    private String bonne_rep;
     private String langueQuestion;
     private String langueReponse;
 
-    public Carte(String q, String r, String s, String r1, Boolean b1, String r2, Boolean b2, String r3, Boolean b3){
+    public Carte(String q, String r, String s, String r1, String r2, String r3, String br){
         langueQuestion = q;
         langueReponse = r;
         question = s;
-        reponses.put(r1,b1);
-        reponses.put(r2,b2);
-        reponses.put(r3,b3);
+        reponses.add(r1);
+        reponses.add(r2);
+        reponses.add(r3);
+        bonne_rep = br;
     }
-    public Carte(String q, String r, String s, String r1, Boolean b1, String r2, Boolean b2){
+    public Carte(String q, String r, String s, String r1, String r2, String br){
         langueQuestion = q;
         langueReponse = r;
         question = s;
-        reponses.put(r1,b1);
-        reponses.put(r2,b2);
+        reponses.add(r1);
+        reponses.add(r2);
+        bonne_rep = br;
     }
-    public Carte(String q, String r, String s, String r1, Boolean b1){
+    public Carte(String q, String r, String s, String r1, String br){
         langueQuestion = q;
         langueReponse = r;
         question = s;
-        reponses.put(r1,b1);
+        reponses.add(r1);
+        bonne_rep = br;
     }
     public Carte(String q, String r, String s){
         langueQuestion = q;
@@ -39,16 +43,21 @@ public class Carte {
     public void setQuestion(String s){
         question = s;
     }
-    public void setReponses(String s, Boolean b){
-        reponses.put(s,b);
+    public void ajoutReponse(String s){
+        reponses.add(s);
     }
 
     public String getQuestion(){
         return question;
     }
 
-    public Map<String, Boolean> getReponses(){
+    public List<String> getReponse()
+    {
         return reponses;
+    }
+
+    public String getBonne_rep(){
+        return bonne_rep;
     }
 
     public String getLangueReponse() {
@@ -57,10 +66,6 @@ public class Carte {
 
     public void setLangueQuestion(String langueQuestion) {
         this.langueQuestion = langueQuestion;
-    }
-
-    public void ajoutReponse(String s, Boolean b){
-        reponses.put(s,b);
     }
 
     public void setLangueReponse(String langueReponse) {

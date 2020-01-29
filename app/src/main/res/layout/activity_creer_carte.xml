@@ -87,27 +87,17 @@
         android:layout_below="@+id/languagesList2"
         android:autofillHints="username"></EditText>
 
-    <RadioGroup
-        android:id="@+id/rbanswer1"
+    <CheckBox
+        android:id="@+id/checkAnswer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/vrai"
+        android:onClick="onCheckBoxClicked"
         android:layout_below="@+id/answer1"
-        android:orientation="horizontal">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radio_true1"
-            android:text="@string/vrai"
-            android:onClick="onRadioButtonClicked"
-            android:checked="false"></RadioButton>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radio_false1"
-            android:text="@string/faux"
-            android:onClick="onRadioButtonClicked"
-            android:checked="true"></RadioButton>
-    </RadioGroup>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="409dp" />
 
     <EditText
         android:id="@+id/answer2"
@@ -115,30 +105,20 @@
         android:layout_height="wrap_content"
         android:inputType="textAutoCorrect"
         android:visibility="visible"
-        android:layout_below="@+id/rbanswer1"
+        android:layout_below="@+id/checkAnswer1"
         android:autofillHints="username"></EditText>
 
-    <RadioGroup
-        android:id="@+id/rbanswer2"
+    <CheckBox
+        android:id="@+id/checkAnswer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/vrai"
+        android:onClick="onCheckBoxClicked"
         android:layout_below="@+id/answer2"
-        android:orientation="horizontal">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radio_true2"
-            android:text="@string/vrai"
-            android:onClick="onRadioButtonClicked"
-            android:checked="false"></RadioButton>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radio_false2"
-            android:text="@string/faux"
-            android:onClick="onRadioButtonClicked"
-            android:checked="true"></RadioButton>
-    </RadioGroup>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="409dp" />
 
     <EditText
         android:id="@+id/answer3"
@@ -146,37 +126,26 @@
         android:layout_height="wrap_content"
         android:inputType="textAutoCorrect"
         android:visibility="visible"
-        android:layout_below="@+id/rbanswer2"
+        android:layout_below="@+id/checkAnswer2"
         android:autofillHints="username"></EditText>
 
-    <RadioGroup
-        android:id="@+id/rbanswer3"
+    <CheckBox
+        android:id="@+id/checkAnswer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/vrai"
+        android:onClick="onCheckBoxClicked"
         android:layout_below="@+id/answer3"
-        android:orientation="horizontal">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radio_true3"
-            android:text="@string/vrai"
-            android:onClick="onRadioButtonClicked"
-            android:checked="false"></RadioButton>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/radio_false3"
-            android:text="@string/faux"
-            android:onClick="onRadioButtonClicked"
-            android:checked="true"></RadioButton>
-    </RadioGroup>
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="166dp"
+        tools:layout_editor_absoluteY="409dp" />
 
     <Button
         android:id="@+id/validate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rbanswer3"
-        android:onClick="creation"
+        android:layout_below="@+id/checkAnswer3"
         android:text="@string/terminate" />
 
 </RelativeLayout>

@@ -5,9 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -19,6 +18,7 @@ import java.util.List;
 public class CreerCarte extends AppCompatActivity {
     private Carte carte;
     private Spinner spinner1, spinner2;
+    private CheckBox checkAnswer1, checkAnswer2, checkAnswer3;
     private EditText question;
     private List<String> answers;
     private boolean b1, b2, b3;
@@ -41,9 +41,9 @@ public class CreerCarte extends AppCompatActivity {
                 EditText answer1 = findViewById(R.id.answer1);
                 EditText answer2 = findViewById(R.id.answer2);
                 EditText answer3 = findViewById(R.id.answer3);
-                RadioGroup rbanswer1 = findViewById(R.id.rbanswer1);
-                RadioGroup rbanswer2 = findViewById(R.id.rbanswer2);
-                RadioGroup rbanswer3 = findViewById(R.id.rbanswer3);
+                checkAnswer1 = findViewById(R.id.checkAnswer1);
+                checkAnswer2 = findViewById(R.id.checkAnswer2);
+                checkAnswer3 = findViewById(R.id.checkAnswer3);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
                 if (question.getText().toString().isEmpty()){
@@ -52,42 +52,51 @@ public class CreerCarte extends AppCompatActivity {
                     Toast.makeText(context, text, duration).show();
                 }
                 else {
+                    String bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
                     if(!answer1.getText().toString().isEmpty()){ // champ de réponse 1
                         answers.add(answer1.getText().toString());
-                        if(rbanswer1.getCheckedRadioButtonId() == R.id.radio_true1) b1 = true;
+                        if(checkAnswer1.isChecked()) b1 = true;
+                        if(b1) bonneReponse = answers.get(0);
                     }
                     if(!answer2.getText().toString().isEmpty()){ // champ de réponse 2
                         answers.add(answer2.getText().toString());
-                        if(rbanswer2.getCheckedRadioButtonId() == R.id.radio_true2) b2 = true;
+                        if(checkAnswer2.isChecked()) b2 = true;
+                        if(b2) bonneReponse = answers.get(1);
                     }
                     if(!answer3.getText().toString().isEmpty()){ // champ de réponse 3
                         answers.add(answer3.getText().toString());
-                        if(rbanswer3.getCheckedRadioButtonId() == R.id.radio_true3) b3 = true;
+                        if(checkAnswer3.isChecked()) b3 = true;
+                        if(b3) bonneReponse = answers.get(2);
                     }
+
                     // en faire un logger
                     /*for(int i=0; i<answers.size(); i++){
                         System.out.println(answers.get(i) + i);
                     }*/
+
                     // construire la carte avec le bon nombre de réponses en argument
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
                     String s1 = String.valueOf(spinner1.getSelectedItem());
                     String s2 = String.valueOf(spinner2.getSelectedItem());
                     if (answers.size() == 3) {
-                        carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), b1, answers.get(1), b2, answers.get(2), b3);
+                        carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
                         Toast.makeText(context, text, duration).show();
-                        answers.removeAll(answers);
+                        answers.remove(0);
+                        answers.remove(1);
+                        answers.remove(2);
                     }
                     if (answers.size() == 2) {
-                        carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), b1, answers.get(1), b2);
+                        carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
                         Toast.makeText(context, text, duration).show();
-                        answers.removeAll(answers);
+                        answers.remove(0);
+                        answers.remove(1);
                     }
                     if (answers.size() == 1) {
-                        carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), b1);
+                        carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), bonneReponse);
                         Toast.makeText(context, text, duration).show();
-                        answers.removeAll(answers);
+                        answers.remove(0);
                     }
                     if (answers.isEmpty()) {
                         carte = new Carte(s1, s2, question.getText().toString());
@@ -109,31 +118,39 @@ public class CreerCarte extends AppCompatActivity {
 
     }
 
-    public void onRadioButtonClicked(View view){
-        boolean checked = ((RadioButton)view).isChecked();
-        switch(view.getId()){
-            case R.id.radio_true1:
-                if(checked)
-                    break;
-            case R.id.radio_false1:
-                if(checked)
-                    break;
-        }
-        switch (view.getId()){
-            case R.id.radio_true2:
-                if(checked)
-                    break;
-            case R.id.radio_false2:
-                if(checked)
-                    break;
-        }
-        switch (view.getId()){
-            case R.id.radio_true3:
-                if(checked)
-                    break;
-            case R.id.radio_false3:
-                if(checked)
-                    break;
-        }
+    public void onCheckBoxClicked(View view){
+        checkAnswer1 = findViewById(R.id.checkAnswer1);
+        checkAnswer2 = findViewById(R.id.checkAnswer2);
+        checkAnswer3 = findViewById(R.id.checkAnswer3);
+
+        // s'assurer qu'au total une seule réponse est cochée correcte
+        checkAnswer1.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(((CheckBox)v).isChecked()){
+                    checkAnswer2.setChecked(false);
+                    checkAnswer3.setChecked(false);
+                }
+            }
+        });
+        checkAnswer2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(((CheckBox)v).isChecked()){
+                    checkAnswer1.setChecked(false);
+                    checkAnswer3.setChecked(false);
+                }
+            }
+        });
+        checkAnswer3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(((CheckBox)v).isChecked()){
+                    checkAnswer1.setChecked(false);
+                    checkAnswer2.setChecked(false);
+                }
+            }
+        });
+
     }
 }
