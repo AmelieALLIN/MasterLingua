@@ -5,7 +5,7 @@
     <string name="language_question">En quelle langue est votre question ?</string>
     <string name="choix">Selectionnez</string>
     <string name="language1">Français</string>
-    <string name="language2">Spanish</string>
+    <string name="language2">Español</string>
     <string-array name="languages_names">
         <item>@string/language1</item>
         <item>@string/language2</item>

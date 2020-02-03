@@ -1,9 +1,10 @@
 package com.example.masterlingua;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Carte {
+public class Carte implements Serializable {
     private String question;
     private List<String> reponses = new ArrayList<>();
     private String bonne_rep;
