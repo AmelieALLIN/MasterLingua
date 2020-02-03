@@ -84,15 +84,15 @@ public class CreerCarte extends AppCompatActivity {
                     if (answers.size() == 3) {
                         carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
                         Toast.makeText(context, text, duration).show();
-                        answers.remove(0);
-                        answers.remove(1);
                         answers.remove(2);
+                        answers.remove(1);
+                        answers.remove(0);
                     }
                     if (answers.size() == 2) {
                         carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
                         Toast.makeText(context, text, duration).show();
-                        answers.remove(0);
                         answers.remove(1);
+                        answers.remove(0);
                     }
                     if (answers.size() == 1) {
                         carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), bonneReponse);
@@ -104,24 +104,24 @@ public class CreerCarte extends AppCompatActivity {
                         Toast.makeText(context, text, duration).show();
                     }
                 }
+                //test affichage contenu carte
+                if (!carte.getQuestion().isEmpty()) System.out.println(carte.getQuestion());
+                // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
+                Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
+                Bundle bundle = new Bundle();
+                //bundle.putSerializable("carte", (Serializable) carte);
+                afficherCarte.putExtras(bundle);
+                if(!carte.getReponse().isEmpty()) {
+                    for (int i = 0; i<carte.getReponse().size(); i++){
+                        afficherCarte.putExtra("reponses", carte.getReponse().get(i));
+                    }
+                }
+                afficherCarte.putExtra("bonne_rep",carte.getBonne_rep());
+                // aller à l'activité qui affiche la carte
+                startActivity(afficherCarte);
+                finish();
             }
         });
-        // en faire un logger
-        /*System.out.println(carte.getQuestion());
-        System.out.println(carte.getReponse());*/
-       /* Carte cc = carte;
-
-        Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("carte", (Serializable) carte);
-        afficherCarte.putExtras(bundle);
-        if(!carte.getReponse(1).isEmpty()) afficherCarte.putExtra("rep1",carte.getReponse(1));
-        if(!carte.getReponse(2).isEmpty()) afficherCarte.putExtra("rep2",carte.getReponse(2));
-        if(!carte.getReponse(3).isEmpty()) afficherCarte.putExtra("rep3",carte.getReponse(3));*/
-        //afficherCarte.putExtra("bonne_rep",cc.getBonne_rep());
-
-        /*startActivity(afficherCarte);
-        finish();*/
     }
 
     public void onCheckBoxClicked(View view){

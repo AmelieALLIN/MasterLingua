@@ -51,9 +51,9 @@ public class Carte {
         return question;
     }
 
-    public String getReponse(int i)
+    public List<String> getReponse()
     {
-        return reponses.get(i);
+        return reponses;
     }
 
     public String getBonne_rep(){

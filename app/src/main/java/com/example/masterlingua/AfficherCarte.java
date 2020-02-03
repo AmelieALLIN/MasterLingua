@@ -52,6 +52,5 @@ public class AfficherCarte extends AppCompatActivity {
             }
 
         });
-        //carte2 = new Carte(q, r1, b1, r2, b2, r3, b3);
     }
 }
