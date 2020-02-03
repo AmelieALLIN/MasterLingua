@@ -24,8 +24,8 @@ public class AfficherCarte extends AppCompatActivity {
         question = findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
         Intent intent = getIntent();
-        String r1 = intent.getStringExtra("rep1");
-        String r2 = intent.getStringExtra("rep2");
+        String r1 = intent.getStringExtra("reponses");
+        String r2 = intent.getStringExtra("reponses");
         String r3 = intent.getStringExtra("rep3");
         question = findViewById(R.id.question);
         rep1 = findViewById(R.id.rep1);
@@ -38,7 +38,7 @@ public class AfficherCarte extends AppCompatActivity {
         rep2.setText(r2);
         rep3.setText(r3);
 
-        final String ok =intent.getStringExtra("bonne_rep");
+        final String ok = intent.getStringExtra("bonne_rep");
 
         rep1.setOnClickListener(new View.OnClickListener() {
 

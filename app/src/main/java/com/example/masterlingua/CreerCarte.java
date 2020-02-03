@@ -109,7 +109,6 @@ public class CreerCarte extends AppCompatActivity {
                 // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
                 Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
                 Bundle bundle = new Bundle();
-                //bundle.putSerializable("carte", (Serializable) carte);
                 afficherCarte.putExtras(bundle);
                 if(!carte.getReponse().isEmpty()) {
                     for (int i = 0; i<carte.getReponse().size(); i++){
