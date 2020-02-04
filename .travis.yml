@@ -16,6 +16,7 @@ android:
     - '.+'
 language: java
 
+dist: trusty
 jdk:
   - oraclejdk8
 
@@ -38,3 +39,12 @@ cache:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
   - ./gradlew cobertura coveralls
+  addons:
+  sonarcloud:
+    organization: "MasterLingua" # the key of the org you chose at step #3
+    token:
+      secure: ade4a2d66dc4fd53824d593a2f6d738a254368c2
+script:
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner
+  
