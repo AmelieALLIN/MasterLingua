@@ -28,9 +28,8 @@ Les réponses peuvent être des mots ou bien des images.
 •	Télécharger ANDROID  STUDIO : (https://developer.android.com/studio)
 
 # Intégration Continue :
-
-    On utilise Travis CI : (https://travis-ci.org/) et sa connexion avec GitHub.
-    Pour plus d’informations : https://docs.travis-ci.com/
+On utilise Travis CI : (https://travis-ci.org/) et sa connexion avec GitHub.
+Pour plus d’informations : https://docs.travis-ci.com/
 # Qualité du code :
 
     On utilise  Codacy :(https://www.codacy.com)
