@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
     <ImageView
@@ -16,85 +18,53 @@
         android:id="@+id/creationCarte"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
+        android:layout_below="@+id/quiz"
         android:layout_centerHorizontal="true"
         android:text="@string/page_creation_card"
-        android:layout_below="@+id/quiz"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
-
-    <TextView
-        android:id="@+id/langueQuestion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/creationCarte"
-        android:text="@string/language_question"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"></TextView>
-
-    <Spinner
-        android:id="@+id/languagesList1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/languages_names"
-        android:layout_below="@+id/langueQuestion"
-        android:prompt="@string/choix"></Spinner>
 
     <TextView
         android:id="@+id/poserQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/creationCarte"
         android:text="@string/enter_question"
-        android:layout_below="@+id/languagesList1"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"></TextView>
 
     <EditText
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textAutoCorrect"
-        android:visibility="visible"
         android:layout_below="@+id/poserQuestion"
-        android:autofillHints="username"></EditText>
+        android:autofillHints="username"
+        android:inputType="textAutoCorrect"
+        android:visibility="visible"></EditText>
 
     <TextView
         android:id="@+id/ajouterReponse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_answer"
         android:layout_below="@+id/question"
+        android:text="@string/add_answer"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"></TextView>
-
-    <TextView
-        android:id="@+id/langueReponses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ajouterReponse"
-        android:text="@string/language_answers"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2"></TextView>
-
-    <Spinner
-        android:id="@+id/languagesList2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:entries="@array/languages_names"
-        android:layout_below="@+id/langueReponses"
-        android:prompt="@string/choix"></Spinner>
 
     <EditText
         android:id="@+id/answer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ajouterReponse"
+        android:autofillHints="username"
         android:inputType="textAutoCorrect"
-        android:visibility="visible"
-        android:layout_below="@+id/languagesList2"
-        android:autofillHints="username"></EditText>
+        android:visibility="visible"></EditText>
 
     <CheckBox
         android:id="@+id/checkAnswer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="@string/vrai"
-        android:onClick="onCheckBoxClicked"
         android:layout_below="@+id/answer1"
+        android:checked="false"
+        android:onClick="onCheckBoxClicked"
+        android:text="@string/vrai"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="409dp" />
@@ -103,19 +73,19 @@
         android:id="@+id/answer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textAutoCorrect"
-        android:visibility="visible"
         android:layout_below="@+id/checkAnswer1"
-        android:autofillHints="username"></EditText>
+        android:autofillHints="username"
+        android:inputType="textAutoCorrect"
+        android:visibility="visible"></EditText>
 
     <CheckBox
         android:id="@+id/checkAnswer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="@string/vrai"
-        android:onClick="onCheckBoxClicked"
         android:layout_below="@+id/answer2"
+        android:checked="false"
+        android:onClick="onCheckBoxClicked"
+        android:text="@string/vrai"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="409dp" />
@@ -124,28 +94,30 @@
         android:id="@+id/answer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textAutoCorrect"
-        android:visibility="visible"
         android:layout_below="@+id/checkAnswer2"
-        android:autofillHints="username"></EditText>
+        android:autofillHints="username"
+        android:inputType="textAutoCorrect"
+        android:visibility="visible"></EditText>
 
     <CheckBox
         android:id="@+id/checkAnswer3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="@string/vrai"
-        android:onClick="onCheckBoxClicked"
         android:layout_below="@+id/answer3"
+        android:checked="false"
+        android:onClick="onCheckBoxClicked"
+        android:text="@string/vrai"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="409dp" />
 
     <Button
         android:id="@+id/validate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkAnswer3"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
         android:text="@string/terminate" />
 
 </RelativeLayout>
