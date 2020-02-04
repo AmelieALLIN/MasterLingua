@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,27 +77,21 @@ public class CreerCarte extends AppCompatActivity {
 
                     // construire la carte avec le bon nombre de réponses en argument
                     CharSequence text = getText(R.string.card_created);
-                    int duration = Toast.LENGTH_SHORT;
+                    int duration = Toast.LENGTH_SHORT/2;
                     String s1 = String.valueOf(spinner1.getSelectedItem());
                     String s2 = String.valueOf(spinner2.getSelectedItem());
                     if (answers.size() == 3) {
                         carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
                         Toast.makeText(context, text, duration).show();
-                        /*answers.remove(2);
-                        answers.remove(1);
-                        answers.remove(0);*/
                     }
                     if (answers.size() == 2) {
                         carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
                         Toast.makeText(context, text, duration).show();
                         System.out.println(carte.getReponse().get(0));
-                        /*answers.remove(1);
-                        answers.remove(0);*/
                     }
                     if (answers.size() == 1) {
                         carte = new Carte(s1, s2, question.getText().toString(), answers.get(0), bonneReponse);
                         Toast.makeText(context, text, duration).show();
-                        //answers.remove(0);
                     }
                     if (answers.isEmpty()) {
                         carte = new Carte(s1, s2, question.getText().toString());
@@ -114,19 +107,6 @@ public class CreerCarte extends AppCompatActivity {
                     afficherCarte.putExtras(bundle);
                     startActivity(afficherCarte);
                     finish();
-                    /*System.out.println("reponse : "+carte.getReponse().get(0));
-                    if(!carte.getReponse().isEmpty()) {
-                        for (int i = 0; i<carte.getReponse().size(); i++){
-                            afficherCarte.putExtra("reponses"+i, carte.getReponse().get(i));
-                            System.out.println("reponse"+i+" : "+carte.getReponse().get(i));
-                        }
-                    }
-                    afficherCarte.putExtra("bonne_rep",carte.getBonne_rep());
-                    System.out.println("BonneREEEEP"+carte.getBonne_rep());*/
-
-                    // aller à l'activité qui affiche la carte
-                    /*startActivity(afficherCarte);
-                    finish();*/
                 }
             }
         });

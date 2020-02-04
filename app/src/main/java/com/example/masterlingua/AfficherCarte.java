@@ -57,14 +57,15 @@ public class AfficherCarte extends AppCompatActivity {
 
                 if(choix.equals(ok))
                 {showToastOk();
+                    reps.setEnabled(false);
                     retour();}
                 else
                 {showToastNo();
+                    reps.setEnabled(false);
                     retour();
                 }
             }
         });
-
 
     }
 
