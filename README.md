@@ -32,7 +32,7 @@ Les réponses peuvent être des mots ou bien des images.
 # Intégration Continue :
 On utilise Travis CI : (https://travis-ci.org/) et sa connexion avec GitHub.
 
-Pour plus d’informations : https://docs.travis-ci.com/
+Pour plus d’informations :( https://docs.travis-ci.com/)
 # Qualité du code :
 
  On utilise  Codacy :(https://www.codacy.com)
