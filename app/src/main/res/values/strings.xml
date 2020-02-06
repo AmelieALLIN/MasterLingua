@@ -4,8 +4,10 @@
     <string name="page_creation_card">Création de votre carte</string>
     <string name="enter_question">Veuillez indiquer votre question</string>
     <string name="add_answer">Vous pouvez ajouter (ou non) une à trois réponses, en indiquant si elle est correcte ou non chaque fois</string>
-    <string name="vrai">Correct</string> //le nom est en français (vrai) car le nom "true" est réservé
-    <string name="faux">Incorrect</string> // du coup en français ici aussi
+    <string name="vrai">Correct</string>
+    //le nom est en français (vrai) car le nom "true" est réservé
+    <string name="faux">Incorrect</string>
+    // du coup en français ici aussi
     <string name="terminate">Valider la carte</string>
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="card_created">Votre carte a bien été créée</string>
