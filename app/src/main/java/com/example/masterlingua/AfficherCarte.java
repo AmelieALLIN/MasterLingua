@@ -1,65 +1,114 @@
 package com.example.masterlingua;
 
 import android.content.Context;
+//import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+//import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+
 public class AfficherCarte extends AppCompatActivity {
-
+    ListView reps;
     Carte carte;
-    Carte carte2;
+    ArrayList<String> reponses=new ArrayList<>();
     TextView question;
-    TextView rep1,rep2,rep3;
+    String ok;
     Context context = this;
-    // Declarer un tableau
     int duration = Toast.LENGTH_SHORT;
-
-    public void retourchoix(View v){
-        Intent intent = new Intent(this, ChoisirCreationCarte.class);
-        startActivity(intent);
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.afficher_carte);
-        question = findViewById(R.id.question);
+        setContentView(R.layout.carte);
+        reps = (ListView) findViewById(R.id.list);
+        question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
-        Intent intent = getIntent();
-        String r1 = intent.getStringExtra("rep1");
-        String r2 = intent.getStringExtra("rep2");
-        String r3 = intent.getStringExtra("rep3");
-        question = findViewById(R.id.question);
-        rep1 = findViewById(R.id.rep1);
-        rep2 = findViewById(R.id.rep2);
-        rep3 = findViewById(R.id.rep3);
+        Intent intent=getIntent();
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,reponses);
+        reps.setAdapter(adapter);
+
         carte = (Carte) bundle.getSerializable("carte");
-        String q = carte.getQuestion();
-        question.setText(carte.getQuestion());
-        rep1.setText(r1);
-        rep2.setText(r2);
-        rep3.setText(r3);
-
-        final String ok =intent.getStringExtra("bonne_rep");
-
-        rep1.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                String b=rep1.getText().toString();
-                if(b==ok)
-                    Toast.makeText(context, "bonne réponse", duration).show();
-                else
-                    Toast.makeText(context, "fausse réponse", duration).show();
-
+        if(!carte.getReponse().isEmpty()) {
+            for (int i = 0; i<carte.getReponse().size(); i++){
+                reponses.add(carte.getReponse().get(i));
             }
+        }
+        ok=carte.getBonne_rep();
+        question.setText(carte.getQuestion());
+        reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String choix = parent.getItemAtPosition(position).toString();
 
+
+                if(choix.equals(ok))
+                {showToastOk();
+                    retour();}
+                else
+                {showToastNo();
+                    retour();
+                }
+            }
         });
-        //carte2 = new Carte(q, r1, b1, r2, b2, r3, b3);
+
+
     }
+
+    public void showToastOk() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
+
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        toastImage.setImageResource(R.drawable.good);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+
+        toast.show();
+    }
+
+    public void showToastNo() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
+
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        toastImage.setImageResource(R.drawable.bad);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+
+        toast.show();
+    }
+
+    public void retour()
+    {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
+                startActivity(retour);
+                finish();
+            }
+        }, 3200);
+    }
+
+
 }

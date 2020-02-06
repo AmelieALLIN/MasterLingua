@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.masterlingua">
+    package="com.example.masterlingua" >
 
     <application
         android:name="com.orm.SugarApp"
@@ -19,8 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreerCarte" />
-        <activity android:name=".AfficherCarte" />
+        <activity android:name=".CreerCarte"></activity>
+        <activity android:name=".AfficherCarte"></activity>
     </application>
 
 </manifest>

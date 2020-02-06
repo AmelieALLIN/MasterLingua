@@ -2,6 +2,9 @@ package com.example.masterlingua;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import java.io.Serializable;
+import java.util.ArrayList;
 import com.orm.SugarRecord;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +15,7 @@ public class Carte extends SugarRecord implements Serializable  {
     private List<String> reponses = new ArrayList<>();
     private String bonne_rep;
 
-    public Carte(){
+    public Carte() {
 
     }
 
@@ -39,9 +42,6 @@ public class Carte extends SugarRecord implements Serializable  {
         bonne_rep = s2;
     }
 
-    public void setQuestion(String s){
-        question = s;
-    }
     public void ajoutReponse(String s){
         reponses.add(s);
     }

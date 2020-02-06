@@ -4,6 +4,16 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/affichQ"
+        android:layout_width="match_parent"
+        android:layout_height="86dp"
+        android:text="@string/carte"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#673AB7"
+        android:textSize="38dp" />
+
+    <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="86dp"
@@ -41,7 +51,7 @@
         />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonreturn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Return"
