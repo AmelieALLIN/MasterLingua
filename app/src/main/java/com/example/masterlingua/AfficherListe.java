@@ -69,7 +69,6 @@ public class AfficherListe extends AppCompatActivity {
                         for(int i=0; i<count; i++)
                         {
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getQuestion());
-                            System.out.println("JE SUIS LAAAAAAAA   ?=" + i);
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getReponse());
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getBonne_rep());
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)));
@@ -77,10 +76,12 @@ public class AfficherListe extends AppCompatActivity {
                             //liste.add(carte.get(arrayList.get(i)));
                         }
                         deck = new Deck(l);
-
-                        //Intent intent = new Intent(this, AfficheDeck.class);
-                        //intent.putExtra("carte",carte.get(i));
-                        //intent.putExtra("deck",deck);
+                        /*Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("deck", deck);
+                        afficherDeck.putExtras(bundle);
+                        startActivity(afficherDeck);
+                        finish();*/
                         mode.finish();
                 }
                 return true;

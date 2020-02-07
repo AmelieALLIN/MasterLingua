@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AfficheDeck"></activity>
         <activity android:name=".AfficherListe" />
         <activity android:name=".ChoisirCreationCarte">
             <intent-filter>
