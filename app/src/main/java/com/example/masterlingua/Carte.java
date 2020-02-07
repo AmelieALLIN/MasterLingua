@@ -3,12 +3,8 @@ package com.example.masterlingua;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.Serializable;
-import java.util.ArrayList;
 import com.orm.SugarRecord;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
 
 public class Carte extends SugarRecord implements Serializable  {
     public String question;
@@ -42,9 +38,6 @@ public class Carte extends SugarRecord implements Serializable  {
         bonne_rep = s2;
     }
 
-    public void ajoutReponse(String s){
-        reponses.add(s);
-    }
 
     public String getQuestion(){
         return question;

@@ -20,9 +20,9 @@ public class AfficherListe extends AppCompatActivity {
     ListView CarteListView;
     List<Carte> carte = Carte.listAll (Carte.class);
     List<String> questioncarte = new ArrayList<>();
-    List<Carte> liste;
+    ArrayList l = new ArrayList();
     Deck deck;
-    int count;
+    int count=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,16 +63,20 @@ public class AfficherListe extends AppCompatActivity {
                             arrayList = new ArrayList<>(count);
                             for (int i = 0; i < count; i++) {
                                 arrayList.add(checkedItems.keyAt(i));
+                                System.out.println("ajout de "+checkedItems.keyAt(i));
                             }
                         }
                         for(int i=0; i<count; i++)
                         {
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getQuestion());
+                            System.out.println("JE SUIS LAAAAAAAA   ?=" + i);
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getReponse());
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getBonne_rep());
-                            liste.add(carte.get(arrayList.get(i)));
+                            System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)));
+                            l.add(carte.get(arrayList.get(i)));
+                            //liste.add(carte.get(arrayList.get(i)));
                         }
-                        deck = new Deck(liste);
+                        deck = new Deck(l);
 
                         //Intent intent = new Intent(this, AfficheDeck.class);
                         //intent.putExtra("carte",carte.get(i));
