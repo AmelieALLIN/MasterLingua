@@ -25,7 +25,7 @@ public class CreerCarte extends AppCompatActivity {
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
-    String revenir="accueil";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,7 @@ public class CreerCarte extends AppCompatActivity {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("carte", carte);
                     afficherCarte.putExtras(bundle);
-                    afficherCarte.putExtra("activite_retour",revenir);
+                    afficherCarte.putExtra("valeur",1);
                     startActivity(afficherCarte);
                     finish();
                 }
@@ -175,7 +175,7 @@ public class CreerCarte extends AppCompatActivity {
                         carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
-                        System.out.println(carte.getReponse().get(0));
+                        //System.out.println(carte.getReponses().get(0));
                     }
                     if (answers.size() == 1) {
                         carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);

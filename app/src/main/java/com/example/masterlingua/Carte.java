@@ -20,6 +20,7 @@ public class Carte extends SugarRecord implements Serializable {
     public String reponse2;
     public String reponse3;
     private String bonne_rep;
+
     //private List<String> reponseliste = new ArrayList<>();
     //private String replistejson;
 
@@ -117,6 +118,7 @@ public class Carte extends SugarRecord implements Serializable {
         dest.writeList(getReponseliste());
     }*/
 
+
     public String getQuestion(){
         return question;
     }
@@ -137,6 +139,14 @@ public class Carte extends SugarRecord implements Serializable {
     public String getReponse3() {
         return reponse3;
     }
+
+public ArrayList<String> getReponses(){
+        ArrayList<String> p=new ArrayList<>();
+        p.add(reponse1);
+        p.add(reponse2);
+        p.add(reponse3);
+        return p;
+}
 
     public String getBonne_rep(){
         return bonne_rep;

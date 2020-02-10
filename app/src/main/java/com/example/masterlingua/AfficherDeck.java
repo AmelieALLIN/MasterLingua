@@ -19,12 +19,11 @@ public class AfficherDeck extends AppCompatActivity {
     ArrayList<Carte> cartes = new ArrayList<>();
     static ArrayList<String> questions = new ArrayList<>();
     Carte carte;
-    Deck deck;
+    static Deck deck;
     private Context context;
     int j;
     boolean intent_deck=false;
     private static boolean  deja_initialise=false;
-    String retour="mon_deck";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +33,7 @@ public class AfficherDeck extends AppCompatActivity {
         liste = findViewById(R.id.liste);
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
-        deck = (Deck) bundle.getSerializable("deck");
+        if(deja_initialise==false){deck = (Deck) bundle.getSerializable("deck");}
 
 
         if(deja_initialise==false){
@@ -53,17 +52,13 @@ public class AfficherDeck extends AppCompatActivity {
                 String choix = parent.getItemAtPosition(position).toString();
                 carte = deck.contains(choix);
                 System.out.println("la question de l'objet"+carte.getQuestion());
-                for (int i = 0; i < carte.getReponse().size(); i++) {
-                        System.out.println("reponse:"+carte.getReponse().get(i));
-                    }
                 System.out.println(carte.getBonne_rep());
-                Intent afficher = new Intent(getApplicationContext(), AfficherCarte.class);
+                Intent afficher = new Intent(getApplicationContext(), JouerCarte.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("carte", carte);
                 afficher.putExtras(bundle);
                 startActivity(afficher);
                 finish();
-                afficher.putExtra("activité_retour",retour);
                 questions.remove(position);
                 deja_initialise=true;
 

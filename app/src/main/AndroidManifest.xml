@@ -21,6 +21,8 @@
         <activity android:name=".CreerCarte"></activity>
         <activity android:name=".AfficherCarte"></activity>
         <activity android:name=".AfficherDeck"></activity>
+        <activity android:name=".JouerCarte"></activity>
+
 
     </application>
 
