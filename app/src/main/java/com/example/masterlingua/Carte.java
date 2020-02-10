@@ -3,33 +3,41 @@ package com.example.masterlingua;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import com.orm.SugarRecord;
 
-public class Carte implements Serializable {
-    private String question;
+
+public class Carte extends SugarRecord implements Serializable  {
+    public String question;
     private List<String> reponses = new ArrayList<>();
     private String bonne_rep;
 
-    public Carte(String s, String r1, String r2, String r3, String br){
+    public Carte() {
+
+    }
+
+    public Carte(String s, String r1, String r2, String r3, String s2){
         question = s;
         reponses.add(r1);
         reponses.add(r2);
         reponses.add(r3);
-        bonne_rep = br;
+        bonne_rep = s2;
     }
-    public Carte(String s, String r1, String r2, String br){
+    public Carte(String s, String r1, String r2, String s2){
         question = s;
         reponses.add(r1);
         reponses.add(r2);
-        bonne_rep = br;
+        bonne_rep = s2;
     }
-    public Carte(String s, String r1, String br){
+    public Carte(String s, String r1, String s2){
         question = s;
         reponses.add(r1);
-        bonne_rep = br;
+        bonne_rep = s2;
     }
-    public Carte(String s){
+    public Carte(String s,String s2){
         question = s;
+        bonne_rep = s2;
     }
+
 
     public String getQuestion(){
         return question;
@@ -42,13 +50,5 @@ public class Carte implements Serializable {
 
     public String getBonne_rep(){
         return bonne_rep;
-    }
-
-    public void setQuestion(String s){
-        question = s;
-    }
-
-    public void ajoutReponse(String s){
-        reponses.add(s);
     }
 }

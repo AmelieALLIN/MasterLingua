@@ -50,5 +50,11 @@
         android:textSize="38dp"
         />
 
+    <Button
+        android:id="@+id/buttonreturn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:onClick="retourchoix"/>
 
 </LinearLayout>
