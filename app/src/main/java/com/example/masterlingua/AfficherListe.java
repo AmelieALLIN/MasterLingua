@@ -18,9 +18,9 @@ import java.util.List;
 
 public class AfficherListe extends AppCompatActivity {
     ListView CarteListView;
-    List<Carte> carte = Carte.listAll (Carte.class);
+    List<Carte> carte = Carte.listAll(Carte.class);
     List<String> questioncarte = new ArrayList<>();
-    ArrayList l = new ArrayList();
+    ArrayList<Carte> l = new ArrayList<>();
     Deck deck;
     int count=0;
 
@@ -69,19 +69,22 @@ public class AfficherListe extends AppCompatActivity {
                         for(int i=0; i<count; i++)
                         {
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getQuestion());
-                            System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getReponse());
-                            System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getBonne_rep());
+                            System.out.println("JE SUIS LAAAAAAAA   rep1=" + carte.get(arrayList.get(i)).getReponse1());
+                            System.out.println("JE SUIS LAAAAAAAA   rep2=" + carte.get(arrayList.get(i)).getReponse2());
+                            System.out.println("JE SUIS LAAAAAAAA   rep3=" + carte.get(arrayList.get(i)).getReponse3());
+                            System.out.println("JE SUIS LAAAAAAAA   br=" + carte.get(arrayList.get(i)).getBonne_rep());
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)));
                             l.add(carte.get(arrayList.get(i)));
                             //liste.add(carte.get(arrayList.get(i)));
+                            //System.out.println(carte.get(arrayList.get(i)).getReponse().get(1));
                         }
                         deck = new Deck(l);
-                        /*Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                        Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("deck", deck);
                         afficherDeck.putExtras(bundle);
                         startActivity(afficherDeck);
-                        finish();*/
+                        finish();
                         mode.finish();
                 }
                 return true;
