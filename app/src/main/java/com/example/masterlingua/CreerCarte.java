@@ -88,7 +88,7 @@ public class CreerCarte extends AppCompatActivity {
                         carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
-                        System.out.println(carte.getReponse().get(0));
+                        //System.out.println(carte.getReponse().get(0));
                     }
                     if (answers.size() == 1) {
                         carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);

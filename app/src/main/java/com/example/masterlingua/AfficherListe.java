@@ -69,7 +69,7 @@ public class AfficherListe extends AppCompatActivity {
                         for(int i=0; i<count; i++)
                         {
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getQuestion());
-                            System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getReponse());
+                            //System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getReponse());
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getBonne_rep());
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)));
                             l.add(carte.get(arrayList.get(i)));
