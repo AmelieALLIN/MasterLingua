@@ -10,11 +10,13 @@ import android.widget.Button;
 public class ChoisirCreationCarte extends AppCompatActivity {
 
     private Button goCreerCarte;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bouton_creation_carte);
         this.goCreerCarte = findViewById(R.id.goCreerCarte);
+
 
         goCreerCarte.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -24,6 +26,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
     public void AfficherListe(View view) {

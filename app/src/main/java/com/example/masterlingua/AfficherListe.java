@@ -18,9 +18,9 @@ import java.util.List;
 
 public class AfficherListe extends AppCompatActivity {
     ListView CarteListView;
-    List<Carte> carte = Carte.listAll (Carte.class);
+    List<Carte> carte = Carte.listAll(Carte.class);
     List<String> questioncarte = new ArrayList<>();
-    ArrayList l = new ArrayList();
+    ArrayList<Carte> l = new ArrayList<>();
     Deck deck;
     int count=0;
 
@@ -74,14 +74,15 @@ public class AfficherListe extends AppCompatActivity {
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)));
                             l.add(carte.get(arrayList.get(i)));
                             //liste.add(carte.get(arrayList.get(i)));
+                            //System.out.println(carte.get(arrayList.get(i)).getReponse().get(1));
                         }
                         deck = new Deck(l);
-                        /*Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                        Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("deck", deck);
                         afficherDeck.putExtras(bundle);
                         startActivity(afficherDeck);
-                        finish();*/
+                        finish();
                         mode.finish();
                 }
                 return true;

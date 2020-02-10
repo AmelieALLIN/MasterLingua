@@ -22,6 +22,23 @@
 
     <CheckBox tools:ignore="MissingConstraints" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/checkAnswer3" android:text="@string/vrai" android:layout_below="@+id/answer3" tools:layout_editor_absoluteY="409dp" tools:layout_editor_absoluteX="166dp" android:onClick="onCheckBoxClicked" android:checked="false"/>
 
-    <Button android:layout_centerVertical="false" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/validate" android:text="@string/terminate" android:layout_centerHorizontal="true" android:layout_below="@+id/checkAnswer3"/>
+    <Button
+        android:id="@+id/validate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/checkAnswer3"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:text="@string/jouer" />
+
+    <Button
+        android:id="@+id/retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/validate"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="false"
+        android:text="@string/terminate" />
+
 
 </RelativeLayout>

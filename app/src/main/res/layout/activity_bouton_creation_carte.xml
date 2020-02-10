@@ -19,13 +19,16 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="243dp"
-        android:layout_height="69dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:onClick="AfficherListe"
         android:text="Afficher Liste Carte"
         android:layout_below="@+id/goCreerCarte"
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="500dp"
         tools:ignore="MissingConstraints" />
+
+
 
 </RelativeLayout>

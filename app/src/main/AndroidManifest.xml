@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".CreerCarte"></activity>
         <activity android:name=".AfficherCarte"></activity>
+        <activity android:name=".AfficherDeck"></activity>
+
     </application>
 
 </manifest>

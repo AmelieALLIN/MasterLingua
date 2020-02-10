@@ -29,6 +29,7 @@ public class AfficherCarte extends AppCompatActivity {
     String ok;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
+    String activite_retour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class AfficherCarte extends AppCompatActivity {
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
+        activite_retour = intent.getStringExtra("activite_retour");
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,reponses);
         reps.setAdapter(adapter);
 
@@ -103,9 +105,14 @@ public class AfficherCarte extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
+                if(activite_retour.equals("accueil"))
+                {Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
                 startActivity(retour);
-                finish();
+                finish();}
+                else if (activite_retour.equals("mon_deck"))
+                {Intent retour = new Intent(AfficherCarte.this, AfficherDeck.class);
+                    startActivity(retour);
+                    finish();}
             }
         }, 3200);
     }
