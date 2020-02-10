@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/github/tag/AmelieALLIN/MasterLingua.svg?label=version&style=flat-square)](build.gradle)<br/>
 [![SonarCloud Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=81dbd36303250ba34bc0f6385f07d89f338e149b%3Atemplate-java-project&metric=alert_status)](https://sonarcloud.io/dashboard?id=81dbd36303250ba34bc0f6385f07d89f338e149b%3Atemplate-java-project)
 [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=81dbd36303250ba34bc0f6385f07d89f338e149b%3Atemplate-java-project&metric=coverage)](https://sonarcloud.io/dashboard?id=81dbd36303250ba34bc0f6385f07d89f338e149b%3Atemplate-java-project)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d950f4bc7cb244779eb8b1fd98855f47)](https://www.codacy.com/gh/MasterLingua/MasterLingua?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MasterLingua/MasterLingua&amp;utm_campaign=Badge_Grade)
 MasterLinga est une application mobile qui permet l'echange linguistique entre des interlocuteurs. C'est une application basée sur le langage Java et dediée aux smartphones utilisant Android comme OS.
 
 # Les principales fonctionnalitées sont:
