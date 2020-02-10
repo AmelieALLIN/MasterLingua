@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MasterLingua</string>
     <string name="creation_card">Créer une carte</string>
+    <string name="list_created_cards">Afficher les cartes</string>
     <string name="page_creation_card">Création de votre carte</string>
     <string name="language_question">En quelle langue est votre question ?</string>
     <string name="choix">Selectionnez</string>
@@ -19,6 +20,16 @@
     <string name="terminate">Sauvegarder la carte</string>
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="warning_good_answer">Une seule réponse peut être correcte</string>
+    <string name="warning_level">Vous devez choisir un niveau</string>
     <string name="card_created">Votre carte a bien été créée</string>
     <string name="carte">Carte</string>
+    <string name="level">Niveau</string>
+    <string name="hard">Difficile</string>
+    <string name="medium">Moyen</string>
+    <string name="low">Facile</string>
+    <string-array name="level_names">
+        <item>@string/hard</item>
+        <item>@string/medium</item>
+        <item>@string/low</item>
+    </string-array>
 </resources>

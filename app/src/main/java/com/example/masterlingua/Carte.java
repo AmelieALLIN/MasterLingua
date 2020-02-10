@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+/*import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;*/
 import com.orm.SugarRecord;
 
 
@@ -20,6 +20,7 @@ public class Carte extends SugarRecord implements Serializable {
     public String reponse2;
     public String reponse3;
     private String bonne_rep;
+    private Identifiant id;
 
     //private List<String> reponseliste = new ArrayList<>();
     //private String replistejson;
@@ -50,32 +51,36 @@ public class Carte extends SugarRecord implements Serializable {
         bonne_rep = s2;
     }*/
 
-    public Carte(String s, String r1, String r2, String r3, String s2){
+    public Carte(String niveau, String s, String r1, String r2, String r3, String s2){
+        id = new Identifiant(niveau);
         question = s;
         reponse1 = r1;
         reponse2 = r2;
         reponse3 = r3;
         bonne_rep = s2;
     }
-    public Carte(String s, String r1, String r2, String s2){
+    public Carte(String n, String s, String r1, String r2, String s2){
+        id = new Identifiant(n);
         question = s;
         reponse1 = r1;
         reponse2 = r2;
-        reponse3 = null;
+        reponse3 = "";
         bonne_rep = s2;
     }
-    public Carte(String s, String r1, String s2){
+    public Carte(String n, String s, String r1, String s2){
+        id = new Identifiant(n);
         question = s;
         reponse1 = r1;
-        reponse2 = null;
-        reponse3 = null;
+        reponse2 = "";
+        reponse3 = "";
         bonne_rep = s2;
     }
-    public Carte(String s,String s2){
+    public Carte(String n, String s, String s2){
+        id = new Identifiant(n);
         question = s;
-        reponse1 = null;
-        reponse2 = null;
-        reponse3 = null;
+        reponse1 = "";
+        reponse2 = "";
+        reponse3 = "";
         bonne_rep = s2;
     }
 

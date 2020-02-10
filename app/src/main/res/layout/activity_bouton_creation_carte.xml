@@ -28,7 +28,7 @@
         android:layout_marginTop="2dp"
         android:gravity="center_horizontal"
         android:onClick="AfficherListe"
-        android:text="Afficher Liste Carte"
+        android:text="@string/list_created_cards"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="79dp"

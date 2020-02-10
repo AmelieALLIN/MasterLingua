@@ -1,8 +1,6 @@
 package com.example.masterlingua;
 
 import android.content.Context;
-//import android.content.Intent;
-import android.content.Intent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +21,7 @@ public class CreerCarte extends AppCompatActivity {
     private EditText question;
     private List<String> answers;
     String bonneReponse;
+    private Spinner level;
     private boolean b1, b2, b3;
     Context context = this;
 
@@ -37,7 +36,6 @@ public class CreerCarte extends AppCompatActivity {
         Button validate = findViewById(R.id.validate);
         Button retour = findViewById(R.id.retour);
 
-
         validate.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -47,6 +45,7 @@ public class CreerCarte extends AppCompatActivity {
                 checkAnswer1 = findViewById(R.id.checkAnswer1);
                 checkAnswer2 = findViewById(R.id.checkAnswer2);
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
+                level = findViewById(R.id.level);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
                 if (question.getText().toString().isEmpty()){
@@ -54,8 +53,14 @@ public class CreerCarte extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     Toast.makeText(context, text, duration).show();
                 }
+                // vérifier que le niveau est indiqué
+                if(level.getSelectedItem().toString().isEmpty()){
+                    CharSequence text = getText(R.string.warning_level);
+                    Toast.makeText(context, text,Toast.LENGTH_SHORT).show();
+                }
                 else {
-                    //String bonneReponse = "";
+                    String n = level.getSelectedItem().toString();
+                    bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
                     if(!answer1.getText().toString().isEmpty()){ // champ de réponse 1
                         answers.add(answer1.getText().toString());
@@ -80,7 +85,7 @@ public class CreerCarte extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
                     if (answers.size() == 3) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
+                        carte = new Carte(n, question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         /*answers.remove(2);
@@ -88,20 +93,20 @@ public class CreerCarte extends AppCompatActivity {
                         answers.remove(0);*/
                     }
                     if (answers.size() == 2) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
+                        carte = new Carte(n, question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         //System.out.println(carte.getReponse().get(0));
                     }
                     if (answers.size() == 1) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);
+                        carte = new Carte(n, question.getText().toString(), answers.get(0), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         answers.removeAll(answers);
                     }
                     if (answers.isEmpty()) {
                         bonneReponse = null;
-                        carte = new Carte(question.getText().toString(),bonneReponse);
+                        carte = new Carte(n, question.getText().toString(),bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                     }
