@@ -44,11 +44,11 @@ public class AfficherCarte extends AppCompatActivity {
         reps.setAdapter(adapter);
 
         carte = (Carte) bundle.getSerializable("carte");
-        if(!carte.getReponse().isEmpty()) {
+        /*if(!carte.getReponse().isEmpty()) {
             for (int i = 0; i<carte.getReponse().size(); i++){
                 reponses.add(carte.getReponse().get(i));
             }
-        }
+        }*/
         ok=carte.getBonne_rep();
         question.setText(carte.getQuestion());
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -116,6 +116,4 @@ public class AfficherCarte extends AppCompatActivity {
             }
         }, 3200);
     }
-
-
 }
