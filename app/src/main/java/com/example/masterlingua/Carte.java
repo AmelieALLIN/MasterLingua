@@ -20,6 +20,7 @@ public class Carte extends SugarRecord implements Serializable {
     public String reponse2;
     public String reponse3;
     private String bonne_rep;
+    private String niv;
 
     //private List<String> reponseliste = new ArrayList<>();
     //private String replistejson;
@@ -50,33 +51,37 @@ public class Carte extends SugarRecord implements Serializable {
         bonne_rep = s2;
     }*/
 
-    public Carte(String s, String r1, String r2, String r3, String s2){
+    public Carte(String s, String r1, String r2, String r3, String s2,String niveau){
         question = s;
         reponse1 = r1;
         reponse2 = r2;
         reponse3 = r3;
         bonne_rep = s2;
+        niv=niveau;
     }
-    public Carte(String s, String r1, String r2, String s2){
+    public Carte(String s, String r1, String r2, String s2,String niveau){
         question = s;
         reponse1 = r1;
         reponse2 = r2;
-        reponse3 = null;
+        reponse3 = "";
         bonne_rep = s2;
+        niv=niveau;
     }
-    public Carte(String s, String r1, String s2){
+    public Carte(String s, String r1, String s2,String niveau){
         question = s;
         reponse1 = r1;
-        reponse2 = null;
-        reponse3 = null;
+        reponse2 = "";
+        reponse3 = "";
         bonne_rep = s2;
+        niv=niveau;
     }
-    public Carte(String s,String s2){
+    public Carte(String s,String s2,String niveau){
         question = s;
-        reponse1 = null;
-        reponse2 = null;
-        reponse3 = null;
+        reponse1 = "";
+        reponse2 = "";
+        reponse3 = "";
         bonne_rep = s2;
+        niv=niveau;
     }
 
     /*private Carte(Parcel in) {
@@ -151,4 +156,5 @@ public ArrayList<String> getReponses(){
     public String getBonne_rep(){
         return bonne_rep;
     }
+    public String getNiveau(){return niv;}
 }

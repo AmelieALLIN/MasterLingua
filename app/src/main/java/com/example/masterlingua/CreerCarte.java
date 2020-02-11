@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -25,7 +26,7 @@ public class CreerCarte extends AppCompatActivity {
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
-
+    Spinner spin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,9 @@ public class CreerCarte extends AppCompatActivity {
         answers = new ArrayList<>();
         Button validate = findViewById(R.id.validate);
         Button retour = findViewById(R.id.retour);
+        spin=findViewById(R.id.spin);
+        spin.setAdapter(new ArrayAdapter<Niveau>(this, android.R.layout.simple_list_item_1, Niveau.values()));
+
 
 
         validate.setOnClickListener(new View.OnClickListener(){
@@ -80,7 +84,7 @@ public class CreerCarte extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
                     if (answers.size() == 3) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
+                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         /*answers.remove(2);
@@ -88,20 +92,20 @@ public class CreerCarte extends AppCompatActivity {
                         answers.remove(0);*/
                     }
                     if (answers.size() == 2) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
+                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         //System.out.println(carte.getReponse().get(0));
                     }
                     if (answers.size() == 1) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);
+                        carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         answers.removeAll(answers);
                     }
                     if (answers.isEmpty()) {
                         bonneReponse = null;
-                        carte = new Carte(question.getText().toString(),bonneReponse);
+                        carte = new Carte(question.getText().toString(),bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                     }
@@ -164,7 +168,7 @@ public class CreerCarte extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
                     if (answers.size() == 3) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
+                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         /*answers.remove(2);
@@ -172,20 +176,20 @@ public class CreerCarte extends AppCompatActivity {
                         answers.remove(0);*/
                     }
                     if (answers.size() == 2) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
+                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         //System.out.println(carte.getReponses().get(0));
                     }
                     if (answers.size() == 1) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);
+                        carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         answers.removeAll(answers);
                     }
                     if (answers.isEmpty()) {
                         bonneReponse = null;
-                        carte = new Carte(question.getText().toString(),bonneReponse);
+                        carte = new Carte(question.getText().toString(),bonneReponse,spin.getSelectedItem().toString());
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                     }

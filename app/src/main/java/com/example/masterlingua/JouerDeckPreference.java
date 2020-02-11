@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class AfficherCarte extends AppCompatActivity {
+public class JouerDeckPreference extends AppCompatActivity {
     ListView reps;
     Carte carte;
     ArrayList<String> reponses=new ArrayList<>();
@@ -105,12 +105,13 @@ public class AfficherCarte extends AppCompatActivity {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
-                startActivity(retour);
-                finish();
+                {Intent retour = new Intent(JouerDeckPreference.this, AfficherDeckPref.class);
+                    startActivity(retour);
+                    finish();
                 }
 
             }
         }, 3000);
     }
 }
+

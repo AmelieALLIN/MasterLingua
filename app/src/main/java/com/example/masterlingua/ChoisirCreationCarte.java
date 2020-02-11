@@ -11,6 +11,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
 
     private Button goCreerCarte;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,4 +34,11 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         Intent intent = new Intent(this,AfficherListe.class);
         startActivity(intent);
     }
+    public void choisirListe(View view) {
+        Intent intent = new Intent(this,AfficherPreference.class);
+        startActivity(intent);
+    }
+
+
+
 }

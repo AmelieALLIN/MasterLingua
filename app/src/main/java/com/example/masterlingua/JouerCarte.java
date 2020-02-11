@@ -111,7 +111,7 @@ public class JouerCarte extends AppCompatActivity {
                 }
 
             }
-        }, 3200);
+        }, 3000);
     }
 }
 
