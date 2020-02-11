@@ -1,16 +1,8 @@
 package com.example.masterlingua;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.orm.SugarRecord;
 
 
