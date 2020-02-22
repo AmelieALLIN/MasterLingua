@@ -81,7 +81,8 @@ public class CreerCarte extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
                     if (answers.size() == 3) {
                         carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
-                        carte.save();
+                        //carte.save();
+
                         Toast.makeText(context, text, duration).show();
                         /*answers.remove(2);
                         answers.remove(1);

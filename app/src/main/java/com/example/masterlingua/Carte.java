@@ -1,154 +1,51 @@
 package com.example.masterlingua;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.orm.SugarRecord;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class Carte extends SugarRecord implements Serializable {
-    public String question;
-    public String reponse1;
-    public String reponse2;
-    public String reponse3;
-    private String bonne_rep;
-
-    //private List<String> reponseliste = new ArrayList<>();
-    //private String replistejson;
-
+public class Carte implements Serializable {
+    //private static final AtomicInteger ID_FACTORY = new AtomicInteger();
+    private int id; // private final int id = ID_FACTORY.getAndIncrement();
+    private Question question;
+    private List<Reponse> reponses;
+    private int ind_br;
 
     public Carte() { }
 
-    /*public Carte(String s, String r1, String r2, String r3, String s2){
-        question = s;
-        reponseliste.add(r1);
-        reponseliste.add(r2);
-        reponseliste.add(r3);
-        bonne_rep = s2;
-    }
-    public Carte(String s, String r1, String r2, String s2){
-        question = s;
-        reponseliste.add(r1);
-        reponseliste.add(r2);
-        bonne_rep = s2;
-    }
-    public Carte(String s, String r1, String s2){
-        question = s;
-        reponseliste.add(r1);
-        bonne_rep = s2;
-    }
-    public Carte(String s,String s2){
-        question = s;
-        bonne_rep = s2;
-    }*/
-
-    public Carte(String s, String r1, String r2, String r3, String s2){
-        question = s;
-        reponse1 = r1;
-        reponse2 = r2;
-        reponse3 = r3;
-        bonne_rep = s2;
-    }
-    public Carte(String s, String r1, String r2, String s2){
-        question = s;
-        reponse1 = r1;
-        reponse2 = r2;
-        reponse3 = null;
-        bonne_rep = s2;
-    }
-    public Carte(String s, String r1, String s2){
-        question = s;
-        reponse1 = r1;
-        reponse2 = null;
-        reponse3 = null;
-        bonne_rep = s2;
-    }
-    public Carte(String s,String s2){
-        question = s;
-        reponse1 = null;
-        reponse2 = null;
-        reponse3 = null;
-        bonne_rep = s2;
+    public Carte(int id, Question question, List<Reponse> reponses, int ind_br) {
+        this.id = id;
+        this.question = question;
+        this.reponses = reponses;
+        this.ind_br = ind_br;
     }
 
-    /*private Carte(Parcel in) {
-        this.reponse = in.readString();
-        this.reponseliste = new ArrayList<String>();
-        in.readList(reponseliste, String.class.getClassLoader());
+    public final int getId() {
+        return id;
     }
 
-    public static final Creator<Carte> CREATOR = new Creator<Carte>(){
-        public CartecreateFromParcel(Parcel in) {
-            return new Carte(in);
-        }
-        public Carte[] newArray(int size) {
-            return new Carte[size];
-        }
-    };
-
-    public  List<String> getReponseliste() {
-        reponseliste = new Gson().fromJson(this.replistejson, new TypeToken<List<String>>(){}.getRawType());
-        return reponseliste;
-    }
-
-    public setMyStringList(List<String> stringList){
-        this.reponseliste = stringList;
-    }
-
-    @Override
-    public long save(){
-        this.replistejson = new Gson().toJson(stringList);
-        return super.save();
-    }
-
-    @Override
-    public int describeContents() { return 0; }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(reponse);
-        dest.writeList(getReponseliste());
-    }*/
-
-
-    public String getQuestion(){
+    public Question getQuestion() {
         return question;
     }
 
-    /*public List<String> getReponse()
-    {
-        return reponseliste;
-    }*/
-
-    public String getReponse1() {
-        return reponse1;
+    public List<Reponse> getReponses() {
+        return reponses;
     }
 
-    public String getReponse2() {
-        return reponse2;
+    public int getInd_br() {
+        return ind_br;
     }
 
-    public String getReponse3() {
-        return reponse3;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 
-public ArrayList<String> getReponses(){
-        ArrayList<String> p=new ArrayList<>();
-        p.add(reponse1);
-        p.add(reponse2);
-        p.add(reponse3);
-        return p;
-}
+    public void setReponses(List<Reponse> reponses) {
+        this.reponses = reponses;
+    }
 
-    public String getBonne_rep(){
-        return bonne_rep;
+    public void setInd_br(int ind_br) {
+        this.ind_br = ind_br;
     }
 }
