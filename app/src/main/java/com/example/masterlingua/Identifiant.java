@@ -1,29 +1,28 @@
 package com.example.masterlingua;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Identifiant {
-    private String niveau;
-    private String theme;
-    private String langue;
+    private Map<Integer,String> niveau = new HashMap<>();
+    private Map<Integer,String> theme = new HashMap<>();
+    private Map<Integer,String> langue = new HashMap<>();
+    static Integer cpt;
 
-    public Identifiant(String n, String t, String l) {
-        niveau = n;
-        theme = t;
-        langue = l;
+    public Identifiant(){
+        cpt = 0;
     }
 
-    public Identifiant(String n){
-        niveau = n;
+    public void putNiveau(String value) {
+        cpt = cpt++;
+        niveau.put(cpt, value);
     }
-
-    public String getNiveau() {
-        return niveau;
+    public void putTheme(String value){
+        cpt = cpt++;
+        theme.put(cpt, value);
     }
-
-    public String getTheme() {
-        return theme;
-    }
-
-    public String getLangue() {
-        return langue;
+    public void putLangue(String value){
+        cpt = cpt++;
+        langue.put(cpt, value);
     }
 }

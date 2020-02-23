@@ -60,7 +60,7 @@ public class CreerCarte extends AppCompatActivity {
                 }
                 else {
                     String n = level.getSelectedItem().toString();
-                    bonneReponse = "";
+                    //bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
                     if(!answer1.getText().toString().isEmpty()){ // champ de réponse 1
                         answers.add(answer1.getText().toString());
@@ -165,11 +165,12 @@ public class CreerCarte extends AppCompatActivity {
                     /*for(int i=0; i<answers.size(); i++){
                         System.out.println(answers.get(i) + i);
                     }*/
+                    String n = level.getSelectedItem().toString();
                     // construire la carte avec le bon nombre de réponses en argument
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
                     if (answers.size() == 3) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
+                        carte = new Carte(n, question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         /*answers.remove(2);
@@ -177,20 +178,20 @@ public class CreerCarte extends AppCompatActivity {
                         answers.remove(0);*/
                     }
                     if (answers.size() == 2) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
+                        carte = new Carte(n, question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         //System.out.println(carte.getReponses().get(0));
                     }
                     if (answers.size() == 1) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);
+                        carte = new Carte(n, question.getText().toString(), answers.get(0), bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                         answers.removeAll(answers);
                     }
                     if (answers.isEmpty()) {
                         bonneReponse = null;
-                        carte = new Carte(question.getText().toString(),bonneReponse);
+                        carte = new Carte(n, question.getText().toString(),bonneReponse);
                         carte.save();
                         Toast.makeText(context, text, duration).show();
                     }
