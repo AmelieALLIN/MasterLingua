@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class AfficherCarte extends AppCompatActivity {
+public class AfficherCarte extends AppCompatActivity {/*
     ListView reps;
     Carte carte;
     ArrayList<String> reponses=new ArrayList<>();
@@ -112,5 +112,5 @@ public class AfficherCarte extends AppCompatActivity {
 
             }
         }, 3200);
-    }
+    }*/
 }

@@ -18,7 +18,13 @@ import java.util.List;
 
 public class AfficherListe extends AppCompatActivity {
     ListView CarteListView;
-    List<Carte> carte = Carte.listAll(Carte.class);
+    //List<Carte> carte = Carte.listAll(Carte.class);
+
+    DAOCarte dao = new DAOCarte(this);
+        //dao.createDefaultNotesIfNeed();
+
+    List<Carte> carte =  dao.getAllCartes();
+
     List<String> questioncarte = new ArrayList<>();
     ArrayList<Carte> l = new ArrayList<>();
     Deck deck;
@@ -69,10 +75,8 @@ public class AfficherListe extends AppCompatActivity {
                         for(int i=0; i<count; i++)
                         {
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getQuestion());
-                            System.out.println("JE SUIS LAAAAAAAA   rep1=" + carte.get(arrayList.get(i)).getReponse1());
-                            System.out.println("JE SUIS LAAAAAAAA   rep2=" + carte.get(arrayList.get(i)).getReponse2());
-                            System.out.println("JE SUIS LAAAAAAAA   rep3=" + carte.get(arrayList.get(i)).getReponse3());
-                            System.out.println("JE SUIS LAAAAAAAA   br=" + carte.get(arrayList.get(i)).getBonne_rep());
+                            System.out.println("JE SUIS LAAAAAAAA   rep1=" + carte.get(arrayList.get(i)).getReponses());
+                            System.out.println("JE SUIS LAAAAAAAA   br=" + carte.get(arrayList.get(i)).getInd_br());
                             System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)));
                             l.add(carte.get(arrayList.get(i)));
                             //liste.add(carte.get(arrayList.get(i)));
@@ -96,7 +100,7 @@ public class AfficherListe extends AppCompatActivity {
         });
 
         for (int i = 0; i < carte.size(); i++) {
-            questioncarte.add(carte.get(i).getQuestion());
+            questioncarte.add(carte.get(i).getQuestion().getNom_question());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, questioncarte);

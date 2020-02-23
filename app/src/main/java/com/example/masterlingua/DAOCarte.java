@@ -93,7 +93,7 @@ public class DAOCarte extends SQLiteOpenHelper {
         }
     }*/
 
-    public void addCarte(Carte c1, Reponse r1) {
+    public void addCarte(Carte c1) {
         //Log.i(TAG, "MyDatabaseHelper.addNote ... " + note.getNoteTitle());
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -159,21 +159,33 @@ public class DAOCarte extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                int id = Integer.parseInt(cursor.getString(0));
-                String idc = Integer.toString(id);
-                String id_question = "SELECT " + COLUMN_ID_QUESTION + " FROM " + TABLE_CARTE + " WHERE  COLUMN_ID_CARTE =" idc ;
-                String question = "SELECT " + COLUMN_ID_QUESTION + " FROM " + TABLE_QUESTION;
-                Question q = cursor.getString(2);
-                Carte carte = new Carte(id,question);
-                //carte.setId(Integer.parseInt(cursor.getString(0)));
-                //carte.setQuestion(cursor.getString(1.getNom_question()));
-                carte.setCarteContent(cursor.getString(2));
-                // Adding note to list
-                noteList.add(note);
+                int id_carte = Integer.parseInt(cursor.getString(0));
+
+                String selectQuestion = "SELECT  * FROM " + TABLE_QUESTION + "WHERE COLUMN_ID_CARTE = " + id_carte;
+                SQLiteDatabase db_question = this.getWritableDatabase();
+                Cursor cursor_question = db_question.rawQuery(selectQuestion, null);
+                int id_question = Integer.parseInt(cursor_question.getString(0));
+                String nom_question = cursor_question.getString(1);
+                Question q = new Question(id_question,nom_question);
+
+                int taille_rep = Integer.parseInt(cursor.getString(2));
+                List<Reponse> l = new ArrayList<>();
+                for(int i =0; i<taille_rep; i++){
+                    String selectRep = "SELECT  * FROM " + TABLE_REP + "WHERE COLUMN_ID_CARTE = " + id_carte;
+                    SQLiteDatabase db_rep = this.getWritableDatabase();
+                    Cursor cursor_rep = db_rep.rawQuery(selectQuestion, null);
+                    int id_rep = Integer.parseInt(cursor_rep.getString(0));
+                    String nom_rep = cursor_rep.getString(1);
+                    Reponse r = new Reponse(id_rep,nom_rep);
+                    l.add(r);
+                }
+
+                int br = Integer.parseInt(cursor.getString(3));
+
+                Carte carte = new Carte(id_carte,q,l,br);
+                carteList.add(carte);
             } while (cursor.moveToNext());
         }
-
-        // return note list
         return carteList;
     }
 

@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class JouerCarte extends AppCompatActivity {
+public class JouerCarte extends AppCompatActivity {/*
     ListView reps;
     Carte carte;
     ArrayList<String> reponses=new ArrayList<>();
@@ -112,6 +112,6 @@ public class JouerCarte extends AppCompatActivity {
 
             }
         }, 3200);
-    }
+    }*/
 }
 

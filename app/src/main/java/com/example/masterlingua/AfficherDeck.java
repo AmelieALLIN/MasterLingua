@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class AfficherDeck extends AppCompatActivity {
+public class AfficherDeck extends AppCompatActivity { /*
     ListView liste_cartes;
     TextView liste;
     ArrayList<Carte> cartes = new ArrayList<>();
@@ -68,5 +68,5 @@ public class AfficherDeck extends AppCompatActivity {
         });
 
 
-    }
+    }*/
 }

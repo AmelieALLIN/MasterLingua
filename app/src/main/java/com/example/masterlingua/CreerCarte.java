@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class CreerCarte extends AppCompatActivity {
     private Carte carte;
@@ -32,15 +33,20 @@ public class CreerCarte extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creer_carte);
 
+        final DAOCarte dao = new DAOCarte(this);
+
         question = findViewById(R.id.question);
         answers = new ArrayList<>();
         Button validate = findViewById(R.id.validate);
         Button retour = findViewById(R.id.retour);
 
 
-        validate.setOnClickListener(new View.OnClickListener(){
+        validate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                int uniqueIDcarte = Integer.parseInt(UUID.randomUUID().toString());
+                int uniqueIDquestion = Integer.parseInt(UUID.randomUUID().toString());
+                int br = -1;
                 EditText answer1 = findViewById(R.id.answer1);
                 EditText answer2 = findViewById(R.id.answer2);
                 EditText answer3 = findViewById(R.id.answer3);
@@ -49,83 +55,95 @@ public class CreerCarte extends AppCompatActivity {
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                if (question.getText().toString().isEmpty()){
+                if (question.getText().toString().isEmpty()) {
                     CharSequence text = getText(R.string.warning_question);
                     int duration = Toast.LENGTH_SHORT;
                     Toast.makeText(context, text, duration).show();
-                }
-                else {
+                } else {
                     //String bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
-                    if(!answer1.getText().toString().isEmpty()){ // champ de réponse 1
+                    if (!answer1.getText().toString().isEmpty()) { // champ de réponse 1
                         answers.add(answer1.getText().toString());
-                        if(checkAnswer1.isChecked()) b1 = true;
-                        if(b1) bonneReponse = answers.get(0);
+                        if (checkAnswer1.isChecked()) b1 = true;
+                        if (b1) bonneReponse = answers.get(0);
                     }
-                    if(!answer2.getText().toString().isEmpty()){ // champ de réponse 2
+                    if (!answer2.getText().toString().isEmpty()) { // champ de réponse 2
                         answers.add(answer2.getText().toString());
-                        if(checkAnswer2.isChecked()) b2 = true;
-                        if(b2) bonneReponse = answers.get(1);
+                        if (checkAnswer2.isChecked()) b2 = true;
+                        if (b2) bonneReponse = answers.get(1);
                     }
-                    if(!answer3.getText().toString().isEmpty()){ // champ de réponse 3
+                    if (!answer3.getText().toString().isEmpty()) { // champ de réponse 3
                         answers.add(answer3.getText().toString());
-                        if(checkAnswer3.isChecked()) b3 = true;
-                        if(b3) bonneReponse = answers.get(2);
+                        if (checkAnswer3.isChecked()) b3 = true;
+                        if (b3) bonneReponse = answers.get(2);
                     }
                     // en faire un logger
-                    /*for(int i=0; i<answers.size(); i++){
-                        System.out.println(answers.get(i) + i);
-                    }*/
+                    //for(int i=0; i<answers.size(); i++){
+                    //    System.out.println(answers.get(i) + i);
+                    //}
                     // construire la carte avec le bon nombre de réponses en argument
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
-                    if (answers.size() == 3) {
-                        carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
-                        //carte.save();
 
-                        Toast.makeText(context, text, duration).show();
-                        /*answers.remove(2);
-                        answers.remove(1);
-                        answers.remove(0);*/
+                    Question q = new Question(uniqueIDquestion, question.getText().toString());
+                    System.out.println(" LAAAAAAAAA   ok1");
+                    List<Reponse> l = new ArrayList<>();
+
+                    for (int i = 0; i < answers.size(); i++) {
+                        int uniqueIDrep = Integer.parseInt(UUID.randomUUID().toString());
+                        Reponse r = new Reponse(uniqueIDrep, answers.get(i));
+                        l.add(r);
+                        if (answers.get(i) == bonneReponse) {
+                            br = i;
+                        }
+                        carte = new Carte(uniqueIDcarte, q, l, br);
+                        System.out.println(" LAAAAAAAAAAA c'est ok ");
                     }
+                    //DAOCarte dao = new DAOCarte(this);
+                    dao.addCarte(carte);
+                    Toast.makeText(context, text, duration).show();
+                    /*
                     if (answers.size() == 2) {
                         carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
-                        carte.save();
+                        //carte.save();
                         Toast.makeText(context, text, duration).show();
                         //System.out.println(carte.getReponse().get(0));
                     }
                     if (answers.size() == 1) {
                         carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);
-                        carte.save();
+                        //carte.save();
                         Toast.makeText(context, text, duration).show();
                         answers.removeAll(answers);
                     }
                     if (answers.isEmpty()) {
                         bonneReponse = null;
                         carte = new Carte(question.getText().toString(),bonneReponse);
-                        carte.save();
+                        //carte.save();
                         Toast.makeText(context, text, duration).show();
                     }
 
                     //test affichage contenu carte
                     if (!carte.getQuestion().isEmpty()) System.out.println(carte.getQuestion());
-                    // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
-                    Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("carte", carte);
-                    afficherCarte.putExtras(bundle);
-                    afficherCarte.putExtra("valeur",1);
-                    startActivity(afficherCarte);
-                    finish();
-                }
-            }
-        });
+                    */
+                        // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
+                        Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("carte", carte);
+                        afficherCarte.putExtras(bundle);
+                        afficherCarte.putExtra("valeur", 1);
+                        startActivity(afficherCarte);
+                        finish();
+                    }
+                };
 
 
 
-        retour.setOnClickListener(new View.OnClickListener(){
+       /* retour.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                int uniqueIDcarte = Integer.parseInt(UUID.randomUUID().toString());
+                int uniqueIDquestion = Integer.parseInt(UUID.randomUUID().toString());
+                int br = -1;
                 EditText answer1 = findViewById(R.id.answer1);
                 EditText answer2 = findViewById(R.id.answer2);
                 EditText answer3 = findViewById(R.id.answer3);
@@ -158,36 +176,50 @@ public class CreerCarte extends AppCompatActivity {
                         if(b3) bonneReponse = answers.get(2);
                     }
                     // en faire un logger
-                    /*for(int i=0; i<answers.size(); i++){
-                        System.out.println(answers.get(i) + i);
-                    }*/
+                    //for(int i=0; i<answers.size(); i++){
+                    //    System.out.println(answers.get(i) + i);
+                    }//
                     // construire la carte avec le bon nombre de réponses en argument
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
+
+                    Question q = new Question(uniqueIDquestion,question.getText().toString());
+                    List<Reponse> l = new ArrayList<>();
+                    for(int i=0; i<answers.size(); i++){
+                        int uniqueIDrep = Integer.parseInt(UUID.randomUUID().toString());
+                        Reponse r = new Reponse(uniqueIDrep,answers.get(i));
+                        l.add(r);
+                        if(answers.get(i)==bonneReponse)
+                        {
+                            br = i;
+                        }
+                        carte = new Carte(uniqueIDcarte,q,l,br);=
+
+                        Toast.makeText(context, text, duration).show();
                     if (answers.size() == 3) {
                         carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), answers.get(2), bonneReponse);
-                        carte.save();
+                        //carte.save();
                         Toast.makeText(context, text, duration).show();
-                        /*answers.remove(2);
-                        answers.remove(1);
-                        answers.remove(0);*/
+                        //answers.remove(2);
+                        //answers.remove(1);
+                        //answers.remove(0);
                     }
                     if (answers.size() == 2) {
                         carte = new Carte(question.getText().toString(), answers.get(0), answers.get(1), bonneReponse);
-                        carte.save();
+                        //carte.save();
                         Toast.makeText(context, text, duration).show();
                         //System.out.println(carte.getReponses().get(0));
                     }
                     if (answers.size() == 1) {
                         carte = new Carte(question.getText().toString(), answers.get(0), bonneReponse);
-                        carte.save();
+                        //carte.save();
                         Toast.makeText(context, text, duration).show();
                         answers.removeAll(answers);
                     }
                     if (answers.isEmpty()) {
                         bonneReponse = null;
                         carte = new Carte(question.getText().toString(),bonneReponse);
-                        carte.save();
+                        //carte.save();
                         Toast.makeText(context, text, duration).show();
                     }
 
@@ -195,17 +227,14 @@ public class CreerCarte extends AppCompatActivity {
                     //if (!carte.getQuestion().isEmpty()) System.out.println(carte.getQuestion());
                     // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
                     Intent afficherCarte = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
-                    /*Bundle bundle = new Bundle();
-                    bundle.putSerializable("carte", carte);
-                    afficherCarte.putExtras(bundle);*/
+                    //Bundle bundle = new Bundle();
+                    //bundle.putSerializable("carte", carte);
+                    //afficherCarte.putExtras(bundle);
                     startActivity(afficherCarte);
                     finish();
                 }
-            }
+            }*/
         });
-
-
-
     }
 
     public void onCheckBoxClicked(View view){
