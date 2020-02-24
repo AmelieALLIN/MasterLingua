@@ -20,7 +20,9 @@ public class Carte extends SugarRecord implements Serializable {
     public String reponse2;
     public String reponse3;
     private String bonne_rep;
-    private final static Identifiant id = new Identifiant();
+
+    // partie qui gère les tags de la carte, à garder !!
+    private Categorie categorie;
 
     //private List<String> reponseliste = new ArrayList<>();
     //private String replistejson;
@@ -51,32 +53,28 @@ public class Carte extends SugarRecord implements Serializable {
         bonne_rep = s2;
     }*/
 
-    public Carte(String niveau, String s, String r1, String r2, String r3, String s2){
-        id.putNiveau(niveau);
+    public Carte(String s, String r1, String r2, String r3, String s2){
         question = s;
         reponse1 = r1;
         reponse2 = r2;
         reponse3 = r3;
         bonne_rep = s2;
     }
-    public Carte(String n, String s, String r1, String r2, String s2){
-        id.putNiveau(n);
+    public Carte(String s, String r1, String r2, String s2){
         question = s;
         reponse1 = r1;
         reponse2 = r2;
         reponse3 = "";
         bonne_rep = s2;
     }
-    public Carte(String n, String s, String r1, String s2){
-        id.putNiveau(n);
+    public Carte(String s, String r1, String s2){
         question = s;
         reponse1 = r1;
         reponse2 = "";
         reponse3 = "";
         bonne_rep = s2;
     }
-    public Carte(String n, String s, String s2){
-        id.putNiveau(n);
+    public Carte(String s, String s2){
         question = s;
         reponse1 = "";
         reponse2 = "";
