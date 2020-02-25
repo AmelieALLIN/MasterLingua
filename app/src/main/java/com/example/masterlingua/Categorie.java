@@ -21,6 +21,14 @@ public class Categorie {
         }
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public Map<Carte, Boolean> getCategorieAppartenance() {
+        return categorieAppartenance;
+    }
+
     public void addToCategory(Carte carte) {
         if (categorieAppartenance.containsKey(carte)) {
             categorieAppartenance.put(carte, true);

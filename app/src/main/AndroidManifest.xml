@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AfficherListe" />
+        <activity android:name=".CreerCategorie"></activity>
         <activity android:name=".ChoisirCreationCarte">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

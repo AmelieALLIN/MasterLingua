@@ -6,10 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".AfficherListe">
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/creationCategorie"
+        android:text="@string/category_creation"
+        android:onClick="creationCategorie"/>
+
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="21dp"
         android:id="@+id/myListView"
+        android:layout_below="@+id/creationCategorie"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>

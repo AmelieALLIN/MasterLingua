@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +20,6 @@ public class CreerCarte extends AppCompatActivity {
     private EditText question;
     private List<String> answers;
     String bonneReponse;
-    private Spinner level;
     private boolean b1, b2, b3;
     Context context = this;
 
@@ -45,18 +43,12 @@ public class CreerCarte extends AppCompatActivity {
                 checkAnswer1 = findViewById(R.id.checkAnswer1);
                 checkAnswer2 = findViewById(R.id.checkAnswer2);
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
-                level = findViewById(R.id.level);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
                 if (question.getText().toString().isEmpty()){
                     CharSequence text = getText(R.string.warning_question);
                     int duration = Toast.LENGTH_SHORT;
                     Toast.makeText(context, text, duration).show();
-                }
-                // vérifier que le niveau est indiqué
-                if(level.getSelectedItem().toString().isEmpty()){
-                    CharSequence text = getText(R.string.warning_level);
-                    Toast.makeText(context, text,Toast.LENGTH_SHORT).show();
                 }
                 else {
                     //bonneReponse = "";

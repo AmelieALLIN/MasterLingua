@@ -36,15 +36,15 @@ public class JouerCarte extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.carte);
         reps = (ListView) findViewById(R.id.list);
-        question= findViewById(R.id.question);
+        question = findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
-        Intent intent=getIntent();
+        Intent intent = getIntent();
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,reponses);
         reps.setAdapter(adapter);
 
         carte = (Carte) bundle.getSerializable("carte");
         if(!carte.getReponses().isEmpty()) {
-            for (int i = 0; i<carte.getReponses().size(); i++){
+            for (int i=0; i<carte.getReponses().size(); i++){
                 reponses.add(carte.getReponses().get(i));
             }
         }

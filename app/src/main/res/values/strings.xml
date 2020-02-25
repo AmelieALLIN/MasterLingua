@@ -32,4 +32,8 @@
         <item>@string/medium</item>
         <item>@string/low</item>
     </string-array>
+    <string name="category_creation">Créer une catégorie</string>
+    <string name="category_name">Entrez le nom de votre catégorie</string>
+    <string name="category_created">Votre catégorie a bien été créée</string>
+    <string name="validate">Valider</string>
 </resources>

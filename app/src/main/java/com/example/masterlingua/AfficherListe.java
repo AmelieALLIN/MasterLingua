@@ -9,10 +9,12 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,6 +103,15 @@ public class AfficherListe extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, questioncarte);
         CarteListView.setAdapter(adapter);
+    }
+
+    public void creationCategorie(View v){
+        Intent creer_categorie = new Intent(getApplicationContext(), CreerCategorie.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("cartes", (Serializable) carte);
+        creer_categorie.putExtras(bundle);
+        startActivity(creer_categorie);
+        finish();
     }
 
 }
