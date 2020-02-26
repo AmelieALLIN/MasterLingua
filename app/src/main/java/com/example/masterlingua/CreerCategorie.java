@@ -34,31 +34,31 @@ public class CreerCategorie extends AppCompatActivity {
         nameCategory = findViewById(R.id.categoryName);
         Button validate = findViewById(R.id.validate);
 
-        validate.setOnClickListener(new View.OnClickListener(){
+        validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // création de la catégorie si la liste de carte n'est pas nulle
-                if (cartes != null) {
+                if(nameCategory.getText().toString().isEmpty()) {
+                    CharSequence text = getText(R.string.warning_category);
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast.makeText(context, text, duration).show();
+                }
+
+                // création de la catégorie si il y a un nom
+                else {
+                    System.out.println("Youhouuuuuu");
                     cat = new Categorie(nameCategory.toString(), cartes);
                     CharSequence text = getText(R.string.category_created);
                     int duration = Toast.LENGTH_SHORT;
                     Toast.makeText(context, text, duration).show();
                     categories.add(cat);
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                        {
-                            Intent retour = new Intent(CreerCategorie.this, AfficherListe.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("listeCategories", (Serializable) categories);
-                            retour.putExtras(bundle);
-                            startActivity(retour);
-                            finish();
-                        }
-
-                        }
-                    }, 3200);
                 }
+
+                Intent retourListeCartes = new Intent(getApplicationContext(), AfficherListe.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("listeCategories", (Serializable) categories);
+                retourListeCartes.putExtras(bundle);
+                /*startActivity(retourListeCartes);
+                finish();*/
             }
         });
     }

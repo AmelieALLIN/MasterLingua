@@ -5,24 +5,33 @@
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_icon"
+        android:roundIcon="@drawable/logo_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name="SplashScreen"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait"
+                  android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity android:name=".AfficherListe" />
         <activity android:name=".CreerCategorie"></activity>
         <activity android:name=".ChoisirCreationCarte">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".CreerCarte"></activity>
         <activity android:name=".AfficherCarte"></activity>
         <activity android:name=".AfficherDeck"></activity>
         <activity android:name=".JouerCarte"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
 
     </application>

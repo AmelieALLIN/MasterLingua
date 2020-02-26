@@ -1,10 +1,13 @@
 package com.example.masterlingua;
 
+import com.orm.SugarRecord;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Categorie {
+public class Categorie extends SugarRecord implements Serializable {
     private String nom;
     //private static int id = 0; // à voir plus tard
     private Map<Carte, Boolean> categorieAppartenance = new HashMap<>();
