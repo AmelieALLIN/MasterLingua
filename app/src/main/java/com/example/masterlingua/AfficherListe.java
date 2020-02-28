@@ -11,19 +11,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class AfficherListe extends AppCompatActivity {
     ListView CarteListView;
-    //List<Carte> carte = Carte.listAll(Carte.class);
-
-    DAOCarte dao = new DAOCarte(this);
-        //dao.createDefaultNotesIfNeed();
-
-    List<Carte> carte =  dao.getAllCartes();
+    List<Carte> carte = Carte.listAll(Carte.class);
+    List<ReponseText> reponses = ReponseText.listAll(ReponseText.class);
+    List<QuestionText> questions = QuestionText.listAll(QuestionText.class);
+    private EditText nom_deck;
 
     List<String> questioncarte = new ArrayList<>();
     ArrayList<Carte> l = new ArrayList<>();
@@ -34,6 +34,8 @@ public class AfficherListe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_liste);
+
+        nom_deck = findViewById(R.id.nom_deck);
 
         CarteListView = (ListView) findViewById(R.id.myListView);
 
@@ -58,6 +60,7 @@ public class AfficherListe extends AppCompatActivity {
             }
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+                String idcarte;
                 switch (item.getItemId()){
 
                     case R.id.menu_delete:
@@ -72,17 +75,19 @@ public class AfficherListe extends AppCompatActivity {
                                 System.out.println("ajout de "+checkedItems.keyAt(i));
                             }
                         }
+                        String id_deck = UUID.randomUUID().toString();
+                        deck = new Deck(id_deck,nom_deck.toString());
+                        deck.save();
                         for(int i=0; i<count; i++)
                         {
-                            System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)).getQuestion());
-                            System.out.println("JE SUIS LAAAAAAAA   rep1=" + carte.get(arrayList.get(i)).getReponses());
-                            System.out.println("JE SUIS LAAAAAAAA   br=" + carte.get(arrayList.get(i)).getInd_br());
-                            System.out.println("JE SUIS LAAAAAAAA   ?=" + carte.get(arrayList.get(i)));
-                            l.add(carte.get(arrayList.get(i)));
-                            //liste.add(carte.get(arrayList.get(i)));
-                            //System.out.println(carte.get(arrayList.get(i)).getReponse().get(1));
+                            System.out.println("JE SUIS LAAAAAAAA   question=" + questions.get(arrayList.get(i)).getNom_question());
+                            System.out.println("id carte = " + questions.get(arrayList.get(i)).getIdCarte());
+                            idcarte = questions.get(arrayList.get(i)).getIdCarte();
+
+                            String id_cartedeck = UUID.randomUUID().toString();
+                            CartesDeck cartesDeck = new CartesDeck(id_cartedeck,id_deck,idcarte);
+                            cartesDeck.save();
                         }
-                        deck = new Deck(l);
                         Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("deck", deck);
@@ -98,13 +103,11 @@ public class AfficherListe extends AppCompatActivity {
 
             }
         });
-
-        for (int i = 0; i < carte.size(); i++) {
-            questioncarte.add(carte.get(i).getQuestion().getNom_question());
+        for (int i = 0; i < questions.size(); i++) {
+            questioncarte.add(questions.get(i).getNom_question());
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, questioncarte);
         CarteListView.setAdapter(adapter);
     }
-
 }
