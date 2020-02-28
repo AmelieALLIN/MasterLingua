@@ -1,29 +1,28 @@
 package com.example.masterlingua;
 
+import com.orm.SugarRecord;
+
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Deck implements Serializable {
-    private ArrayList<Carte> cartes;
-    Carte carte;
+public class Deck extends SugarRecord implements Serializable {
+    private String id_deck;
+    private String nom_deck;
 
-    public Deck(ArrayList<Carte> c){
-        cartes=c;
+    public Deck(){
+
     }
 
-    public ArrayList<Carte> getCartes() {
-        return cartes;
-    }
-
-
-   public Carte contains(String question) {
-        for (int i = 0; i < cartes.size(); i++) {
-            if (cartes.get(i).getQuestion().equals(question))
-                carte=cartes.get(i);
-        }
-        return carte;
+    public Deck(String id, String nom) {
+        this.id_deck = id;
+        this.nom_deck = nom;
     }
 
 
+   public String getId_deck(){
+        return id_deck;
+   }
+
+   public String getNom_deck(){
+        return nom_deck;
+   }
 }

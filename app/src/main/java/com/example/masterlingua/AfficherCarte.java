@@ -20,11 +20,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AfficherCarte extends AppCompatActivity {
     ListView reps;
     Carte carte;
-    ArrayList<String> reponses=new ArrayList<>();
+    List<ReponseText> reponses = new ArrayList<>();
+    List<String> nom_rep = new ArrayList<>();
     TextView question;
     String ok;
     Context context = this;
@@ -39,23 +41,35 @@ public class AfficherCarte extends AppCompatActivity {
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,reponses);
-        reps.setAdapter(adapter);
 
         carte = (Carte) bundle.getSerializable("carte");
-        if(!carte.getReponses().isEmpty()) {
+        String idc = carte.getIdCarte();
+        reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
+        for(int i=0;i<reponses.size();i++)
+        {
+            nom_rep.add(reponses.get(i).getNom());
+        }
+        /*if(!reponses.isEmpty()) {
             for (int i = 0; i<carte.getReponses().size(); i++){
                 reponses.add(carte.getReponses().get(i));
             }
+        }*/
+        for(int y=0;y<reponses.size();y++){
+            if(reponses.get(y).getbr() == true){
+                ok = reponses.get(y).getNom();
+            }
         }
-        ok=carte.getBonne_rep();
-        question.setText(carte.getQuestion());
+
+        List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
+        for(int n=0; n<quest.size();n++){
+            question.setText(quest.get(n).getNom_question());
+        }
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
+        reps.setAdapter(adapter);
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
-
-
                 if(choix.equals(ok))
                 {showToastOk();
                     retour();}
@@ -111,6 +125,6 @@ public class AfficherCarte extends AppCompatActivity {
                 }
 
             }
-        }, 3200);
+        }, 2000);
     }
 }
