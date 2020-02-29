@@ -1,7 +1,6 @@
 package com.example.masterlingua;
 
 import android.content.Context;
-//import android.content.Intent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -33,10 +32,9 @@ public class CreerCarte extends AppCompatActivity {
         question = findViewById(R.id.question);
         answers = new ArrayList<>();
         Button validate = findViewById(R.id.validate);
-        Button retour = findViewById(R.id.retour);
+        Button sauverCarte = findViewById(R.id.sauverCarte);
 
-
-        validate.setOnClickListener(new View.OnClickListener() {
+        validate.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String idcarte = UUID.randomUUID().toString();
@@ -51,36 +49,36 @@ public class CreerCarte extends AppCompatActivity {
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                if (question.getText().toString().isEmpty()) {
+                if (question.getText().toString().isEmpty()){
                     CharSequence text = getText(R.string.warning_question);
                     int duration = Toast.LENGTH_SHORT;
                     Toast.makeText(context, text, duration).show();
-                } else {
+                }
+                else {
                     //String bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
-                    if (!answer1.getText().toString().isEmpty()) { // champ de réponse 1
+                    if(!answer1.getText().toString().isEmpty()){ // champ de réponse 1
                         answers.add(answer1.getText().toString());
-                        if (checkAnswer1.isChecked()) b1 = true;
-                        if (b1) bonneReponse = answers.get(0);
+                        if(checkAnswer1.isChecked()) b1 = true;
+                        if(b1) bonneReponse = answers.get(0);
                     }
-                    if (!answer2.getText().toString().isEmpty()) { // champ de réponse 2
+                    if(!answer2.getText().toString().isEmpty()){ // champ de réponse 2
                         answers.add(answer2.getText().toString());
-                        if (checkAnswer2.isChecked()) b2 = true;
-                        if (b2) bonneReponse = answers.get(1);
+                        if(checkAnswer2.isChecked()) b2 = true;
+                        if(b2) bonneReponse = answers.get(1);
                     }
-                    if (!answer3.getText().toString().isEmpty()) { // champ de réponse 3
+                    if(!answer3.getText().toString().isEmpty()){ // champ de réponse 3
                         answers.add(answer3.getText().toString());
-                        if (checkAnswer3.isChecked()) b3 = true;
-                        if (b3) bonneReponse = answers.get(2);
+                        if(checkAnswer3.isChecked()) b3 = true;
+                        if(b3) bonneReponse = answers.get(2);
                     }
                     // en faire un logger
-                    //for(int i=0; i<answers.size(); i++){
-                    //    System.out.println(answers.get(i) + i);
-                    //}
+                    /*for(int i=0; i<answers.size(); i++){
+                        System.out.println(answers.get(i) + i);
+                    }*/
                     // construire la carte avec le bon nombre de réponses en argument
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
-
                     carte = new Carte(idcarte);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
@@ -122,7 +120,7 @@ public class CreerCarte extends AppCompatActivity {
 
 
 
-       /* retour.setOnClickListener(new View.OnClickListener(){
+        /*sauverCarte.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 int uniqueIDcarte = Integer.parseInt(UUID.randomUUID().toString());
@@ -220,7 +218,7 @@ public class CreerCarte extends AppCompatActivity {
             }
         });*/
 
-        retour.setOnClickListener(new View.OnClickListener(){
+        sauverCarte.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 String idcarte = UUID.randomUUID().toString();

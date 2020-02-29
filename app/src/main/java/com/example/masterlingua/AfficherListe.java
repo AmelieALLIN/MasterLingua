@@ -9,11 +9,14 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -29,6 +32,10 @@ public class AfficherListe extends AppCompatActivity {
     ArrayList<Carte> l = new ArrayList<>();
     Deck deck;
     int count=0;
+    List<Categorie> categories;
+    // categories = Categorie.listAll(Categorie.class);
+    Spinner spinCategories;
+    ArrayAdapter<Categorie> adapt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +71,7 @@ public class AfficherListe extends AppCompatActivity {
                 switch (item.getItemId()){
 
                     case R.id.menu_delete:
-//action on clicking contextual action bar menu item
+                    //action on clicking contextual action bar menu item
                         SparseBooleanArray checkedItems = CarteListView.getCheckedItemPositions();
                         ArrayList<Integer> arrayList = null;
                         if (checkedItems != null && checkedItems.size() > 0) {
@@ -109,5 +116,38 @@ public class AfficherListe extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, questioncarte);
         CarteListView.setAdapter(adapter);
+    }
+
+    public void creationCategorie(View v){
+        Intent creer_categorie = new Intent(getApplicationContext(), CreerCategorie.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("cartes", (Serializable) carte);
+        creer_categorie.putExtras(bundle);
+        startActivity(creer_categorie);
+        finish();
+    }
+
+    /** Cette fonction sert pour pouvoir afficher les catégories existantes dans un spinner **/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        System.out.println("TRANSMISSION DES DONNEES Nous sommes dans la fonction");
+        if (requestCode == 1){
+            if(resultCode == RESULT_OK){
+                System.out.println("LES DONNEES SONT TRANSMISES");
+                Bundle bundle = getIntent().getExtras();
+                List<Categorie> categoriesCrees = (List<Categorie>) bundle.getSerializable("listeCategories");
+                for(int i=0; i<categoriesCrees.size(); i++) {
+                    categories.add(categoriesCrees.get(i));
+                }
+                if (!categories.isEmpty()){
+                    spinCategories = findViewById(R.id.spinCategories);
+                    adapt = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, categories);
+                    spinCategories.setAdapter(adapt);
+                    for(int i=0; i<categories.size(); i++) {
+                        System.out.println(categories.get(i).getNom());
+                    }
+                }
+            }
+        }
     }
 }
