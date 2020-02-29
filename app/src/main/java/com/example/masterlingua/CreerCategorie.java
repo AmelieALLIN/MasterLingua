@@ -3,7 +3,6 @@ package com.example.masterlingua;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,20 +44,20 @@ public class CreerCategorie extends AppCompatActivity {
 
                 // création de la catégorie si il y a un nom
                 else {
-                    System.out.println("Youhouuuuuu");
-                    cat = new Categorie(nameCategory.toString(), cartes);
+                    cat = new Categorie(nameCategory.getText().toString(), cartes);
                     CharSequence text = getText(R.string.category_created);
                     int duration = Toast.LENGTH_SHORT;
                     Toast.makeText(context, text, duration).show();
                     categories.add(cat);
-                }
 
-                Intent retourListeCartes = new Intent(getApplicationContext(), AfficherListe.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("listeCategories", (Serializable) categories);
-                retourListeCartes.putExtras(bundle);
-                /*startActivity(retourListeCartes);
-                finish();*/
+                    Intent retourListeCartes = new Intent(getApplicationContext(), AfficherListe.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("listeCategories", (Serializable) categories);
+                    retourListeCartes.putExtras(bundle);
+                    System.out.println("TRANSMISSION DES DONNEES A L'ACTIVITE SUIVANTE "+categories.get(0).getNom());
+                    startActivityForResult(retourListeCartes,1);
+                    finish();
+                }
             }
         });
     }
