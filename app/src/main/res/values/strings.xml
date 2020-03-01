@@ -19,8 +19,8 @@
     //le nom est en français (vrai) car le nom "true" est réservé
     <string name="faux">Mauvaise réponse</string>
     // du coup en français ici aussi
-    <string name="jouer">Jouer la carte</string>
-    <string name="terminate">Sauvegarder la carte</string>
+    <string name="jouer">Jouer</string>
+    <string name="terminate">Sauvegarder</string>
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="warning_good_answer">Une seule réponse peut être correcte</string>
     <string name="warning_level">Vous devez choisir un niveau</string>

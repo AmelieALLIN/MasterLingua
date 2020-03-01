@@ -1,0 +1,8 @@
+package com.example.masterlingua;
+
+public enum NomCategorie {
+    FACILE, MOYEN, DIFFICILE,
+    ANGLAIS, FRANCAIS, ESPAGNOL, ALLEMAND,
+    INFORMATIQUE, CUISINE, COSMETIQUES, SPORTS, FAUNE, FLORE,
+    BRICOLAGE, ECONOMIE;
+}

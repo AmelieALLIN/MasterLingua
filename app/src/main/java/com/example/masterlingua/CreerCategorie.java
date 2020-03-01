@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.orm.SugarRecord;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +45,7 @@ public class CreerCategorie extends AppCompatActivity {
                 }
 
                 // création de la catégorie si il y a un nom
-                else {
+               /* else {
                     cat = new Categorie(nameCategory.getText().toString(), cartes);
                     CharSequence text = getText(R.string.category_created);
                     int duration = Toast.LENGTH_SHORT;
@@ -57,7 +59,7 @@ public class CreerCategorie extends AppCompatActivity {
                     System.out.println("TRANSMISSION DES DONNEES A L'ACTIVITE SUIVANTE "+categories.get(0).getNom());
                     startActivityForResult(retourListeCartes,1);
                     finish();
-                }
+                }*/
             }
         });
     }

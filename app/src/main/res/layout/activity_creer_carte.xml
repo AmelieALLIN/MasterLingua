@@ -6,37 +6,29 @@
     android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
-    <ImageView
-        android:id="@+id/quiz"
-        android:layout_width="92.5dp"
-        android:layout_height="45dp"
-        android:contentDescription="logoGame"
-        android:src="@drawable/quiz" />
-
     <TextView
         android:id="@+id/creationCarte"
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_below="@+id/quiz"
-        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/advent_pro_light"
         android:text="@string/page_creation_card"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <TextView
-        android:id="@+id/poserQuestion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/creationCarte"
-        android:text="@string/enter_question"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        android:textAllCaps="true"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#3F51B5"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/question"
-        android:layout_width="wrap_content"
+        android:layout_width="265dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/poserQuestion"
+        android:layout_below="@+id/creationCarte"
         android:autofillHints="username"
-        android:inputType="textAutoCorrect"
+        android:fontFamily="@font/advent_pro_light"
+        android:hint="@string/enter_question"
+        android:inputType="textAutoCorrect|textCapSentences"
+        android:singleLine="true"
+        android:textColorLink="#3F51B5"
         android:visibility="visible" />
 
     <TextView
@@ -44,16 +36,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/question"
+        android:fontFamily="@font/advent_pro_light"
         android:text="@string/add_answer"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#03A9F4"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/answer1"
-        android:layout_width="wrap_content"
+        android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ajouterReponse"
         android:autofillHints="username"
-        android:inputType="textAutoCorrect"
+        android:inputType="textAutoCorrect|textCapSentences"
         android:visibility="visible" />
 
     <CheckBox
@@ -61,20 +58,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/answer1"
+        android:buttonTint="#3F51B5"
         android:checked="false"
+        android:fontFamily="@font/advent_pro_light"
         android:onClick="onCheckBoxClicked"
         android:text="@string/vrai"
+        android:textColor="#3F51B5"
+        android:textColorLink="#3F51B5"
+        android:textStyle="bold"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="409dp" />
 
     <EditText
         android:id="@+id/answer2"
-        android:layout_width="wrap_content"
+        android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkAnswer1"
         android:autofillHints="username"
-        android:inputType="textAutoCorrect"
+        android:inputType="textAutoCorrect|textCapSentences"
         android:visibility="visible" />
 
     <CheckBox
@@ -82,20 +84,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/answer2"
+        android:buttonTint="#3F51B5"
         android:checked="false"
+        android:fontFamily="@font/advent_pro_light"
         android:onClick="onCheckBoxClicked"
         android:text="@string/vrai"
+        android:textColor="#3F51B5"
+        android:textColorLink="#3F51B5"
+        android:textStyle="bold"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="409dp" />
 
     <EditText
         android:id="@+id/answer3"
-        android:layout_width="wrap_content"
+        android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkAnswer2"
         android:autofillHints="username"
-        android:inputType="textAutoCorrect"
+        android:inputType="textAutoCorrect|textCapSentences"
         android:visibility="visible" />
 
     <CheckBox
@@ -103,9 +110,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/answer3"
+        android:buttonTint="#3F51B5"
         android:checked="false"
+        android:fontFamily="@font/advent_pro_light"
         android:onClick="onCheckBoxClicked"
         android:text="@string/vrai"
+        android:textColor="#3F51B5"
+        android:textColorLink="#3F51B5"
+        android:textStyle="bold"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="166dp"
         tools:layout_editor_absoluteY="409dp" />
@@ -115,18 +127,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkAnswer3"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="false"
-        android:text="@string/jouer" />
+        android:layout_marginTop="38dp"
+        android:fontFamily="@font/advent_pro_light"
+        android:text="@string/jouer"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/sauverCarte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/validate"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="false"
-        android:text="@string/terminate" />
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="-49dp"
+        android:fontFamily="@font/advent_pro_light"
+        android:text="@string/terminate"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
+    <ImageView
+        android:id="@+id/quiz"
+        android:layout_width="81dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/sauverCarte"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:contentDescription="logoGame"
+        android:src="@drawable/quiz" />
 
 </RelativeLayout>
