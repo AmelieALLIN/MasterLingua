@@ -76,7 +76,8 @@ public class AfficherListe extends AppCompatActivity {
                             }
                         }
                         String id_deck = UUID.randomUUID().toString();
-                        deck = new Deck(id_deck,nom_deck.toString());
+                        deck = new Deck(id_deck,nom_deck.getText().toString());
+                        System.out.println("OOOOOOOOOOOOOOOOOOnom deck = "+nom_deck.toString());
                         deck.save();
                         for(int i=0; i<count; i++)
                         {
