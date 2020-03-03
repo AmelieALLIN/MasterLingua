@@ -31,6 +31,7 @@ public class JouerCarte extends AppCompatActivity {
     String ok;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
+    int scorec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,26 +65,6 @@ public class JouerCarte extends AppCompatActivity {
 
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
         reps.setAdapter(adapter);
-
-        /*carte = (Carte) bundle.getSerializable("carte");
-        String idc = carte.getIdCarte();
-        reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
-        for(int i=0;i<reponses.size();i++)
-        {
-            System.out.println("LAAAAA rep ="+reponses.get(i).getNom());
-        }
-        for(int i=0;i<reponses.size();i++)
-        {
-            nom_rep.add(reponses.get(i).getNom());
-        }
-        carte = (Carte) bundle.getSerializable("carte");
-        if(!carte.getReponses().isEmpty()) {
-            for (int i=0; i<carte.getReponses().size(); i++){
-                reponses.add(carte.getReponses().get(i));
-            }
-        }
-        ok=carte.getBonne_rep();
-        question.setText(carte.getQuestion());*/
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -92,11 +73,18 @@ public class JouerCarte extends AppCompatActivity {
 
                 if(choix.equals(ok))
                 {showToastOk();
-                    retour();}
-                else
-                {showToastNo();
+                    reps.setEnabled(false);
+                    scorec=1;
                     retour();
                 }
+                else
+                {showToastNo();
+                    reps.setEnabled(false);
+                    scorec=0;
+                    retour();
+                }
+
+                Intent afficher = new Intent(getApplicationContext(), JouerCarte.class);
             }
         });
 
@@ -140,6 +128,7 @@ public class JouerCarte extends AppCompatActivity {
             public void run() {
 
                 {Intent retour = new Intent(JouerCarte.this, AfficherDeck.class);
+                retour.putExtra("score",scorec);
                     startActivity(retour);
                     finish();
                 }

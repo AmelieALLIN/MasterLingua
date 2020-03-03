@@ -3,6 +3,8 @@ package com.example.masterlingua;
 import android.content.Context;
 //import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 //import android.util.Log;
@@ -20,14 +22,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
-public class AfficherCarte extends AppCompatActivity {
+public class JouerQuestionImage extends AppCompatActivity {
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
     List<String> nom_rep = new ArrayList<>();
-    TextView question;
+    ImageView question;
     String ok;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
@@ -37,7 +40,7 @@ public class AfficherCarte extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.carte);
+        setContentView(R.layout.jouer_question_image);
         reps = (ListView) findViewById(R.id.list);
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
@@ -61,9 +64,11 @@ public class AfficherCarte extends AppCompatActivity {
             }
         }
 
-        List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
+        List<QuestionImage> quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
         for(int n=0; n<quest.size();n++){
-            question.setText(quest.get(n).getNom_question());
+            Bitmap bmp= BitmapFactory.decodeByteArray(quest.get(n).getImage(),0,quest.get(n).getImage().length);
+            question.setImageBitmap(bmp);
+
         }
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
         reps.setAdapter(adapter);
@@ -74,17 +79,16 @@ public class AfficherCarte extends AppCompatActivity {
                 if(choix.equals(ok))
                 {showToastOk();
                     retour();
-                    reps.setEnabled(false);
-                scorecarte=1;
-                    retour();}
+                    scorecarte=1;}
                 else
                 {showToastNo();
-                    reps.setEnabled(false);
-                    scorecarte=0;
                     retour();
+                    scorecarte=0;
                 }
             }
         });
+
+
 
 
     }
@@ -125,9 +129,9 @@ public class AfficherCarte extends AppCompatActivity {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
-                startActivity(retour);
-                finish();
+                {Intent retour = new Intent(JouerQuestionImage.this, ChoisirCreationCarte.class);
+                    startActivity(retour);
+                    finish();
                 }
 
             }

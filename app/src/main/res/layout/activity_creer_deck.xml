@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AfficherListe">
+    tools:context=".CreerDeck">
 
     <TextView
         android:id="@+id/Deck"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Deck"
         android:autofillHints="username"
-        android:inputType="textAutoCorrect|textCapSentences"
+        android:inputType="textAutoCorrect"
         android:visibility="visible" />
 
     <ListView

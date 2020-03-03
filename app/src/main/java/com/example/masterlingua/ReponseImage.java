@@ -7,6 +7,7 @@ public class ReponseImage extends SugarRecord implements Reponse{
     private boolean br;
     private String idcarte;
 
+
     public ReponseImage() {
 
     }
