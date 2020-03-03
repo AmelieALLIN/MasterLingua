@@ -5,6 +5,8 @@ MasterLinga est une application mobile qui permet l'echange linguistique entre d
 [![Build Status](https://travis-ci.com/AmelieALLIN/MasterLingua.svg?branch=master)](https://travis-ci.com/AmelieALLIN/MasterLingua)
 [![Version](https://img.shields.io/github/tag/AmelieALLIN/MasterLingua.svg?label=version&style=flat-square)](build.gradle)<br/>
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d950f4bc7cb244779eb8b1fd98855f47)](https://www.codacy.com/gh/AmelieALLIN/MasterLingua?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MasterLingua/MasterLingua&amp;utm_campaign=Badge_Grade)
+[![Coverage Status](https://coveralls.io/repos/github/AmelieALLIN/MasterLingua/badge.svg?branch=master)](https://coveralls.io/github/AmelieALLIN/MasterLingua?branch=master)
+
 
 
 # Les principales fonctionnalitées sont:
@@ -19,6 +21,8 @@ MasterLinga est une application mobile qui permet l'echange linguistique entre d
 # Installation :
 
 •	Télécharger GIT : (https://github.com/)
+
+  Ce tutoriel vous permet de bien comprendre les étapes d'installation : https://www.youtube.com/watch?v=J_Clau1bYco
 
 •	Télécharger SDK :  (http://www.oracle.com)
 

@@ -1,4 +1,5 @@
 language: android
+
 jdk: oraclejdk8
 env:
   global:
@@ -15,9 +16,17 @@ android:
 before_install:
   - yes | sdkmanager "platforms;android-27"
   - yes | sdkmanager "platforms;android-28"
+  - sudo easy_install cpp-coveralls
 
 before_script:
   - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
+  - export LANG=en_US.UTF-8
+script:
+ - xctool -workspace MZTD.xcworkspace -scheme MZTD -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+ - xctool test -workspace MZTD.xcworkspace -scheme MZTD-Coverage -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+
+after_success:
+  - ./coveralls.rb --extension m --exclude-folder MZTDTests 
