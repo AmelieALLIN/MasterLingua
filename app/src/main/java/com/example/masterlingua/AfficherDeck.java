@@ -31,6 +31,7 @@ public class AfficherDeck extends AppCompatActivity {
     int j;
     boolean intent_deck=false;
     private static boolean  deja_initialise=false;
+    private static int score=0;
 
 
 
@@ -46,7 +47,7 @@ public class AfficherDeck extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
         if(deja_initialise==false){deck = (Deck) bundle.getSerializable("deck");
-        }
+        score=0;}
 
 
         if(deja_initialise==false){
@@ -59,35 +60,36 @@ public class AfficherDeck extends AppCompatActivity {
                 }
             }
         }
-
+        if(deja_initialise==true){score+=getIntent().getExtras().getInt("score");}
 
         final ArrayAdapter adapter_cartes = new ArrayAdapter(this, android.R.layout.simple_list_item_1, quests);
         liste_cartes.setAdapter(adapter_cartes);
         if(quests.size()!=0){
-            liste_cartes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    String choix = parent.getItemAtPosition(position).toString();
-                    questionscarte = QuestionText.find(QuestionText.class,"nomquestion = ?", choix);
-                    for(int n=0;n<questionscarte.size();n++) {
-                        listcarte = Carte.find(Carte.class, "idcarte = ?", questionscarte.get(n).getIdCarte());
-                    }
-                    for(int n=0;n<listcarte.size();n++) {
-                        carte = listcarte.get(n);
-                    }
-                    Intent afficher = new Intent(getApplicationContext(), JouerCarte.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("carte", carte);
-                    afficher.putExtras(bundle);
-                    startActivity(afficher);
-                    finish();
-                    quests.remove(position);
-                    deja_initialise=true;
-
-
+        liste_cartes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String choix = parent.getItemAtPosition(position).toString();
+                questionscarte = QuestionText.find(QuestionText.class,"nomquestion = ?", choix);
+                for(int n=0;n<questionscarte.size();n++) {
+                    listcarte = Carte.find(Carte.class, "idcarte = ?", questionscarte.get(n).getIdCarte());
                 }
-            });}
+                for(int n=0;n<listcarte.size();n++) {
+                    carte = listcarte.get(n);
+                }
+                Intent afficher = new Intent(getApplicationContext(), JouerCarte.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                afficher.putExtras(bundle);
+                startActivity(afficher);
+                finish();
+                quests.remove(position);
+                deja_initialise=true;
+
+
+            }
+        });}
         else
+            Toast.makeText(getApplicationContext(), "votre score est de :"+score, Toast.LENGTH_SHORT).show();
             deja_initialise=false;
 
 
