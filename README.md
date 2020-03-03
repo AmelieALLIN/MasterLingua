@@ -9,13 +9,18 @@ MasterLinga est une application mobile qui permet l'echange linguistique entre d
 
 # Les principales fonctionnalitées sont:
 
-    -Indiquer la langue que votre langue et celle que vous voulez apprendre.
-    -Avoir une liste des utilisateurs qui maitrisent la langue qui vous interesse
-    -Choisir un autre interlocuteur et échanger avec.
-    -Jouer à des jeux basés sur des themes avec votre interlocuteur.
+ - Indiquer la langue que votre langue et celle que vous voulez apprendre.
+  
+ - Avoir une liste des utilisateurs qui maitrisent la langue qui vous interesse
+  
+ - Choisir un autre interlocuteur et échanger avec.
+  
+ - Jouer à des jeux basés sur des themes avec votre interlocuteur.
 # Installation :
 
 •	Télécharger GIT : (https://github.com/)
+
+  Ce tutoriel vous permet de bien comprendre les étapes d'installation : https://www.youtube.com/watch?v=J_Clau1bYco
 
 •	Télécharger SDK :  (http://www.oracle.com)
 
