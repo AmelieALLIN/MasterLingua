@@ -13,7 +13,7 @@
         <activity android:name="SplashScreen"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.NoTitleBar">
+                  android:theme="@android:style/Theme.NoTitleBar"/>
         <activity android:name=".CreerDeck"/>
         <activity android:name=".JouerDeck" />
         <activity android:name=".AfficherListe" />
@@ -23,11 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AfficherListe" />
         <activity android:name=".CreerCategorie"></activity>
-        <activity android:name=".ChoisirCreationCarte">
-
-        </activity>
         <activity android:name=".CreerCarte" />
         <activity android:name=".AfficherCarte" />
         <activity android:name=".AfficherDeck" />
