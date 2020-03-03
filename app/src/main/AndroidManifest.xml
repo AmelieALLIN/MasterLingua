@@ -22,10 +22,25 @@
         <activity android:name=".AfficherCarte" />
         <activity android:name=".AfficherDeck" />
         <activity android:name=".JouerCarte" />
-        <meta-data android:name="VERSION" android:value="10" />
-        <meta-data android:name="QUERY_LOG" android:value="true" />
-        <meta-data android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.example" />"
+        <activity android:name=".CarteQuestionImage" />
+        <activity android:name=".JouerQuestionImage" />
+        <activity android:name=".AfficherListeQuestionImage" />
+
+
+
+        <meta-data
+            android:name="VERSION"
+            android:value="10" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example" />
+
+
+
+
     </application>
 
 </manifest>

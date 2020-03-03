@@ -35,4 +35,36 @@
         tools:layout_editor_absoluteY="500dp" />
 
 
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:gravity="center_horizontal"
+        android:onClick="QuestionImage"
+        android:text="Carte Question Image"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="500dp" />
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:gravity="center_horizontal"
+        android:onClick="afficherListeQuestionImage"
+        android:text="Afficher Liste Images"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="500dp" />
+
 </RelativeLayout>

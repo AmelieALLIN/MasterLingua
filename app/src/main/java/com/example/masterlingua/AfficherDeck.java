@@ -2,12 +2,14 @@ package com.example.masterlingua;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +31,10 @@ public class AfficherDeck extends AppCompatActivity {
     int j;
     boolean intent_deck=false;
     private static boolean  deja_initialise=false;
+    private static int score=0;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +46,8 @@ public class AfficherDeck extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
-        if(deja_initialise==false){deck = (Deck) bundle.getSerializable("deck");}
+        if(deja_initialise==false){deck = (Deck) bundle.getSerializable("deck");
+        score=0;}
 
 
         if(deja_initialise==false){
@@ -53,9 +60,11 @@ public class AfficherDeck extends AppCompatActivity {
                 }
             }
         }
+        if(deja_initialise==true){score+=getIntent().getExtras().getInt("score");}
 
         final ArrayAdapter adapter_cartes = new ArrayAdapter(this, android.R.layout.simple_list_item_1, quests);
         liste_cartes.setAdapter(adapter_cartes);
+        if(quests.size()!=0){
         liste_cartes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -75,7 +84,14 @@ public class AfficherDeck extends AppCompatActivity {
                 finish();
                 quests.remove(position);
                 deja_initialise=true;
+
+
             }
-        });
+        });}
+        else
+            Toast.makeText(getApplicationContext(), "votre score est de :"+score, Toast.LENGTH_SHORT).show();
+            deja_initialise=false;
+
+
     }
 }

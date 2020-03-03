@@ -31,6 +31,7 @@ public class AfficherCarte extends AppCompatActivity {
     String ok;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
+    private int scorecarte;
 
 
     @Override
@@ -72,13 +73,17 @@ public class AfficherCarte extends AppCompatActivity {
                 String choix = parent.getItemAtPosition(position).toString();
                 if(choix.equals(ok))
                 {showToastOk();
-                    retour();}
+                    retour();
+                scorecarte=1;}
                 else
                 {showToastNo();
                     retour();
+                    scorecarte=0;
                 }
             }
         });
+
+
 
 
     }
