@@ -26,8 +26,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class AfficherListeQuestionImage extends AppCompatActivity {/*
-    ListView CarteListView;
+public class AfficherListeQuestionImage extends AppCompatActivity {
+    /*ListView CarteListView;
     List<Carte> carte = Carte.listAll(Carte.class);
     List<ReponseText> reponses = ReponseText.listAll(ReponseText.class);
     List<QuestionImage> questions = QuestionImage.listAll(QuestionImage.class);

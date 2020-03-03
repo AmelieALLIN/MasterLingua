@@ -34,8 +34,6 @@ public class AfficherDeck extends AppCompatActivity {
     private static int score=0;
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,14 +82,10 @@ public class AfficherDeck extends AppCompatActivity {
                 finish();
                 quests.remove(position);
                 deja_initialise=true;
-
-
-            }
-        });}
+                }
+            });}
         else
             Toast.makeText(getApplicationContext(), "votre score est de :"+score, Toast.LENGTH_SHORT).show();
             deja_initialise=false;
-
-
     }
 }
