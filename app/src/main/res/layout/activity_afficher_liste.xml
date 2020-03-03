@@ -21,33 +21,15 @@
         android:inputType="textAutoCorrect|textCapSentences"
         android:visibility="visible" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nom_deck"
-        android:id="@+id/creationCategorie"
-        android:text="@string/category_creation"
-        android:onClick="creationCategorie"/>
-
-    <Spinner
-        android:id="@+id/spinCategories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/creationCategorie"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="-46dp"
-        android:layout_marginRight="-4dp"
-        android:text="@string/selectCategory" />
-
     <ListView
         android:id="@+id/myListView"
-        android:layout_below="@+id/spinCategories"
+        android:layout_below="@+id/nom_deck"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="21dp" />
-        android:layout_below="@+id/creationCategorie"
+        android:layout_below="@+id/nom_deck"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

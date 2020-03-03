@@ -17,8 +17,7 @@ public class Categorie extends SugarRecord implements Serializable {
 
     public Categorie(){}
 
-    public Categorie(String id, String name){
-        idCategorie = id;
+    public Categorie(String name){
         nomCategorie = name;
     }
 

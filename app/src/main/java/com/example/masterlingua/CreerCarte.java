@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class CreerCarte extends AppCompatActivity {
@@ -23,11 +25,17 @@ public class CreerCarte extends AppCompatActivity {
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
+    private List<String> catForSpin;
+    private List<Categorie>
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creer_carte);
+
+        for(int i=0; i<; i++){
+            catForSpin.add();
+        }
 
         question = findViewById(R.id.question);
         answers = new ArrayList<>();
@@ -47,6 +55,18 @@ public class CreerCarte extends AppCompatActivity {
                 checkAnswer1 = findViewById(R.id.checkAnswer1);
                 checkAnswer2 = findViewById(R.id.checkAnswer2);
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
+
+                for(int i=0; i<categoriesCrees.size(); i++) {
+                    categories.add(categoriesCrees.get(i));
+                }
+                if (!categories.isEmpty()){
+                    spinCategories = findViewById(R.id.spinCategories);
+                    adapt = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, categories);
+                    spinCategories.setAdapter(adapt);
+                    for(int i=0; i<categories.size(); i++) {
+                        System.out.println(categories.get(i).getNom());
+                    }
+                }
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
                 if (question.getText().toString().isEmpty()){

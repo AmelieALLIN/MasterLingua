@@ -27,13 +27,13 @@ public class AfficherListe extends AppCompatActivity {
     List<ReponseText> reponses = ReponseText.listAll(ReponseText.class);
     List<QuestionText> questions = QuestionText.listAll(QuestionText.class);
     private EditText nom_deck;
+    Bundle bundle = getIntent().getExtras();
+    List<Categorie> categories = (List<Categorie>) bundle.getSerializable("listeCategories");
 
     List<String> questioncarte = new ArrayList<>();
     ArrayList<Carte> l = new ArrayList<>();
     Deck deck;
     int count=0;
-    List<Categorie> categories;
-    // categories = Categorie.listAll(Categorie.class);
     Spinner spinCategories;
     ArrayAdapter<Categorie> adapt;
 
@@ -41,6 +41,10 @@ public class AfficherListe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_afficher_liste);
+
+        spinCategories = findViewById(R.id.);
+        adapt = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, categories);
+        spinCategories.setAdapter(adapt);
 
         nom_deck = findViewById(R.id.nom_deck);
 
@@ -125,29 +129,5 @@ public class AfficherListe extends AppCompatActivity {
         creer_categorie.putExtras(bundle);
         startActivity(creer_categorie);
         finish();
-    }
-
-    /** Cette fonction sert pour pouvoir afficher les catégories existantes dans un spinner **/
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        System.out.println("TRANSMISSION DES DONNEES Nous sommes dans la fonction");
-        if (requestCode == 1){
-            if(resultCode == RESULT_OK){
-                System.out.println("LES DONNEES SONT TRANSMISES");
-                Bundle bundle = getIntent().getExtras();
-                List<Categorie> categoriesCrees = (List<Categorie>) bundle.getSerializable("listeCategories");
-                for(int i=0; i<categoriesCrees.size(); i++) {
-                    categories.add(categoriesCrees.get(i));
-                }
-                if (!categories.isEmpty()){
-                    spinCategories = findViewById(R.id.spinCategories);
-                    adapt = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, categories);
-                    spinCategories.setAdapter(adapt);
-                    for(int i=0; i<categories.size(); i++) {
-                        System.out.println(categories.get(i).getNom());
-                    }
-                }
-            }
-        }
     }
 }
