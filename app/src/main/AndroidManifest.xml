@@ -1,23 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.masterlingua" >
+    package="com.example.masterlingua">
 
     <application
-        android:allowBackup="true"
+        android:name="com.orm.SugarApp"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChoisirCreationCarte" >
+        <activity android:name=".JouerDeck"></activity>
+        <activity android:name=".AfficherListe" />
+        <activity android:name=".ChoisirCreationCarte">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreerCarte"></activity>
-        <activity android:name=".AfficherCarte"></activity>
+        <activity android:name=".CreerCarte" />
+        <activity android:name=".AfficherCarte" />
+        <activity android:name=".AfficherDeck" />
+        <activity android:name=".AfficherListeDeck" />
+        <activity android:name=".JouerCarte" />
+        <activity android:name=".CarteQuestionImage" />
+        <activity android:name=".JouerQuestionImage" />
+        <activity android:name=".AfficherListeQuestionImage" />
+
+
+
+        <meta-data
+            android:name="VERSION"
+            android:value="11" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example" />
+
+
+
+
     </application>
 
 </manifest>

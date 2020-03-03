@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AfficherCarte extends AppCompatActivity {
+public class JouerCarte extends AppCompatActivity {
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
@@ -31,7 +31,7 @@ public class AfficherCarte extends AppCompatActivity {
     String ok;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
-    private int scorecarte;
+    int scorec;
 
 
     @Override
@@ -48,42 +48,64 @@ public class AfficherCarte extends AppCompatActivity {
         reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
         for(int i=0;i<reponses.size();i++)
         {
+            System.out.println("LAAAAA rep ="+reponses.get(i).getNom());
+        }
+        for(int i=0;i<reponses.size();i++)
+        {
             nom_rep.add(reponses.get(i).getNom());
         }
-        /*if(!reponses.isEmpty()) {
-            for (int i = 0; i<carte.getReponses().size(); i++){
-                reponses.add(carte.getReponses().get(i));
-            }
-        }*/
         for(int y=0;y<reponses.size();y++){
             if(reponses.get(y).getbr() == true){
                 ok = reponses.get(y).getNom();
             }
         }
-
         List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
         for(int n=0; n<quest.size();n++){
             question.setText(quest.get(n).getNom_question());
         }
+
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
         reps.setAdapter(adapter);
+
+        /*carte = (Carte) bundle.getSerializable("carte");
+        String idc = carte.getIdCarte();
+        reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
+        for(int i=0;i<reponses.size();i++)
+        {
+            System.out.println("LAAAAA rep ="+reponses.get(i).getNom());
+        }
+        for(int i=0;i<reponses.size();i++)
+        {
+            nom_rep.add(reponses.get(i).getNom());
+        }
+        carte = (Carte) bundle.getSerializable("carte");
+        if(!carte.getReponses().isEmpty()) {
+            for (int i = 0; i<carte.getReponses().size(); i++){
+                reponses.add(carte.getReponses().get(i));
+            }
+        }
+        ok=carte.getBonne_rep();
+        question.setText(carte.getQuestion());*/
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
+
+
                 if(choix.equals(ok))
                 {showToastOk();
                     retour();
-                scorecarte=1;}
+                    scorec=1;
+                }
                 else
                 {showToastNo();
                     retour();
-                    scorecarte=0;
+                    scorec=0;
                 }
+
+                Intent afficher = new Intent(getApplicationContext(), JouerCarte.class);
             }
         });
-
-
 
 
     }
@@ -124,12 +146,14 @@ public class AfficherCarte extends AppCompatActivity {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
-                startActivity(retour);
-                finish();
+                {Intent retour = new Intent(JouerCarte.this, AfficherDeck.class);
+                retour.putExtra("score",scorec);
+                    startActivity(retour);
+                    finish();
                 }
 
             }
         }, 2000);
     }
 }
+
