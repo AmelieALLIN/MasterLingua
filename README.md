@@ -20,6 +20,8 @@ MasterLinga est une application mobile qui permet l'echange linguistique entre d
 
 •	Télécharger GIT : (https://github.com/)
 
+  Ce tutoriel vous permet de bien comprendre les étapes d'installation : https://www.youtube.com/watch?v=J_Clau1bYco
+
 •	Télécharger SDK :  (http://www.oracle.com)
 
 •	Télécharger ANDROID  STUDIO : (https://developer.android.com/studio)
