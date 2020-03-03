@@ -33,6 +33,7 @@ public class JouerCarte extends AppCompatActivity {
     int duration = Toast.LENGTH_SHORT;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class AfficherCarte extends AppCompatActivity {
     ListView reps;
     Carte carte;
@@ -31,22 +32,21 @@ public class AfficherCarte extends AppCompatActivity {
     String ok;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
-
+    int scores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.carte);
         reps = (ListView) findViewById(R.id.list);
-        question= findViewById(R.id.question);
+        question = findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
-        Intent intent=getIntent();
+        Intent intent = getIntent();
 
         carte = (Carte) bundle.getSerializable("carte");
         String idc = carte.getIdCarte();
-        reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
-        for(int i=0;i<reponses.size();i++)
-        {
+        reponses = ReponseText.find(ReponseText.class, "idcarte = ?", idc);
+        for (int i = 0; i < reponses.size(); i++) {
             nom_rep.add(reponses.get(i).getNom());
         }
         /*if(!reponses.isEmpty()) {
@@ -54,32 +54,33 @@ public class AfficherCarte extends AppCompatActivity {
                 reponses.add(carte.getReponses().get(i));
             }
         }*/
-        for(int y=0;y<reponses.size();y++){
-            if(reponses.get(y).getbr() == true){
+        for (int y = 0; y < reponses.size(); y++) {
+            if (reponses.get(y).getbr() == true) {
                 ok = reponses.get(y).getNom();
             }
         }
 
-        List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
-        for(int n=0; n<quest.size();n++){
+        List<QuestionText> quest = QuestionText.find(QuestionText.class, "idcarte = ?", idc);
+        for (int n = 0; n < quest.size(); n++) {
             question.setText(quest.get(n).getNom_question());
         }
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nom_rep);
         reps.setAdapter(adapter);
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
-                if(choix.equals(ok))
-                {showToastOk();
-                    retour();}
-                else
-                {showToastNo();
+                if (choix.equals(ok)) {
+                    showToastOk();
+                    scores=20;
+                    retour();
+                } else {
+                    showToastNo();
+                    scores=0;
                     retour();
                 }
             }
         });
-
 
     }
 
@@ -113,15 +114,16 @@ public class AfficherCarte extends AppCompatActivity {
         toast.show();
     }
 
-    public void retour()
-    {
+    public void retour() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
-                startActivity(retour);
-                finish();
+                {
+                    Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
+                    retour.putExtra("scores", scores);
+                    startActivity(retour);
+                    finish();
                 }
 
             }
