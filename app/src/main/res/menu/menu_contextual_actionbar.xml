@@ -2,10 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/menu_delete"
-        android:icon="@android:drawable/ic_input_add"
-        android:orderInCategory="100"
+        android:id="@+id/menu_play"
+        android:icon="@drawable/jouer"
+        android:orderInCategory="101"
         android:showAsAction="ifRoom|withText"
-        android:title="Deck"
+        android:title="PlayDeck"
+        tools:ignore="AppCompatResource" />
+
+    <item
+        android:id="@+id/menu_save"
+        android:icon="@drawable/save"
+        android:orderInCategory="101"
+        android:showAsAction="ifRoom|withText"
+        android:title="SaveDeck"
         tools:ignore="AppCompatResource" />
 </menu>

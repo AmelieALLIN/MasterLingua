@@ -74,16 +74,17 @@ public class AfficherCarte extends AppCompatActivity {
                 if(choix.equals(ok))
                 {showToastOk();
                     retour();
-                scorecarte=1;}
+                    reps.setEnabled(false);
+                scorecarte=1;
+                    retour();}
                 else
                 {showToastNo();
-                    retour();
+                    reps.setEnabled(false);
                     scorecarte=0;
+                    retour();
                 }
             }
         });
-
-
 
 
     }
