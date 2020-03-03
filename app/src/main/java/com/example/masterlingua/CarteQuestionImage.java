@@ -160,7 +160,7 @@ public class CarteQuestionImage  extends AppCompatActivity {
                 Bitmap bitmap= BitmapFactory.decodeStream(input);
                 image.setImageBitmap(bitmap);
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 0, baos);
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 b = baos.toByteArray();
 
 
