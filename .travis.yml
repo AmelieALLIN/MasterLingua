@@ -21,3 +21,7 @@ before_script:
   - emulator -avd test -no-audio -no-window &
   - android-wait-for-emulator
   - adb shell input keyevent 82 &
+script:
+- npm run test -- --watch=false --no-progress --browsers=ChromeHeadlessNoSandbox --code-coverage
+- cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+
