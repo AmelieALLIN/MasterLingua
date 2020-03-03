@@ -38,4 +38,9 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         Intent intent = new Intent(this,AfficherListeDeck.class);
         startActivity(intent);
     }
+
+    public void CreationDeck(View view) {
+        Intent intent = new Intent(this,CreerDeck.class);
+        startActivity(intent);
+    }
 }

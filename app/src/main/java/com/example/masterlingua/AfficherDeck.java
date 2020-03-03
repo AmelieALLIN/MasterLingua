@@ -32,9 +32,6 @@ public class AfficherDeck extends AppCompatActivity {
     boolean intent_deck=false;
     private static boolean  deja_initialise=false;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +45,6 @@ public class AfficherDeck extends AppCompatActivity {
         if(deja_initialise==false){deck = (Deck) bundle.getSerializable("deck");
         }
 
-
         if(deja_initialise==false){
             List<CartesDeck> cartedecks = CartesDeck.findWithQuery(CartesDeck.class, "Select * from CARTES_DECK where iddeck = ?", deck.getId_deck());
             for(int i=0; i<cartedecks.size(); i++){
@@ -59,7 +55,6 @@ public class AfficherDeck extends AppCompatActivity {
                 }
             }
         }
-
 
         final ArrayAdapter adapter_cartes = new ArrayAdapter(this, android.R.layout.simple_list_item_1, quests);
         liste_cartes.setAdapter(adapter_cartes);
@@ -89,7 +84,5 @@ public class AfficherDeck extends AppCompatActivity {
             });}
         else
             deja_initialise=false;
-
-
     }
 }
