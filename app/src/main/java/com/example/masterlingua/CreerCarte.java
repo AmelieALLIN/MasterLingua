@@ -4,17 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 public class CreerCarte extends AppCompatActivity {
@@ -25,16 +26,24 @@ public class CreerCarte extends AppCompatActivity {
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
-    private List<String> catForSpin;
-    private List<Categorie>
+    Spinner spinCategories;
+    private List<Categorie> categories = Categorie.listAll(Categorie.class);
+    ArrayAdapter<Categorie> adapt;
+    Categorie catChoisie = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creer_carte);
 
-        for(int i=0; i<; i++){
-            catForSpin.add();
+        // Afficher les catégories/thèmes dans une liste déroulante
+        if (!categories.isEmpty()){
+            spinCategories = findViewById(R.id.spinCategories);
+            adapt = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, categories);
+            spinCategories.setAdapter(adapt);
+            for(int i=0; i<categories.size(); i++) {
+                System.out.println(categories.get(i).getNomCategorie()+"\n");
+            }
         }
 
         question = findViewById(R.id.question);
@@ -42,11 +51,19 @@ public class CreerCarte extends AppCompatActivity {
         Button validate = findViewById(R.id.validate);
         Button sauverCarte = findViewById(R.id.sauverCarte);
 
+        spinCategories.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                catChoisie = (Categorie) parent.getItemAtPosition(position);
+            }
+        });
+
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idcarte = UUID.randomUUID().toString();
-                String idquestion = UUID.randomUUID().toString();
+                String idcarte     = UUID.randomUUID().toString();
+                String idquestion  = UUID.randomUUID().toString();
+                String idCategorie = UUID.randomUUID().toString();
                 String idrep;
                 boolean br;
                 EditText answer1 = findViewById(R.id.answer1);
@@ -56,16 +73,9 @@ public class CreerCarte extends AppCompatActivity {
                 checkAnswer2 = findViewById(R.id.checkAnswer2);
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
 
-                for(int i=0; i<categoriesCrees.size(); i++) {
-                    categories.add(categoriesCrees.get(i));
-                }
-                if (!categories.isEmpty()){
-                    spinCategories = findViewById(R.id.spinCategories);
-                    adapt = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, categories);
-                    spinCategories.setAdapter(adapt);
-                    for(int i=0; i<categories.size(); i++) {
-                        System.out.println(categories.get(i).getNom());
-                    }
+                if(catChoisie != null) {
+                    CarteCategorie carteCategorie = new CarteCategorie(idcarte, idCategorie);
+                    carteCategorie.save();
                 }
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
@@ -102,7 +112,7 @@ public class CreerCarte extends AppCompatActivity {
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
-                        if (answers.get(i) == bonneReponse) {
+                        if (answers.get(i).equals(bonneReponse)) {
                             System.out.println("BBBBBBBBBBBBBBBBBB br "+answers.get(i));
                             br = true;
                         }
@@ -140,8 +150,9 @@ public class CreerCarte extends AppCompatActivity {
         sauverCarte.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                String idcarte = UUID.randomUUID().toString();
-                String idquestion = UUID.randomUUID().toString();
+                String idcarte     = UUID.randomUUID().toString();
+                String idquestion  = UUID.randomUUID().toString();
+                String idCategorie = UUID.randomUUID().toString();
                 String idrep;
                 boolean br;
                 EditText answer1 = findViewById(R.id.answer1);
@@ -150,6 +161,11 @@ public class CreerCarte extends AppCompatActivity {
                 checkAnswer1 = findViewById(R.id.checkAnswer1);
                 checkAnswer2 = findViewById(R.id.checkAnswer2);
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
+
+                if(catChoisie != null) {
+                    CarteCategorie carteCategorie = new CarteCategorie(idcarte, idCategorie);
+                    carteCategorie.save();
+                }
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
                 if (question.getText().toString().isEmpty()){
@@ -188,7 +204,7 @@ public class CreerCarte extends AppCompatActivity {
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
-                        if (answers.get(i) == bonneReponse) {
+                        if (answers.get(i).equals(bonneReponse)) {
                             br = true;
                         }
                         else

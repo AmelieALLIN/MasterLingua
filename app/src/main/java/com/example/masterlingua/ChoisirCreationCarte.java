@@ -13,10 +13,8 @@ import java.util.List;
 public class ChoisirCreationCarte extends AppCompatActivity {
 
     private Button goCreerCarte;
-    // ATTENTION SI ON AJOUTE UN NOM DE CATEGORIE PENSER A CHANGER LE NB ICI
-    int nbCat = 15;
     List<Categorie> categories;
-    Categorie categorie1, categorie2;
+    Categorie categorie1, categorie2, categorie3, categorie4, categorie5, categorie6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +29,18 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         categorie2 = new Categorie(NomCategorie.ANGLAIS.toString());
         categorie2.save();
         categories.add(categorie2);
-
-
-
+        categorie3 = new Categorie(NomCategorie.ESPAGNOL.toString());
+        categorie3.save();
+        categories.add(categorie3);
+        categorie4 = new Categorie(NomCategorie.FAUNE.toString());
+        categorie4.save();
+        categories.add(categorie4);
+        categorie5 = new Categorie(NomCategorie.FLORE.toString());
+        categorie5.save();
+        categories.add(categorie5);
+        categorie6 = new Categorie(NomCategorie.COSMETIQUES.toString());
+        categorie6.save();
+        categories.add(categorie6);
 
         goCreerCarte.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -57,20 +64,15 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
     public void QuestionImage(View view) {
         Intent intent = new Intent(this,CarteQuestionImage.class);
         startActivity(intent);
     }
 
-
     public void afficherListeQuestionImage(View view) {
         Intent intent = new Intent(this,AfficherListeQuestionImage.class);
         startActivity(intent);
     }
-
-
 
     public void AfficherListeDeck(View view) {
         Intent intent = new Intent(this,AfficherListeDeck.class);
