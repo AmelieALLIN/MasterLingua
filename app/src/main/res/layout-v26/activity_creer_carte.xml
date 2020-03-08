@@ -128,8 +128,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkAnswer3"
         android:layout_alignParentEnd="true"
-        android:dropDownSelector="@color/colorPrimary"
+        android:dropDownSelector="@android:color/holo_blue_dark"
         android:entries="@array/category_names"
+        android:spinnerMode="dropdown"
         android:text="@string/selectCategory" />
 
     <Button

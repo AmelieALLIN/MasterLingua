@@ -27,19 +27,20 @@
     <string name="card_created">Votre carte a bien été créée</string>
     <string name="carte">Carte</string>
     <string name="level">Niveau</string>
-    <string name="hard">Difficile</string>
-    <string name="medium">Moyen</string>
-    <string name="low">Facile</string>
-    <string-array name="level_names">
-        <item>@string/hard</item>
-        <item>@string/medium</item>
-        <item>@string/low</item>
+    <string name="english">Anglais</string>
+    <string name="spanish">Espagnol</string>
+    <string name="faune">Faune</string>
+    <string name="flore">Flore</string>
+    <string-array name="category_names">
+        <item>@string/english</item>
+        <item>@string/spanish</item>
+        <item>@string/faune</item>
+        <item>@string/flore</item>
     </string-array>
-    <string name="category_creation">Créer une catégorie</string>
     <string name="selectCategory">Catégories</string>
     <string name="category_name">Entrez le nom de votre catégorie</string>
-    <string name="category_created">Votre catégorie a bien été créée</string>
+    <string name="logoQuizz">QuizLogo</string>
     <string name="validate">Valider</string>
     <string name="warning_category">Le nom est obligatoire pour valider</string>
-    warning_category
+    <string name="deck_name">Nom du deck</string>
 </resources>

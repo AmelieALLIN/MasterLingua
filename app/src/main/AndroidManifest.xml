@@ -13,31 +13,28 @@
         <activity android:name="SplashScreen"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.NoTitleBar"/>
-        <activity android:name=".CreerDeck"/>
-        <activity android:name=".JouerDeck" />
-        <activity android:name=".AfficherListe" />
-        <activity android:name=".ChoisirCreationCarte">
+                  android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreerCategorie"></activity>
+        <activity android:name=".ChoisirCreationCarte"/>
+        <activity android:name=".AfficherListe" />
         <activity android:name=".CreerCarte" />
         <activity android:name=".AfficherCarte" />
+        <activity android:name=".JouerCarte" />
+        <activity android:name=".CreerDeck"/>
+        <activity android:name=".JouerDeck" />
         <activity android:name=".AfficherDeck" />
         <activity android:name=".AfficherListeDeck" />
-        <activity android:name=".JouerCarte" />
         <activity android:name=".CarteQuestionImage" />
         <activity android:name=".JouerQuestionImage" />
         <activity android:name=".AfficherListeQuestionImage" />
 
-
-
         <meta-data
             android:name="VERSION"
-            android:value="10" />
+            android:value="11" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
@@ -47,7 +44,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
 
     </application>
 

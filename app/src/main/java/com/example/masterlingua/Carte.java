@@ -3,8 +3,6 @@ package com.example.masterlingua;
 import com.orm.SugarRecord;
 
 import java.io.Serializable;
-// import java.util.concurrent.atomic.AtomicInteger;
-
 
 public class Carte  extends SugarRecord implements Serializable {
     //private static final AtomicInteger ID_FACTORY = new AtomicInteger();
