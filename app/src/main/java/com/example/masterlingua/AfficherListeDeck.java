@@ -29,7 +29,7 @@ public class AfficherListeDeck extends AppCompatActivity {
 
         for (int i = 0; i < decks.size(); i++) {
             nom_deck.add(decks.get(i).getNom_deck());
-            System.out.println(" LAAAAA = "+decks.get(i).getNom_deck());
+            System.out.println(" LAAAAA = " + decks.get(i).getNom_deck());
             System.out.println("LLAAAAAA nom deck = "+nom_deck.get(i));
         }
 

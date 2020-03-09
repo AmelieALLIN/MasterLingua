@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-//import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -27,9 +26,13 @@ public class CreerCarte extends AppCompatActivity {
     private boolean b1, b2, b3;
     Context context = this;
     Spinner spinCategories;
-
+    List<Categorie> categories = Categorie.listAll(Categorie.class);
+    boolean catUnique;
     Categorie catChoisie = null;
     String idCat;
+
+    String idcarte = UUID.randomUUID().toString();
+    String idquestion = UUID.randomUUID().toString();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,45 +44,50 @@ public class CreerCarte extends AppCompatActivity {
         Button validate = findViewById(R.id.validate);
         Button sauverCarte = findViewById(R.id.sauverCarte);
         spinCategories = findViewById(R.id.spinCategories);
-        idCat = UUID.randomUUID().toString();
 
         spinCategories.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                idCat = UUID.randomUUID().toString();
                 String nomCat = spinCategories.getItemAtPosition(position).toString();
-                catChoisie = new Categorie(idCat, nomCat);
+                catUnique = true;
+                // on vérifie que la catégorie n'existe pas déjà en parcourant ce qui est dans la BD
+                for (int i = 0; i < categories.size(); i++) {
+                    if (categories.get(i).getNomCategorie().equals(nomCat)) {
+                        catUnique = false;
+                        catChoisie = categories.get(i);
+                        System.out.println("YOOOOOO " + catChoisie.getNomCategorie());
+                        break;
+                    }
+                }
+                // si elle n'existe pas déjà
+                if (catUnique) {
+                    idCat = UUID.randomUUID().toString();
+                    catChoisie = new Categorie(idCat, nomCat);
+                    catChoisie.save();
+                    System.out.println("PIIIIIIII " + catChoisie.getNomCategorie());
+                }
             }
+
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idcarte = UUID.randomUUID().toString();
-                String idquestion = UUID.randomUUID().toString();
-                String idCategorie = UUID.randomUUID().toString();
-                boolean br = false;
-                EditText answer1 = findViewById(R.id.answer1);
-                EditText answer2 = findViewById(R.id.answer2);
-                EditText answer3 = findViewById(R.id.answer3);
                 checkAnswer1 = findViewById(R.id.checkAnswer1);
                 checkAnswer2 = findViewById(R.id.checkAnswer2);
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
+                EditText answer1 = findViewById(R.id.answer1);
+                EditText answer2 = findViewById(R.id.answer2);
+                EditText answer3 = findViewById(R.id.answer3);
 
-                creationCarte(idcarte, idquestion, br, answer1, answer2, answer3);
+                creationCarte(idcarte, idquestion, answer1, answer2, answer3);
                 if (catChoisie != null) {
-                    CarteCategorie carteCategorie = new CarteCategorie(idcarte, idCategorie);
+                    CarteCategorie carteCategorie = new CarteCategorie(idcarte, idCat);
                     carteCategorie.save();
                 }
-
-                //test affichage contenu carte
-                /*List<QuestionText> quest = QuestionText.find(QuestionText.class, "idcarte = ?", carte.getIdCarte());
-                if (!quest.isEmpty())
-                    for (int m = 0; m < quest.size(); m++) {
-                        System.out.println(quest.get(m).getNom_question());
-                    }*/
                 // mettre dans le bundle les informations de la carte créée pour les transmettre à l'activité qui va afficher la carte
                 Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
                 Bundle bundle = new Bundle();
@@ -93,23 +101,17 @@ public class CreerCarte extends AppCompatActivity {
         sauverCarte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idcarte = UUID.randomUUID().toString();
-                String idquestion = UUID.randomUUID().toString();
-                String idCategorie = UUID.randomUUID().toString();
-                boolean br = false;
-                EditText answer1 = findViewById(R.id.answer1);
-                EditText answer2 = findViewById(R.id.answer2);
-                EditText answer3 = findViewById(R.id.answer3);
                 checkAnswer1 = findViewById(R.id.checkAnswer1);
                 checkAnswer2 = findViewById(R.id.checkAnswer2);
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
-
-                creationCarte(idcarte, idquestion, br, answer1, answer2, answer3);
+                EditText answer1 = findViewById(R.id.answer1);
+                EditText answer2 = findViewById(R.id.answer2);
+                EditText answer3 = findViewById(R.id.answer3);
+                creationCarte(idcarte, idquestion, answer1, answer2, answer3);
                 if (catChoisie != null) {
-                    CarteCategorie carteCategorie = new CarteCategorie(idcarte, idCategorie);
+                    CarteCategorie carteCategorie = new CarteCategorie(idcarte, idCat);
                     carteCategorie.save();
                 }
-
                 Intent afficherCarte = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
                 startActivity(afficherCarte);
                 finish();
@@ -151,7 +153,7 @@ public class CreerCarte extends AppCompatActivity {
         });
     }
 
-    public void creationCarte(String idcarte, String idquestion, boolean b, EditText
+    public void creationCarte(String idcarte, String idquestion, EditText
             answer1, EditText answer2, EditText answer3) {
         //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
         if (question.getText().toString().isEmpty()) {
@@ -185,7 +187,7 @@ public class CreerCarte extends AppCompatActivity {
             QuestionText quest = new QuestionText(idquestion, question.getText().toString(), idcarte);
             for (int i = 0; i < answers.size(); i++) {
                 String idrep = UUID.randomUUID().toString();
-                b = answers.get(i).equals(bonneReponse);
+                boolean b = answers.get(i).equals(bonneReponse);
                 String nomrep = answers.get(i);
                 ReponseText reponse = new ReponseText(idrep, nomrep, idcarte, b);
                 reponse.save();
@@ -193,6 +195,12 @@ public class CreerCarte extends AppCompatActivity {
             carte.save();
             quest.save();
             Toast.makeText(context, text, duration).show();
+            //test affichage contenu carte
+            /*List<QuestionText> quest = QuestionText.find(QuestionText.class, "idcarte = ?", carte.getIdCarte());
+                if (!quest.isEmpty())
+                    for (int m = 0; m < quest.size(); m++) {
+                        System.out.println(quest.get(m).getNom_question());
+            }*/
         }
     }
 }

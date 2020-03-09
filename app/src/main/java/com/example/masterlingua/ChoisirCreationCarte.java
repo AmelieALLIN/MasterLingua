@@ -16,8 +16,9 @@ import static com.example.masterlingua.R.array.category_names;*/
 public class ChoisirCreationCarte extends AppCompatActivity {
 
     Button goCreerCarte;
-    //Categorie categorie1, categorie2, categorie3, categorie4, categorie5, categorie6;
+    Categorie categorie1, categorie2, categorie3, categorie4, categorie5, categorie6;
     //List<Categorie> categories;
+    //boolean catUnique;
 
 
     @Override
@@ -30,9 +31,9 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 Intent creerCarte = new Intent(getApplicationContext(), CreerCarte.class);
-                //Bundle bundle = new Bundle();
-                //bundle.putSerializable("categories", (Serializable) categories);
-                //creerCarte.putExtras(bundle);
+               /* Bundle bundle = new Bundle();
+                bundle.putSerializable("categories", (Serializable) categories);
+                creerCarte.putExtras(bundle);*/
                 startActivity(creerCarte);
                 finish();
             }
@@ -40,7 +41,16 @@ public class ChoisirCreationCarte extends AppCompatActivity {
 
     }
 
-    /*public List<Categorie> chargerCategories(){
+   /* public List<Categorie> chargerCategories(){
+        for(int i=0; i<categories.size(); i++) {
+            if (categories.get(i).getNomCategorie() == nomCat) {
+                catUnique = false;
+            }
+        }
+        if(catUnique) {
+            idCat = UUID.randomUUID().toString();
+            catChoisie = new Categorie(idCat, nomCat);
+        }
         String id = UUID.randomUUID().toString();
         categorie1 = new Categorie(id, NomCategorie.valueOf("FRANCAIS").toString());
         categorie1.save();
@@ -61,9 +71,9 @@ public class ChoisirCreationCarte extends AppCompatActivity {
 
     public void AfficherListe(View view) {
         Intent intent = new Intent(this,AfficherListe.class);
-        //Bundle bundle = new Bundle();
-        //bundle.putSerializable("categories", (Serializable) categories);
-        //intent.putExtras(bundle);
+       /* Bundle bundle = new Bundle();
+        bundle.putSerializable("categories", (Serializable) categories);
+        intent.putExtras(bundle);*/
         startActivity(intent);
     }
 
