@@ -25,7 +25,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JouerCarteReponseImage extends AppCompatActivity {
+public class JouerCarteReponseImage extends AppCompatActivity { /*
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
@@ -188,5 +188,5 @@ public class JouerCarteReponseImage extends AppCompatActivity {
 
             }
         }, 2000);
-    }
+    } */
 }
