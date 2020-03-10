@@ -24,9 +24,11 @@
         <activity android:name=".AfficherDeck" />
         <activity android:name=".AfficherListeDeck" />
         <activity android:name=".JouerCarte" />
-        <activity android:name=".CarteQuestionImage" />
+        <activity android:name=".CreerCarteQuestionImage" />
         <activity android:name=".JouerQuestionImage" />
         <activity android:name=".AfficherListeQuestionImage" />
+        <activity android:name=".AfficherDeckQuestionImage"/>
+        <activity android:name=".JouerQuestionImage1"/>
 
 
 

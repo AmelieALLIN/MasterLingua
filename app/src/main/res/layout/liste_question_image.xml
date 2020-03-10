@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:columnCount="2"
-    android:rowCount="3">
+    android:layout_height="match_parent">
 
-</GridLayout>
+    <TextView
+        android:id="@+id/Deck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom du deck" />
+
+    <EditText
+        android:id="@+id/nomdeck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Deck"
+        android:autofillHints="username"
+        android:inputType="textAutoCorrect"
+        android:visibility="visible" />
+
+    <GridView
+        android:id="@+id/grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nomdeck"
+
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="65dp"
+        android:columnWidth="120dp"
+        android:gravity="center"
+        android:numColumns="auto_fit" />
+
+
+</RelativeLayout>

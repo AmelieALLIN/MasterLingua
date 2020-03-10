@@ -37,7 +37,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
 
 
     public void QuestionImage(View view) {
-        Intent intent = new Intent(this,CarteQuestionImage.class);
+        Intent intent = new Intent(this, CreerCarteQuestionImage.class);
         startActivity(intent);
     }
 

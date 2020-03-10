@@ -94,11 +94,13 @@ public class JouerCarte extends AppCompatActivity {
 
                 if(choix.equals(ok))
                 {showToastOk();
+                    reps.setEnabled(false);
                     retour();
                     scorec=1;
                 }
                 else
                 {showToastNo();
+                    reps.setEnabled(false);
                     retour();
                     scorec=0;
                 }
