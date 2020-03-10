@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CarteQuestionImage  extends AppCompatActivity {
+public class CreerCarteQuestionImage extends AppCompatActivity {
     private Carte carte;
 
     private CheckBox checkAnswer1, checkAnswer2, checkAnswer3;
@@ -51,11 +51,8 @@ public class CarteQuestionImage  extends AppCompatActivity {
                                             Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
                                             intent.setType("image/*");
                                             startActivityForResult(Intent.createChooser(intent,"image"),1);
-
                                         }
                                     }
-
-
         );
 
 
@@ -140,7 +137,6 @@ public class CarteQuestionImage  extends AppCompatActivity {
                 afficherCarte.putExtra("valeur", 1);
                 startActivity(afficherCarte);
                 finish();
-
             }
         });
     }
@@ -162,8 +158,6 @@ public class CarteQuestionImage  extends AppCompatActivity {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 b = baos.toByteArray();
-
-
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }

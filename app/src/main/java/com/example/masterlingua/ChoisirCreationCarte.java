@@ -26,7 +26,6 @@ public class ChoisirCreationCarte extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 
     public void AfficherListe(View view) {
@@ -37,7 +36,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
 
 
     public void QuestionImage(View view) {
-        Intent intent = new Intent(this,CarteQuestionImage.class);
+        Intent intent = new Intent(this, CreerCarteQuestionImage.class);
         startActivity(intent);
     }
 
@@ -47,8 +46,6 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
     public void AfficherListeDeck(View view) {
         Intent intent = new Intent(this,AfficherListeDeck.class);
         startActivity(intent);
@@ -56,6 +53,11 @@ public class ChoisirCreationCarte extends AppCompatActivity {
 
     public void CreationDeck(View view) {
         Intent intent = new Intent(this,CreerDeck.class);
+        startActivity(intent);
+    }
+
+    public void ReponseImage(View view) {
+        Intent intent = new Intent(this,CreerCarteReponseImage.class);
         startActivity(intent);
     }
 }
