@@ -89,10 +89,6 @@ public class JouerQuestionImage extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
 
     public void showToastOk() {
