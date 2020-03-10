@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.SparseBooleanArray;
 import android.view.ActionMode;
 import android.view.LayoutInflater;
@@ -17,6 +18,7 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
@@ -27,34 +29,37 @@ import java.util.List;
 import java.util.UUID;
 
 public class AfficherListeQuestionImage extends AppCompatActivity {
-    /*ListView CarteListView;
+    GridView carteliste;
     List<Carte> carte = Carte.listAll(Carte.class);
     List<ReponseText> reponses = ReponseText.listAll(ReponseText.class);
-    List<QuestionImage> questions = QuestionImage.listAll(QuestionImage.class);
+    List<QuestionImage> questions=QuestionImage.listAll(QuestionImage.class);
     private EditText nom_deck;
 
-    List<Bitmap> questioncarte ;
+    List<Bitmap> questioncarte=new ArrayList<>() ;
     ArrayList<Carte> l = new ArrayList<>();
     Deck deck;
     int count=0;
     View row;
+    private EditText nomdeck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liste_question_image);
+        nomdeck = findViewById(R.id.nomdeck);
+
 
         nom_deck = findViewById(R.id.nom_deck);
 
-        CarteListView = (ListView) findViewById(R.id.listee);
+        carteliste = (GridView) findViewById(R.id.grid);
 
-        CarteListView.setChoiceMode(AbsListView.CHOICE_MODE_MULTIPLE_MODAL);
+        carteliste.setChoiceMode(GridView.CHOICE_MODE_MULTIPLE_MODAL);
 
-        CarteListView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
+        carteliste.setMultiChoiceModeListener(new GridView.MultiChoiceModeListener() {
             @Override
             public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) {
 
-                mode.setTitle("" + CarteListView.getCheckedItemCount() + " items selected");
+                mode.setTitle("" + carteliste.getCheckedItemCount() + " items selected");
 
             }
             @Override
@@ -72,9 +77,9 @@ public class AfficherListeQuestionImage extends AppCompatActivity {
                 String idcarte;
                 switch (item.getItemId()){
 
-                    case R.id.menu_delete:
+                    case R.id.menu_save:
 //action on clicking contextual action bar menu item
-                        SparseBooleanArray checkedItems = CarteListView.getCheckedItemPositions();
+                        SparseBooleanArray checkedItems = carteliste.getCheckedItemPositions();
                         ArrayList<Integer> arrayList = null;
                         if (checkedItems != null && checkedItems.size() > 0) {
                             count = checkedItems.size();
@@ -85,7 +90,7 @@ public class AfficherListeQuestionImage extends AppCompatActivity {
                             }
                         }
                         String id_deck = UUID.randomUUID().toString();
-                        deck = new Deck(id_deck,nom_deck.toString());
+                        deck = new Deck(id_deck,nomdeck.toString());
                         deck.save();
                         for(int i=0; i<count; i++)
                         {
@@ -97,7 +102,7 @@ public class AfficherListeQuestionImage extends AppCompatActivity {
                             CartesDeck cartesDeck = new CartesDeck(id_cartedeck,id_deck,idcarte);
                             cartesDeck.save();
                         }
-                        Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                        Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeckQuestionImage.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("deck", deck);
                         afficherDeck.putExtras(bundle);
@@ -113,13 +118,15 @@ public class AfficherListeQuestionImage extends AppCompatActivity {
             }
         });
         for (int i = 0; i < questions.size(); i++) {
-            questioncarte.add(BitmapFactory.decodeByteArray(questions.get(i).getImage(),0,questions.get(i).getImage().length));
+            byte[] encodeByte = Base64.decode(questions.get(i).getImage(), Base64.DEFAULT);
+            Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+            questioncarte.add(bmp);
         }
 
+        CustomerAdapter customerAdapter = new CustomerAdapter(getApplicationContext(), questioncarte);
+        carteliste.setAdapter(customerAdapter);
+    }
 
-    }
-        /*ArrayAdapter<Bitmap> adapter = new ArrayAdapter<Bitmap>(this, android.R.layout.simple_list_item_1, questioncarte);
-        CarteListView.setAdapter(adapter);*/
-    }
+}
 
 

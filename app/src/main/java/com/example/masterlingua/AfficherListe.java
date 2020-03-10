@@ -4,21 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.SparseBooleanArray;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class AfficherListe extends AppCompatActivity {
     ListView CarteListView;
@@ -62,7 +54,7 @@ public class AfficherListe extends AppCompatActivity {
                 {
                     carte = idcarte.get(n);
                 }
-                Intent jouerCarte = new Intent(getApplicationContext(), JouerCarte.class);
+                Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarte.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("carte", carte);
                 jouerCarte.putExtras(bundle);
