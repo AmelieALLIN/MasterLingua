@@ -64,14 +64,10 @@ public class JouerCarteReponseImage extends AppCompatActivity {
             System.out.println("************************************************************ICI");
             byte[] encodeByte = Base64.decode(rep.get(n).getImage(), Base64.DEFAULT);
             Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
-            //Bitmap bmp= BitmapFactory.decodeByteArray(rep.get(n).getImage(),0,rep.get(n).getImage().length);
-            System.out.println("LLALALALAL avant idc = "+idc);
             if(rep.get(n).getBr()) { ind_br = n; }
             if(n==0)
             {
                 reponse1.setImageBitmap(bmp);
-                System.out.println("LALALALALAL idrep = "+rep.get(n).getIdReponse());
-                System.out.println("LALALALALA idcarte = "+rep.get(n).getIdCarte());
             } else {
                 if(n==1){
                     reponse2.setImageBitmap(bmp);
