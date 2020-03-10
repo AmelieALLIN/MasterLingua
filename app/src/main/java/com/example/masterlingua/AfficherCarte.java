@@ -73,10 +73,12 @@ public class AfficherCarte extends AppCompatActivity {
                 String choix = parent.getItemAtPosition(position).toString();
                 if(choix.equals(ok))
                 {showToastOk();
+                    reps.setEnabled(false);
                     retour();
                 scorecarte=1;}
                 else
                 {showToastNo();
+                    reps.setEnabled(false);
                     retour();
                     scorecarte=0;
                 }

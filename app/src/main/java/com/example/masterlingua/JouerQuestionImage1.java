@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 //import android.util.Log;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +19,13 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.util.Base64;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class JouerQuestionImage extends AppCompatActivity {
+public class JouerQuestionImage1 extends AppCompatActivity {
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
@@ -45,7 +45,6 @@ public class JouerQuestionImage extends AppCompatActivity {
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
-
 
         carte = (Carte) bundle.getSerializable("carte");
         String idc = carte.getIdCarte();
@@ -67,17 +66,18 @@ public class JouerQuestionImage extends AppCompatActivity {
 
         List<QuestionImage> quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
         for(int n=0; n<quest.size();n++){
-            byte[] encodeByte = Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
+            byte[] encodeByte = android.util.Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
             Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
             question.setImageBitmap(bmp);
-
         }
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
         reps.setAdapter(adapter);
+
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
+
                 if(choix.equals(ok))
                 {showToastOk();
                     retour();
@@ -131,8 +131,9 @@ public class JouerQuestionImage extends AppCompatActivity {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(JouerQuestionImage.this, ChoisirCreationCarte.class);
-                    startActivity(retour);
+                {Intent retour = new Intent(JouerQuestionImage1.this, AfficherDeckQuestionImage.class);
+                retour.putExtra("score",scorecarte);
+                startActivity(retour);
                     finish();
                 }
 
@@ -140,3 +141,4 @@ public class JouerQuestionImage extends AppCompatActivity {
         }, 2000);
     }
 }
+

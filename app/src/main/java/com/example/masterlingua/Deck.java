@@ -11,6 +11,10 @@ public class Deck extends SugarRecord implements Serializable {
     public Deck(){
 
     }
+    public Deck(String id) {
+        this.id_deck = id;
+        this.nom_deck = "";
+    }
 
     public Deck(String id, String nom) {
         this.id_deck = id;
