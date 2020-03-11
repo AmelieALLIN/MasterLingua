@@ -53,9 +53,6 @@ public class JouerCarteReponseImage extends AppCompatActivity {
 
         listeReponse = (GridView) findViewById(R.id.gridRep);
 
-        /*reponse1 = findViewById(R.id.rep1);
-        reponse2 = findViewById(R.id.rep2);
-        reponse3 = findViewById(R.id.rep3);*/
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
 
@@ -83,8 +80,6 @@ public class JouerCarteReponseImage extends AppCompatActivity {
         listeReponse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("iiiiiiiiiiiiii ind_br"+ind_br);
-                System.out.println("iiiiiiiiiiiiii position"+position);
                 if(position==ind_br)
                 {showToastOk();
                     retour();
