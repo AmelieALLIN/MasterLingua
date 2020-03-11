@@ -1,50 +1,23 @@
 language: android
+jdk: oraclejdk8
 env:
   global:
-    - COVERALLS_REPO_TOKEN=BUA8U7NyJVhXb6VKGjfSVotuEG5SW2Jj5
-    - CODECOV_TOKEN="8942fd6b-2782-45b7-8842-aa97ca17d230"
-
+    - ANDROID_API_LEVEL=25
+    - ANDROID_BUILD_TOOLS_VERSION=25.0.0
 android:
   components:
     - tools
-    - build-tools-24.0.1
-    - android-24
     - platform-tools
-    - extra-android-support # because I'm use support library
-    - extra-android-m2repository # because I'm use support library
-  licenses:
-    - '.+'
-language: java
+    - build-tools-25.0.0
+    - android-22
+    - sys-img-armeabi-v7a-android-22
 
-dist: trusty
-jdk:
-  - oraclejdk8
-
-install: true
+before_install:
+  - yes | sdkmanager "platforms;android-27"
+  - yes | sdkmanager "platforms;android-28"
 
 before_script:
-    - chmod +x ./gradlew
-
-script:
-  - ./gradlew check
-  - ./gradlew build cobertura coveralls
-	
-cache:
-  directories:
-    $HOME/.m2/repository
-    $HOME/.sonar/cache
-    $HOME/.gradle
-    .gradle
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-  - ./gradlew cobertura coveralls
-  addons:
-  sonarcloud:
-    organization: "MasterLingua" # the key of the org you chose at step #3
-    token:
-      secure: ade4a2d66dc4fd53824d593a2f6d738a254368c2
-script:
-  # other script steps might be done before running the actual analysis
-  - sonar-scanner
-  
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+  - emulator -avd test -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell input keyevent 82 &
