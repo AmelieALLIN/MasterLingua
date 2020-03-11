@@ -154,14 +154,16 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         //si la rep a ete initialise on prend son tableau de byte
                         if((image[i]==true)&&(i==0)){
                             bytee = img1;
-                        }
-                        if((image[i]==true)&&(i==1)){
-                            bytee = img2;
-                        }
-                        if((image[i]==true)&&(i==2)){
-                            bytee = img3;
                         } else {
-                            bytee = null;
+                            if((image[i]==true)&&(i==1)){
+                                bytee = img2;
+                            } else {
+                                if((image[i]==true)&&(i==2)){
+                                    bytee = img3;
+                                } else {
+                                    bytee = null;
+                                }
+                            }
                         }
                         if (brep[i] == true) {
                             br = true;
@@ -169,10 +171,11 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         else {
                             br = false;
                         }
-                        System.out.println("OOOOOOOOOOOOOOOOOOOO string = "+bytee);
-                        ReponseImage reponse = new ReponseImage(idrep,idcarte,br,bytee);
-                        System.out.println(" IDDDDDD carte = "+reponse.getIdCarte());
-                        reponse.save();
+                        if(bytee!=null){
+                            ReponseImage reponse = new ReponseImage(idrep,idcarte,br,bytee);
+                            reponse.save();
+                        }
+
                     }
                     carte.save();
                     quest.save();
@@ -241,14 +244,16 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         //si la rep a ete initialise on prend son tableau de byte
                         if((image[i]==true)&&(i==0)){
                             bytee = img1;
-                        }
-                        if((image[i]==true)&&(i==1)){
-                            bytee = img2;
-                        }
-                        if((image[i]==true)&&(i==2)){
-                            bytee = img3;
                         } else {
-                            bytee = null;
+                            if((image[i]==true)&&(i==1)){
+                                bytee = img2;
+                            } else {
+                                if((image[i]==true)&&(i==2)){
+                                    bytee = img3;
+                                } else {
+                                    bytee = null;
+                                }
+                            }
                         }
                         if (brep[i] == true) {
                             br = true;
