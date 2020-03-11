@@ -77,7 +77,7 @@ public class AfficherListeQuestionImage extends AppCompatActivity {
                 String idcarte;
                 switch (item.getItemId()){
 
-                    case R.id.menu_delete:
+                    case R.id.menu_save:
 //action on clicking contextual action bar menu item
                         SparseBooleanArray checkedItems = carteliste.getCheckedItemPositions();
                         ArrayList<Integer> arrayList = null;
