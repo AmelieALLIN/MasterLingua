@@ -6,14 +6,14 @@ public class ReponseImage extends SugarRecord implements Reponse{
     private String idreponse;
     private boolean br;
     private String idcarte;
-    byte[] image;
+    String image;
 
 
     public ReponseImage() {
 
     }
 
-    public ReponseImage(String id, String carte, boolean br, byte[] image) {
+    public ReponseImage(String id, String carte, boolean br, String image) {
         this.idreponse = id;
         this.idcarte = carte;
         this.br = br;
@@ -30,7 +30,7 @@ public class ReponseImage extends SugarRecord implements Reponse{
         return idcarte;
     }
 
-    public byte[] getImage(){
+    public String getImage(){
         return this.image;
     }
 

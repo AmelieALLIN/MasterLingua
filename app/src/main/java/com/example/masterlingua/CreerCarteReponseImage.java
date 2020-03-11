@@ -35,11 +35,13 @@ public class CreerCarteReponseImage extends AppCompatActivity {
     ImageView image1;
     ImageView image2;
     ImageView image3;
-    byte[]bytee;
+    String bytee;
     byte[]byte1;
     byte[]byte2;
     byte[]byte3;
-    String img;
+    String img1;
+    String img2;
+    String img3;
 
 
     @Override
@@ -63,6 +65,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                                         public void onClick(View v) {
                                             taille = taille++;
                                             x=1;
+                                            image[0]=true;
                                             Intent intent1=new Intent(Intent.ACTION_GET_CONTENT);
                                             Bundle bundle = new Bundle();
                                             bundle.putSerializable("image3", x);
@@ -78,6 +81,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                                               public void onClick(View v) {
                                                   taille = taille++;
                                                   x=2;
+                                                  image[1]=true;
                                                   Intent intent2=new Intent(Intent.ACTION_GET_CONTENT);
                                                   Bundle bundle = new Bundle();
                                                   bundle.putSerializable("image3", x);
@@ -93,6 +97,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                                          public void onClick(View v) {
                                              taille = taille++;
                                              x=3;
+                                             image[2]=true;
                                              Intent intent3=new Intent(Intent.ACTION_GET_CONTENT);
                                              Bundle bundle = new Bundle();
                                              bundle.putSerializable("image3", x);
@@ -124,17 +129,14 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                 else {
                     //String bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
-                    if (image1.getDrawable()!=null) { // champ de réponse 1
-                        //answers.add(answer1.getText().toString());
-                        if (checkAnswer1.isChecked()) brep[0] = true;
+                    if (checkAnswer1.isChecked()) { // champ de réponse 1
+                        brep[0]=true;
                     }
-                    if (image2.getDrawable()==null) { // champ de réponse 2
-                        //answers.add(answer2.getText().toString());
-                        if (checkAnswer2.isChecked()) brep[1] = true;
+                    if (checkAnswer2.isChecked()) { // champ de réponse 2
+                        brep[1] = true;
                     }
-                    if (image3.getDrawable()==null) { // champ de réponse 3
-                        //answers.add(answer3.getText().toString());
-                        if (checkAnswer3.isChecked()) brep[2] = true;
+                    if (checkAnswer3.isChecked()) { // champ de réponse 3
+                        brep[2] = true;
                     }
                     // en faire un logger
                     /*for(int i=0; i<answers.size(); i++){
@@ -151,13 +153,15 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         idrep = UUID.randomUUID().toString();
                         //si la rep a ete initialise on prend son tableau de byte
                         if((image[i]==true)&&(i==0)){
-                            bytee = byte1;
+                            bytee = img1;
                         }
                         if((image[i]==true)&&(i==1)){
-                            bytee = byte2;
+                            bytee = img2;
                         }
                         if((image[i]==true)&&(i==2)){
-                            bytee = byte3;
+                            bytee = img3;
+                        } else {
+                            bytee = null;
                         }
                         if (brep[i] == true) {
                             br = true;
@@ -165,6 +169,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         else {
                             br = false;
                         }
+                        System.out.println("OOOOOOOOOOOOOOOOOOOO string = "+bytee);
                         ReponseImage reponse = new ReponseImage(idrep,idcarte,br,bytee);
                         System.out.println(" IDDDDDD carte = "+reponse.getIdCarte());
                         reponse.save();
@@ -211,17 +216,14 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                 else {
                     //String bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
-                    if (image1.getDrawable()!=null) { // champ de réponse 1
-                        //answers.add(answer1.getText().toString());
-                        if (checkAnswer1.isChecked()) brep[0] = true;
+                    if (checkAnswer1.isChecked()) { // champ de réponse 1
+                        brep[0]=true;
                     }
-                    if (image2.getDrawable()==null) { // champ de réponse 2
-                        //answers.add(answer2.getText().toString());
-                        if (checkAnswer2.isChecked()) brep[1] = true;
+                    if (checkAnswer2.isChecked()) { // champ de réponse 2
+                        brep[1] = true;
                     }
-                    if (image3.getDrawable()==null) { // champ de réponse 3
-                        //answers.add(answer3.getText().toString());
-                        if (checkAnswer3.isChecked()) brep[2] = true;
+                    if (checkAnswer3.isChecked()) { // champ de réponse 3
+                        brep[2] = true;
                     }
                     // en faire un logger
                     /*for(int i=0; i<answers.size(); i++){
@@ -238,13 +240,15 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         idrep = UUID.randomUUID().toString();
                         //si la rep a ete initialise on prend son tableau de byte
                         if((image[i]==true)&&(i==0)){
-                            bytee = byte1;
+                            bytee = img1;
                         }
                         if((image[i]==true)&&(i==1)){
-                            bytee = byte2;
+                            bytee = img2;
                         }
                         if((image[i]==true)&&(i==2)){
-                            bytee = byte3;
+                            bytee = img3;
+                        } else {
+                            bytee = null;
                         }
                         if (brep[i] == true) {
                             br = true;
@@ -253,7 +257,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                             br = false;
                         }
                         ReponseImage reponse = new ReponseImage(idrep,idcarte,br,bytee);
-                        System.out.println(" IDDDDDD carte = "+reponse.getIdCarte());
+                        System.out.println(" BYYYYTTTTEEEE carte = "+reponse.getImage());
                         reponse.save();
                     }
                     carte.save();
@@ -280,20 +284,21 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                     byte1 = baos.toByteArray();
-                    img=Base64.encodeToString(byte1, Base64.DEFAULT);
+                    img1=Base64.encodeToString(byte1, Base64.DEFAULT);
+                    System.out.println("RRRRRRRRRRRRRRRRRRR img1 "+img1);
                 } else {
                     if(x==2) {
                         image2.setImageBitmap(bitmap);
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                         byte2 = baos.toByteArray();
-                        img=Base64.encodeToString(byte2, Base64.DEFAULT);
+                        img2=Base64.encodeToString(byte2, Base64.DEFAULT);
                     } else {
                         image3.setImageBitmap(bitmap);
                         ByteArrayOutputStream baos = new ByteArrayOutputStream();
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                         byte3 = baos.toByteArray();
-                        img=Base64.encodeToString(byte3, Base64.DEFAULT);
+                        img3=Base64.encodeToString(byte3, Base64.DEFAULT);
                     }
                 }
             } catch (FileNotFoundException e) {

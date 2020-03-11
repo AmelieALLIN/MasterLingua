@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:gravity="center_horizontal"
+        android:onClick="goCreerCarte"
         android:text="@string/creation_card"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:ignore="MissingConstraints"
@@ -65,43 +66,11 @@
         tools:layout_editor_absoluteY="500dp" />
 
 
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonListDeck"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
-        android:gravity="center_horizontal"
-        android:onClick="QuestionImage"
-        android:text="Carte Question Image"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="500dp" />
-
-    <Button
-        android:id="@+id/buttonRepImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
-        android:gravity="center_horizontal"
-        android:onClick="ReponseImage"
-        android:text="Carte Reponse Image"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="500dp" />
-
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonRepImage"
+        android:layout_below="@+id/buttonListDeck"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:gravity="center_horizontal"
