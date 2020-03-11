@@ -5,8 +5,8 @@ import com.orm.SugarRecord;
 import java.io.Serializable;
 
 public class Deck extends SugarRecord implements Serializable {
-    private String id_deck;
-    private String nom_deck;
+    private String iddeck;
+    private String nomdeck;
 
     public Deck(){
 
@@ -17,16 +17,16 @@ public class Deck extends SugarRecord implements Serializable {
     }
 
     public Deck(String id, String nom) {
-        this.id_deck = id;
-        this.nom_deck = nom;
+        this.iddeck = id;
+        this.nomdeck = nom;
     }
 
 
    public String getId_deck(){
-        return id_deck;
+        return iddeck;
    }
 
    public String getNom_deck(){
-        return nom_deck;
+        return nomdeck;
    }
 }
