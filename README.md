@@ -1,5 +1,7 @@
 # MasterLingua
-MasterLinga est une application mobile qui permet l'echange linguistique entre des interlocuteurs. C'est une application basée sur le langage Java et dediée aux smartphones utilisant Android comme OS.
+
+Masterlinga is a mobile application that allows language exchange between interlocutors. It is a Java-based app dedicated to smartphones
+using Android as OS
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.com/AmelieALLIN/MasterLingua.svg?branch=master)](https://travis-ci.com/AmelieALLIN/MasterLingua)
@@ -8,57 +10,60 @@ MasterLinga est une application mobile qui permet l'echange linguistique entre d
 [![Coverage Status](https://coveralls.io/repos/github/AmelieALLIN/MasterLingua/badge.svg?branch=master)](https://coveralls.io/github/AmelieALLIN/MasterLingua?branch=master)
 
 
+# The main functions:
 
-# Les principales fonctionnalitées sont:
-
- - Indiquer la langue que votre langue et celle que vous voulez apprendre.
+ - Create a Type Game Card (Text, Image or Sound) and save it .
   
- - Avoir une liste des utilisateurs qui maitrisent la langue qui vous interesse
+ - Play a card created of type (Text, image or sound).
   
- - Choisir un autre interlocuteur et échanger avec.
+ - Create a deck (map list).
   
- - Jouer à des jeux basés sur des themes avec votre interlocuteur.
+ - Play a deck and display the score .
+ 
 # Installation :
 
-•	Télécharger GIT : (https://github.com/)
+•	Download URL  :
 
-  Ce tutoriel vous permet de bien comprendre les étapes d'installation : https://www.youtube.com/watch?v=J_Clau1bYco
+# Licences badges :
 
-•	Télécharger SDK :  (http://www.oracle.com)
+We use [shields.io](https://img.shields.io) to generate the license badge automatically from the LICENSE file in the github repository.
 
-•	Télécharger ANDROID  STUDIO : (https://developer.android.com/studio)
 
-# Intégration Continue :
+# Continuous Integration :
 
-On utilise Travis CI : (https://travis-ci.org/) et sa connexion avec GitHub.
+ We use [Travis CI](https://travis-ci.org/) and its connection to GitHub.
+ 
+ See [here](https://docs.travis-ci.com/user/for-beginners) how to activate this for your project.
+ 
+ Then, the provided ```.travis.yml``` and ```build.gradle``` files will do the job.
+    
 
-Pour plus d’informations : https://docs.travis-ci.com/
+# Test Coverage :
 
-# Qualité du code :
+  We use [Coveralls](https://coveralls.io/) and [Codecov](https://codecov.io/) to produce test coverage history and statistics.
+  
+  See respectively
+  
+  [here](https://coveralls.zendesk.com/hc/en-us), and [here](https://github.com/codecov/example-gradle) 
+  
+  how to activate this for your   project.
+  
+  Then, the provided ```.travis.yml``` and ```build.gradle``` files will do the job.
+  
 
-On utilise  Codacy :(https://www.codacy.com)
+# Code Analysis
 
-Pour plus d’informations : (https://support.codacy.com/hc/en-us/sections/201760869-Integrations)
+We use [Codacy](https://www.codacy.com) for code analysis.
 
-Vous pouvez aussi utiliser SonarQube : (http://www.sonarqube.org/)
+See [here](https://support.codacy.com/hc/en-us/sections/201760869-Integrations) how to activate this for your project.
+	
+You may also use [SonarQube](http://www.sonarqube.org/) for code analysis.
 
-Pour cela on utilise sonarcloud.io : (https://sonarcloud.io)
+For this we use [sonarcloud.io](https://sonarcloud.io). See information [here](https://docs.travis-ci.com/user/sonarcloud/) on how to 
 
-Pour plus d’informations : ](https://docs.travis-ci.com/user/sonarcloud/)
+setup Travis CI to work with SonarCloud.
 
-# Couverture du code :
 
-•	Coveralls  : (https://coveralls.io/)
-
-•	Codecov : (https://codecov.io/)
-
-Pour l’activer pour votre projet :
-
-•	(https://coveralls.zendesk.com/hc/en-us)
-
-•	(https://github.com/codecov/example-gradle)
-
-  Les Loggs :
 
 
 
