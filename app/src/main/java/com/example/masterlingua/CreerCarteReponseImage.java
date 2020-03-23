@@ -36,6 +36,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
     ImageView image2;
     ImageView image3;
     String bytee;
+    Type type = Type.textimage;
     byte[]byte1;
     byte[]byte2;
     byte[]byte3;
@@ -147,7 +148,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < brep.length; i++) {
                         idrep = UUID.randomUUID().toString();
@@ -237,7 +238,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < brep.length; i++) {
                         idrep = UUID.randomUUID().toString();
@@ -266,6 +267,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         reponse.save();
                     }
                     carte.save();
+                    System.out.println("--------------------------------------------------------------RImage--"+carte.getIdCarte());
                     quest.save();
                     Toast.makeText(context, text, duration).show();
 

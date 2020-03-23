@@ -81,4 +81,19 @@
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="500dp" />
 
+    <Button
+        android:id="@+id/buttondeckMultiple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:gravity="center_horizontal"
+        android:onClick="DeckMultpile"
+        android:text="Jouer Deck Multiple Tye"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="500dp" />
+
 </RelativeLayout>

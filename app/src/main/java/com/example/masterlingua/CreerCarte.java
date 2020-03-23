@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static com.example.masterlingua.Type.texttext;
+
 public class CreerCarte extends AppCompatActivity {
     private Carte carte;
     private CheckBox checkAnswer1, checkAnswer2, checkAnswer3;
@@ -24,6 +26,7 @@ public class CreerCarte extends AppCompatActivity {
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
+    Type type= texttext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +84,7 @@ public class CreerCarte extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
 
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
@@ -97,28 +100,29 @@ public class CreerCarte extends AppCompatActivity {
                         ReponseText reponse = new ReponseText(idrep,nomrep,idcarte,br);
                         reponse.save();
                     }
+                    System.out.println("--------------------------------------------------------------Text--"+carte.getIdCarte());
                     carte.save();
                     quest.save();
                     Toast.makeText(context, text, duration).show();
-                        //System.out.println(carte.getReponse().get(0));
-                    }
+                    //System.out.println(carte.getReponse().get(0));
+                }
 
-                    //test affichage contenu carte
-                    List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", carte.getIdCarte());
-                    if (!quest.isEmpty())
-                        for(int m=0;m<quest.size();m++){
-                            System.out.println(quest.get(m).getNom_question());
-                        }
-                        // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
-                        Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("carte", carte);
-                        afficherCarte.putExtras(bundle);
-                        afficherCarte.putExtra("valeur", 1);
-                        startActivity(afficherCarte);
-                        finish();
+                //test affichage contenu carte
+                List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", carte.getIdCarte());
+                if (!quest.isEmpty())
+                    for(int m=0;m<quest.size();m++){
+                        System.out.println(quest.get(m).getNom_question());
                     }
-            });
+                // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
+                Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                afficherCarte.putExtras(bundle);
+                afficherCarte.putExtra("valeur", 1);
+                startActivity(afficherCarte);
+                finish();
+            }
+        });
 
         retour.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -167,7 +171,7 @@ public class CreerCarte extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
@@ -182,6 +186,7 @@ public class CreerCarte extends AppCompatActivity {
                         ReponseText reponse = new ReponseText(idrep,nomrep,idcarte,br);
                         reponse.save();
                     }
+                    System.out.println("--------------------------------------------------------------Text--"+carte.getIdCarte());
                     carte.save();
                     quest.save();
                     Toast.makeText(context, text, duration).show();

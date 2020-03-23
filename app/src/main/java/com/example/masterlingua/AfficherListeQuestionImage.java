@@ -99,6 +99,7 @@ public class AfficherListeQuestionImage extends AppCompatActivity {
                             idcarte = questions.get(arrayList.get(i)).getIdCarte();
 
                             String id_cartedeck = UUID.randomUUID().toString();
+                            String type = "imagetext";
                             CartesDeck cartesDeck = new CartesDeck(id_cartedeck,id_deck,idcarte);
                             cartesDeck.save();
                         }

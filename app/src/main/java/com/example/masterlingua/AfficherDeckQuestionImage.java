@@ -64,17 +64,10 @@ public class AfficherDeckQuestionImage extends AppCompatActivity {
                 questionsdecks = QuestionImage.find(QuestionImage.class,"idcarte = ?", cartedecks.get(i).getId_carte());
                 for(int n=0; n<questionsdecks.size();n++)
                 {
-                    System.out.println(deck.getId_deck());
-                    System.out.println(cartedecks.get(n).getId_carte());
                     byte[] encodeByte = Base64.decode(questionsdecks.get(n).getImage(), Base64.DEFAULT);
                     Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
                     malisteimage.add(questionsdecks.get(n));
                     quests.add(bmp);
-                    System.out.println("la taille du deck esssssssttttt"+questionsdecks.size());
-                    System.out.println("la taille du deck esssssssttttt"+quests.size());
-                    System.out.println("la taille de ma liste est :"+malisteimage.size());
-
-
                 }
             }
         }

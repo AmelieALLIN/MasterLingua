@@ -28,6 +28,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
 
     private CheckBox checkAnswer1, checkAnswer2, checkAnswer3;
     private List<String> answers;
+    private Type type=Type.imagetext;
     ImageView image;
     String bonneReponse;
     private boolean b1, b2, b3;
@@ -106,7 +107,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
 
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
@@ -194,7 +195,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                         QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
@@ -210,6 +211,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                         reponse.save();
                     }
                     carte.save();
+                    System.out.println("--------------------------------------------------------------QImage--"+carte.getIdCarte());
                     quest.save();
                     Toast.makeText(context, text, duration).show();
 

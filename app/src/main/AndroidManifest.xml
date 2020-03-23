@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuCreationCarte"></activity>
+        <activity android:name=".JouerCarteReponseImageD"></activity>
+        <activity android:name=".JouerDeck3Type" />
+        <activity android:name=".MenuCreationCarte" />
         <activity android:name=".JouerCarteReponseImage" />
         <activity android:name=".CreerCarteReponseImage" />
         <activity android:name=".CreerDeck" />
@@ -36,7 +38,7 @@
 
         <meta-data
             android:name="VERSION"
-            android:value="11" />
+            android:value="13" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />

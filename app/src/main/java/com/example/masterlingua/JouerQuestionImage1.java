@@ -131,7 +131,7 @@ public class JouerQuestionImage1 extends AppCompatActivity {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(JouerQuestionImage1.this, AfficherDeckQuestionImage.class);
+                {Intent retour = new Intent(JouerQuestionImage1.this, JouerDeck3Type.class);
                 retour.putExtra("score",scorecarte);
                 startActivity(retour);
                     finish();

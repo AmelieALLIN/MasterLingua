@@ -75,17 +75,16 @@ public class CreerDeck extends AppCompatActivity {
                 }
                 String id_deck = UUID.randomUUID().toString();
                 deck = new Deck(id_deck,nom_deck.getText().toString());
-                System.out.println("OOOOOOOOOOOOOOOOOOnom deck = "+nom_deck.toString());
                 deck.save();
                 //deckstat = deck;
                 //System.out.println("DECK SATTTTTTTTTA = "+deckstat.getNom_deck());
                 for(int i=0; i<count; i++)
                 {
-                    System.out.println("JE SUIS LAAAAAAAA   question=" + questions.get(arrayList.get(i)).getNom_question());
                     System.out.println("id carte = " + questions.get(arrayList.get(i)).getIdCarte());
                     idcarte = questions.get(arrayList.get(i)).getIdCarte();
 
                     String id_cartedeck = UUID.randomUUID().toString();
+                    String type = "texttext";
                     CartesDeck cartesDeck = new CartesDeck(id_cartedeck,id_deck,idcarte);
                     cartesDeck.save();
                 }
