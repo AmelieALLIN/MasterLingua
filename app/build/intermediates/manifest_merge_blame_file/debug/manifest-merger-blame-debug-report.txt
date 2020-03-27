@@ -1,0 +1,116 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.masterlingua"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:5:5-48:19
+12        android:name="com.orm.SugarApp"
+12-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:6:9-40
+13        android:allowBackup="false"
+13-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:7:9-36
+14        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+14-->[androidx.core:core:1.1.0] C:\Users\sophi\.gradle\caches\transforms-2\files-2.1\f01b27bb220ecb79298884ef36a7a2fb\core-1.1.0\AndroidManifest.xml:24:18-86
+15        android:debuggable="true"
+16        android:icon="@drawable/logo_icon"
+16-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:8:9-43
+17        android:label="@string/app_name"
+17-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:10:9-41
+18        android:roundIcon="@drawable/logo_icon"
+18-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:9:9-48
+19        android:supportsRtl="true"
+19-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:11:9-35
+20        android:theme="@style/AppTheme" >
+20-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:12:9-40
+21        <activity
+21-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:13:9-21:20
+22            android:name="com.example.masterlingua.SplashScreen"
+22-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:13:19-46
+23            android:label="@string/app_name"
+23-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:14:19-51
+24            android:screenOrientation="portrait"
+24-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:15:19-55
+25            android:theme="@android:style/Theme.NoTitleBar" >
+25-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:16:19-66
+26            <intent-filter>
+26-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:17:13-20:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:18:17-69
+27-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:18:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:19:17-77
+29-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:19:27-74
+30            </intent-filter>
+31        </activity>
+32        <activity android:name="com.example.masterlingua.ChoisirCreationCarte" />
+32-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:22:9-57
+32-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:22:19-55
+33        <activity android:name="com.example.masterlingua.AfficherListe" />
+33-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:23:9-51
+33-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:23:19-48
+34        <activity android:name="com.example.masterlingua.CreerCarte" />
+34-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:24:9-48
+34-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:24:19-45
+35        <activity android:name="com.example.masterlingua.AfficherCarte" />
+35-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:25:9-51
+35-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:25:19-48
+36        <activity android:name="com.example.masterlingua.JouerCarte" />
+36-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:26:9-48
+36-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:26:19-45
+37        <activity android:name="com.example.masterlingua.CreerDeck" />
+37-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:27:9-46
+37-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:27:19-44
+38        <activity android:name="com.example.masterlingua.JouerDeck" />
+38-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:28:9-47
+38-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:28:19-44
+39        <activity android:name="com.example.masterlingua.AfficherDeck" />
+39-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:29:9-50
+39-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:29:19-47
+40        <activity android:name="com.example.masterlingua.AfficherListeDeck" />
+40-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:30:9-55
+40-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:30:19-52
+41        <activity android:name="com.example.masterlingua.CarteQuestionImage" />
+41-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:31:9-56
+41-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:31:19-53
+42        <activity android:name="com.example.masterlingua.JouerQuestionImage" />
+42-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:32:9-56
+42-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:32:19-53
+43        <activity android:name="com.example.masterlingua.AfficherListeQuestionImage" />
+43-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:33:9-64
+43-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:33:19-61
+44
+45        <meta-data
+45-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:35:9-37:34
+46            android:name="VERSION"
+46-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:36:13-35
+47            android:value="11" />
+47-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:37:13-31
+48        <meta-data
+48-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:38:9-40:36
+49            android:name="QUERY_LOG"
+49-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:39:13-37
+50            android:value="true" />
+50-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:40:13-33
+51        <meta-data
+51-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:41:9-43:43
+52            android:name="DOMAIN_PACKAGE_NAME"
+52-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:42:13-47
+53            android:value="com.example" />
+53-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:43:13-40
+54        <meta-data
+54-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:44:9-46:57
+55            android:name="preloaded_fonts"
+55-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:45:13-43
+56            android:resource="@array/preloaded_fonts" />
+56-->C:\Users\sophi\MasterLingua\app\src\main\AndroidManifest.xml:46:13-54
+57    </application>
+58
+59</manifest>

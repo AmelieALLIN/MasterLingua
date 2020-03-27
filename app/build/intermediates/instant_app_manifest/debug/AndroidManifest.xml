@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.masterlingua"
+    android:targetSandboxVersion="2"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="29" />
+
+    <application
+        android:name="com.orm.SugarApp"
+        android:allowBackup="false"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:debuggable="true"
+        android:icon="@drawable/logo_icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_icon"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.masterlingua.SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.masterlingua.ChoisirCreationCarte" />
+        <activity android:name="com.example.masterlingua.AfficherListe" />
+        <activity android:name="com.example.masterlingua.CreerCarte" />
+        <activity android:name="com.example.masterlingua.AfficherCarte" />
+        <activity android:name="com.example.masterlingua.JouerCarte" />
+        <activity android:name="com.example.masterlingua.CreerDeck" />
+        <activity android:name="com.example.masterlingua.JouerDeck" />
+        <activity android:name="com.example.masterlingua.AfficherDeck" />
+        <activity android:name="com.example.masterlingua.AfficherListeDeck" />
+        <activity android:name="com.example.masterlingua.CarteQuestionImage" />
+        <activity android:name="com.example.masterlingua.JouerQuestionImage" />
+        <activity android:name="com.example.masterlingua.AfficherListeQuestionImage" />
+
+        <meta-data
+            android:name="VERSION"
+            android:value="11" />
+        <meta-data
+            android:name="QUERY_LOG"
+            android:value="true" />
+        <meta-data
+            android:name="DOMAIN_PACKAGE_NAME"
+            android:value="com.example" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
