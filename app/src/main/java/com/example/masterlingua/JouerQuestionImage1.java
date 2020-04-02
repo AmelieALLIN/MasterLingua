@@ -3,9 +3,12 @@ package com.example.masterlingua;
 import android.content.Context;
 //import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 //import android.util.Log;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,71 +25,72 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JouerCarte extends AppCompatActivity {
+public class JouerQuestionImage1 extends AppCompatActivity {
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
     List<String> nom_rep = new ArrayList<>();
-    TextView question;
+    ImageView question;
     String ok;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
-    int scorec;
+    private int scorecarte;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.carte);
+        setContentView(R.layout.jouer_question_image);
         reps = (ListView) findViewById(R.id.list);
-        question = findViewById(R.id.question);
+        question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
-        Intent intent = getIntent();
+        Intent intent=getIntent();
 
         carte = (Carte) bundle.getSerializable("carte");
         String idc = carte.getIdCarte();
         reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
         for(int i=0;i<reponses.size();i++)
         {
-            System.out.println("LAAAAA rep ="+reponses.get(i).getNom());
-        }
-        for(int i=0;i<reponses.size();i++)
-        {
             nom_rep.add(reponses.get(i).getNom());
         }
+        /*if(!reponses.isEmpty()) {
+            for (int i = 0; i<carte.getReponses().size(); i++){
+                reponses.add(carte.getReponses().get(i));
+            }
+        }*/
         for(int y=0;y<reponses.size();y++){
             if(reponses.get(y).getbr() == true){
                 ok = reponses.get(y).getNom();
             }
         }
-        List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
-        for(int n=0; n<quest.size();n++){
-            question.setText(quest.get(n).getNom_question());
-        }
 
+        List<QuestionImage> quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
+        for(int n=0; n<quest.size();n++){
+            byte[] encodeByte = android.util.Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
+            Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+            question.setImageBitmap(bmp);
+        }
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
         reps.setAdapter(adapter);
+
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
 
-
                 if(choix.equals(ok))
                 {showToastOk();
-                    reps.setEnabled(false);
-                    scorec=1;
                     retour();
-                }
+                    scorecarte=1;}
                 else
                 {showToastNo();
-                    reps.setEnabled(false);
-                    scorec=0;
                     retour();
+                    scorecarte=0;
                 }
-
-                Intent afficher = new Intent(getApplicationContext(), JouerCarte.class);
             }
         });
+
+
 
 
     }
@@ -127,9 +131,9 @@ public class JouerCarte extends AppCompatActivity {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(JouerCarte.this, AfficherDeck.class);
-                retour.putExtra("score",scorec);
-                    startActivity(retour);
+                {Intent retour = new Intent(JouerQuestionImage1.this, AfficherDeckQuestionImage.class);
+                retour.putExtra("score",scorecarte);
+                startActivity(retour);
                     finish();
                 }
 
@@ -137,3 +141,4 @@ public class JouerCarte extends AppCompatActivity {
         }, 2000);
     }
 }
+

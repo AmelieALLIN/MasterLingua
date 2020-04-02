@@ -18,11 +18,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Base64;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 public class JouerQuestionImage extends AppCompatActivity {
@@ -46,6 +46,7 @@ public class JouerQuestionImage extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         Intent intent=getIntent();
 
+
         carte = (Carte) bundle.getSerializable("carte");
         String idc = carte.getIdCarte();
         reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
@@ -66,7 +67,8 @@ public class JouerQuestionImage extends AppCompatActivity {
 
         List<QuestionImage> quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
         for(int n=0; n<quest.size();n++){
-            Bitmap bmp= BitmapFactory.decodeByteArray(quest.get(n).getImage(),0,quest.get(n).getImage().length);
+            byte[] encodeByte = Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
+            Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
             question.setImageBitmap(bmp);
 
         }
@@ -87,10 +89,6 @@ public class JouerQuestionImage extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
     }
 
     public void showToastOk() {

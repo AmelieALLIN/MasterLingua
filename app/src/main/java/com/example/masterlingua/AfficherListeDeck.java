@@ -46,7 +46,6 @@ public class AfficherListeDeck extends AppCompatActivity {
                 }
                 Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
                 Bundle bundle = new Bundle();
-                System.out.println("DECCKKKKKKKKKKKK = "+deck.getNom_deck());
                 bundle.putSerializable("deck", deck);
                 afficherDeck.putExtras(bundle);
                 startActivity(afficherDeck);
