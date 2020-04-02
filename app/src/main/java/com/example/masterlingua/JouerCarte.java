@@ -33,15 +33,14 @@ public class JouerCarte extends AppCompatActivity {
     int duration = Toast.LENGTH_SHORT;
     int scorec;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.carte);
         reps = (ListView) findViewById(R.id.list);
-        question= findViewById(R.id.question);
+        question = findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
-        Intent intent=getIntent();
+        Intent intent = getIntent();
 
         carte = (Carte) bundle.getSerializable("carte");
         String idc = carte.getIdCarte();

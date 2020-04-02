@@ -86,6 +86,7 @@
         android:layout_below="@+id/answer2"
         android:buttonTint="#3F51B5"
         android:checked="false"
+        android:fontFamily="@font/advent_pro_light"
         android:onClick="onCheckBoxClicked"
         android:text="@string/vrai"
         android:textColor="#3F51B5"
@@ -127,8 +128,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/checkAnswer3"
         android:layout_alignParentEnd="true"
-        android:dropDownSelector="@color/colorPrimary"
+        android:dropDownSelector="@android:color/holo_blue_dark"
         android:entries="@array/category_names"
+        android:spinnerMode="dropdown"
         android:text="@string/selectCategory" />
 
     <Button
