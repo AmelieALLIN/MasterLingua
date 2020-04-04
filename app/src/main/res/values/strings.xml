@@ -2,6 +2,10 @@
     <string name="app_name">MasterLingua</string>
     <string name="attache">WELCOME</string>
     <string name="creation_card">Créer une carte</string>
+    <string name="cartes">Cartes</string>
+    <string name="creation_deck">Créer un deck</string>
+    <string name="deck">Decks</string>
+    <string name="cartes_image">Cartes imagées</string>
     <string name="page_creation_card">Création de votre carte</string>
     <string name="language_question">En quelle langue est votre question ?</string>
     <string name="choix">Selectionnez</string>
@@ -18,8 +22,10 @@
     //le nom est en français (vrai) car le nom "true" est réservé
     <string name="faux">Mauvaise réponse</string>
     // du coup en français ici aussi
-    <string name="jouer">Jouer la carte</string>
-    <string name="terminate">Sauvegarder la carte</string>
+    <string name="jouer">Jouer</string>
+    <string name="terminate">Sauvegarder</string>
+    <string name="importer">Importer</string>
+    <string name="nomDeck">Nom du deck</string>
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="warning_good_answer">Une seule réponse peut être correcte</string>
     <string name="card_created">Votre carte a bien été créée</string>
