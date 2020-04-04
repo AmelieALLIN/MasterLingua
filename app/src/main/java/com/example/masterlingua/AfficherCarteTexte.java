@@ -1,19 +1,9 @@
 package com.example.masterlingua;
 
 import android.content.Context;
-//import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-//import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -75,6 +65,7 @@ public class AfficherCarteTexte extends AppCompatActivity {
         }
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nom_rep);
         reps.setAdapter(adapter);
+        reps.setEnabled(false);
        /* reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {*/
@@ -113,6 +104,20 @@ public class AfficherCarteTexte extends AppCompatActivity {
                     next();}
             }
 
+
+            @Override
+            public void onSwipeUp(){
+                super.onSwipeUp();
+
+                if(compteur==0){
+                    supprimerdeck();
+                    fin();
+                }
+
+                else
+                {fin();}
+            }
+
         });
     }
 
@@ -133,7 +138,7 @@ public class AfficherCarteTexte extends AppCompatActivity {
             finish();
 
         } else if (carte.getType().equals("rimage")) {
-            Intent jouerCarte = new Intent(getApplicationContext(), JouerCarteReponseImage.class);
+            Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);

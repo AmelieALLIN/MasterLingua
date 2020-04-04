@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class AfficherCarteQuestionImage extends AppCompatActivity {
+public class SwipeJouerCarteImageQ extends AppCompatActivity {
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
@@ -35,8 +35,9 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
     String ok,iddeck;
     List<Carte> cartes;
     LinearLayout layout;
-    String jointuredeckcarte;
-    static int compteur;
+    static int score;
+    Context context=this;
+    boolean jouer=false;
 
 
     @Override
@@ -51,8 +52,7 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
 
         carte = (Carte) bundle.getSerializable("carte");
         cartes= (List<Carte>) bundle.getSerializable("liste");
-        iddeck=bundle.getString("iddeck");
-        compteur=bundle.getInt("compteur");
+        score=bundle.getInt("score");
         String idc = carte.getIdCarte();
         reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
         for(int i=0;i<reponses.size();i++)
@@ -74,55 +74,73 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
         }
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
         reps.setAdapter(adapter);
-        reps.setEnabled(false);
 
-        layout.setOnTouchListener(new OnSwipeTouchListener(AfficherCarteQuestionImage.this) {
+
+
+        reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String choix = parent.getItemAtPosition(position).toString();
+
+                if (choix.equals(ok)) {
+                    showToastOk();
+                    reps.setEnabled(false);
+                    score += 1;
+                    jouer=true;
+
+                    if (cartes.size() == 1) {
+                            Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                            fin();}
+                    else {
+                        cartes.remove(0);
+                        next();
+                    }
+                }
+                else {
+                    showToastNo();
+                    reps.setEnabled(false);
+                    jouer=true;
+                    if (cartes.size() == 1) {
+                            Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                            fin();}
+                       else {
+                        cartes.remove(0);
+                        next();
+                    }
+
+                }
+
+            }
+        });
+
+        layout.setOnTouchListener(new OnSwipeTouchListener(SwipeJouerCarteImageQ.this) {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
                 if(cartes.size()==1){
-                    if(compteur==0){
-                        supprimerdeck();
-                        fin();
-                    }
+                    if(!jouer){
+                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        fin();}
 
-                    else
-                    {fin();}
+                    else fin();
                 }
                 else{
                     cartes.remove(0);
                     next();}
 
             }
-            @Override
-            public void onSwipeRight() {
-                super.onSwipeRight();
-                if(cartes.size()==1){
-                    ajoutercartedeck();
-                    System.out.println(compteur);
-                    fin();
-                }
-                else{
-                    ajoutercartedeck();
-                    System.out.println(compteur);
-                    cartes.remove(0);
-                    next();}
-            }
+
 
             @Override
             public void onSwipeUp(){
                 super.onSwipeUp();
 
-                if(compteur==0){
-                    supprimerdeck();
-                    fin();
-                }
+                if(!jouer){
+                    Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                    fin();}
 
-                else
-                {fin();}
+                else fin();
             }
-
-
         });
     }
 
@@ -132,57 +150,71 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
         System.out.println("tyyype"+carte.getType());
 
         if (carte.getType().equals("texte")) {
-            Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteTexte.class);
+            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteTexte.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putString("iddeck",iddeck);
-            bundle.putInt("compteur",compteur);
+            bundle.putInt("score",score);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
 
         } else if (carte.getType().equals("rimage")) {
-            Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class);
+            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageR.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putString("iddeck",iddeck);
-            bundle.putInt("compteur",compteur);
+            bundle.putInt("score",score);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
         } else if (carte.getType().equals("qimage")) {
-            Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionImage.class);
+            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageQ.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putString("iddeck",iddeck);
-            bundle.putInt("compteur",compteur);
+            bundle.putInt("score",score);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
         }}
+    public void showToastOk() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
 
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        toastImage.setImageResource(R.drawable.good);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+
+        toast.show();
+    }
+
+    public void showToastNo() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
+
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        toastImage.setImageResource(R.drawable.bad);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setView(layout);
+
+        toast.show();
+    }
     public void fin(){
-        Intent fin = new Intent(getApplicationContext(), AfficherListeDeck.class);
+        Intent fin = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
         startActivity(fin);
         finish();
     }
 
 
-    public void ajoutercartedeck(){
-        jointuredeckcarte = UUID.randomUUID().toString();
-        CartesDeck carteDeck = new CartesDeck(jointuredeckcarte,iddeck,carte.getIdCarte());
-        carteDeck.save();
-        compteur+=1;
-    }
 
-
-    public void supprimerdeck(){
-        Deck.executeQuery("DELETE FROM DECK WHERE IDDECK = '" +iddeck  + "'");
-        CartesDeck.executeQuery("DELETE FROM CARTES_DECK WHERE IDDECK = '" +iddeck  + "'");
-    }
 
 }
 

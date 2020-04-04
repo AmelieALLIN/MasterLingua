@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +29,7 @@ public class SwipeListeCarte extends AppCompatActivity {
 
 
     List<Carte> idcarte = new ArrayList<>();
-    ArrayList<Carte> l = new ArrayList<>();
+
     Carte carte;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,11 @@ public class SwipeListeCarte extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(nom.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(), "Veuillez renseigner le nom de votre deck ", Toast.LENGTH_SHORT).show();
+                }
+                else {
                 String iddeck= UUID.randomUUID().toString();
                 deck = new Deck(iddeck,nom.getText().toString());
                 deck.save();
@@ -96,7 +102,7 @@ public class SwipeListeCarte extends AppCompatActivity {
                 System.out.println(cartes.size());
 
 
-                }
+                }}
 
 
         });

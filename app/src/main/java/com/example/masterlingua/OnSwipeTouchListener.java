@@ -65,11 +65,11 @@ class OnSwipeTouchListener implements View.OnTouchListener {
             return false;
         }
     }
-    public void onSwipeRight() {
+   public void onSwipeRight() {
     }
     public void onSwipeLeft() {
     }
-    private void onSwipeUp() {
+   public void onSwipeUp() {
     }
     private void onSwipeDown() {
     }

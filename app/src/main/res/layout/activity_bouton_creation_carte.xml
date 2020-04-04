@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:gravity="center_horizontal"
-        android:onClick="AfficherListe"
+        android:onClick="listeCartes"
         android:text="Afficher Liste Carte"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:ignore="MissingConstraints"
@@ -97,6 +97,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="500dp" />
+
 
 
 </RelativeLayout>
