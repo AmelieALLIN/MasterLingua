@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuCreationCarte"></activity>
+        <activity android:name=".MenuCreationCarte"/>
         <activity android:name=".JouerCarteReponseImage" />
         <activity android:name=".CreerCarteReponseImage" />
         <activity android:name=".CreerDeck" />

@@ -1,140 +1,147 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_centerVertical="true"
-    android:orientation="vertical"
-    tools:ignore="MissingDefaultResource">
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/creationCarte"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat_alternates"
-        android:text="@string/page_creation_card"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp" />
-
-    <EditText
-        android:id="@+id/question"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/creationCarte"
-        android:autofillHints="username"
-        android:fontFamily="@font/montserrat_alternates"
-        android:hint="@string/enter_question"
-        android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
-        android:visibility="visible" />
-
-    <TextView
-        android:id="@+id/ajouterReponse"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/question"
-        android:layout_marginLeft="5dp"
-        android:fontFamily="@font/montserrat_alternates"
-        android:text="@string/add_answer"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+        android:layout_height="match_parent"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        tools:ignore="MissingDefaultResource">
 
-    <EditText
-        android:id="@+id/answer1"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ajouterReponse"
-        android:autofillHints="username"
-        android:fontFamily="@font/montserrat_alternates"
-        android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
-        android:visibility="visible" />
+        <TextView
+            android:id="@+id/creationCarte"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="@string/page_creation_card"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
 
-    <CheckBox
-        android:id="@+id/checkAnswer1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/answer1"
-        android:checked="false"
-        android:fontFamily="@font/montserrat_alternates"
-        android:onClick="onCheckBoxClicked"
-        android:text="@string/vrai"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="409dp" />
+        <EditText
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/creationCarte"
+            android:autofillHints="username"
+            android:fontFamily="@font/montserrat_alternates"
+            android:hint="@string/enter_question"
+            android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
+            android:visibility="visible" />
 
-    <EditText
-        android:id="@+id/answer2"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/checkAnswer1"
-        android:autofillHints="username"
-        android:fontFamily="@font/montserrat_alternates"
-        android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
-        android:visibility="visible" />
+        <TextView
+            android:id="@+id/ajouterReponse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/question"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="@string/add_answer"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
-    <CheckBox
-        android:id="@+id/checkAnswer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/answer2"
-        android:checked="false"
-        android:fontFamily="@font/montserrat_alternates"
-        android:onClick="onCheckBoxClicked"
-        android:text="@string/vrai"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="409dp" />
+        <EditText
+            android:id="@+id/answer1"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ajouterReponse"
+            android:autofillHints="username"
+            android:fontFamily="@font/montserrat_alternates"
+            android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
+            android:visibility="visible" />
 
-    <EditText
-        android:id="@+id/answer3"
-        android:layout_width="290dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/checkAnswer2"
-        android:autofillHints="username"
-        android:fontFamily="@font/montserrat_alternates"
-        android:inputType="textAutoCorrect"
-        android:visibility="visible" />
+        <CheckBox
+            android:id="@+id/checkAnswer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/answer1"
+            android:checked="false"
+            android:fontFamily="@font/montserrat_alternates"
+            android:onClick="onCheckBoxClicked"
+            android:text="@string/vrai"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="409dp" />
 
-    <CheckBox
-        android:id="@+id/checkAnswer3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/answer3"
-        android:checked="false"
-        android:fontFamily="@font/montserrat_alternates"
-        android:onClick="onCheckBoxClicked"
-        android:text="@string/vrai"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="166dp"
-        tools:layout_editor_absoluteY="409dp" />
+        <EditText
+            android:id="@+id/answer2"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkAnswer1"
+            android:autofillHints="username"
+            android:fontFamily="@font/montserrat_alternates"
+            android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
+            android:visibility="visible" />
 
-    <Button
-        android:id="@+id/validate"
-        android:layout_width="145dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/checkAnswer3"
-        android:layout_centerVertical="false"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/gradient"
-        android:textColor="#FFFFFF"
-        android:fontFamily="@font/montserrat_alternates"
-        android:text="@string/terminate"
-        android:textSize="14sp" />
+        <CheckBox
+            android:id="@+id/checkAnswer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/answer2"
+            android:checked="false"
+            android:fontFamily="@font/montserrat_alternates"
+            android:onClick="onCheckBoxClicked"
+            android:text="@string/vrai"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="409dp" />
 
-    <Button
-        android:id="@+id/retour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/checkAnswer3"
-        android:layout_centerVertical="false"
-        android:layout_marginLeft="180dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/gradient"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        android:fontFamily="@font/montserrat_alternates"
-        android:text="@string/jouer" />
+        <EditText
+            android:id="@+id/answer3"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkAnswer2"
+            android:autofillHints="username"
+            android:fontFamily="@font/montserrat_alternates"
+            android:inputType="textAutoCorrect"
+            android:visibility="visible" />
 
+        <CheckBox
+            android:id="@+id/checkAnswer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/answer3"
+            android:checked="false"
+            android:fontFamily="@font/montserrat_alternates"
+            android:onClick="onCheckBoxClicked"
+            android:text="@string/vrai"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="409dp" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/validate"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkAnswer3"
+            android:layout_centerVertical="false"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gradient"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="@string/terminate"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/retour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/checkAnswer3"
+            android:layout_centerVertical="false"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/gradient"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="@string/jouer"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</ScrollView>
