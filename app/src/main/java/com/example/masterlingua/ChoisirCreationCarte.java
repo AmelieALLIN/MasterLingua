@@ -17,6 +17,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
     List<Carte> idcarte = new ArrayList<>();
     Carte carte;
     int score=0;
+    boolean jouer=false;
 
 
     @Override
@@ -73,6 +74,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             bundle.putSerializable("carte", carte);
             bundle.putSerializable("liste", (Serializable) cartes);
             bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
             jouerCarteT.putExtras(bundle);
             startActivity(jouerCarteT);
             finish();
@@ -86,6 +88,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             bundle.putSerializable("carte", carte);
             bundle.putSerializable("liste", (Serializable) cartes);
             bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
@@ -98,6 +101,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             bundle.putSerializable("carte", carte);
             bundle.putSerializable("liste", (Serializable) cartes);
             bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();

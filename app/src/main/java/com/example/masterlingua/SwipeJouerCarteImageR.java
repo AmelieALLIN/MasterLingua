@@ -35,7 +35,7 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
     List<Carte> cartes;
     LinearLayout layout;
     static int score;
-    boolean jouer=false;
+    static boolean jouer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
         String idc = carte.getIdCarte();
         cartes= (List<Carte>) bundle.getSerializable("liste");
         score=bundle.getInt("score");
+        jouer=bundle.getBoolean("jouer");
 
         List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
         for(int n=0; n<quest.size();n++){
@@ -115,7 +116,7 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
             public void onSwipeLeft() {
                 super.onSwipeLeft();
                 if(cartes.size()==1){
-                    if(!jouer){
+                    if(jouer==true){
                         Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
                         fin();}
 
@@ -132,7 +133,7 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
             public void onSwipeUp(){
                 super.onSwipeUp();
 
-                if(!jouer){
+                if(jouer==true){
                     Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
                     fin();}
 
@@ -152,6 +153,7 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
             bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
@@ -162,6 +164,7 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
             bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
@@ -171,6 +174,7 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
             bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
