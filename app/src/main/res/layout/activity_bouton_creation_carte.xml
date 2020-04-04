@@ -39,80 +39,130 @@
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/buttonListCarte"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/goCreerCarte"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:background="@drawable/gradient"
-        android:fontFamily="@font/montserrat_alternates"
-        android:gravity="center|clip_vertical|center_horizontal"
-        android:onClick="AfficherListe"
-        android:text="Afficher Liste Carte"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FFFFFF"
-        android:textSize="26sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="500dp" />
+        android:layout_height="94dp"
+        android:layout_below="@+id/goCreerCarte">
 
-    <Button
-        android:id="@+id/buttonCreationDeck"
+        <ImageView
+            android:id="@+id/imageListCarte"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="14dp"
+            android:background="@android:drawable/ic_menu_view"
+            android:outlineAmbientShadowColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/buttonListCarte"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/gradient"
+            android:fontFamily="@font/montserrat_alternates"
+            android:gravity="center|clip_vertical|center_horizontal"
+            android:onClick="AfficherListe"
+            android:text="Cartes"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="500dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/buttonListCarte"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:background="@drawable/gradient"
-        android:fontFamily="@font/montserrat_alternates"
-        android:gravity="center|center_horizontal"
-        android:onClick="CreationDeck"
-        android:text="Créer un deck"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FFFFFF"
-        android:textSize="26sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="500dp" />
+        android:layout_height="94dp"
+        android:layout_below="@+id/buttonListCarte">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/imageCreationDeck"
+            android:layout_marginTop="14dp"
+            android:foreground="@android:drawable/ic_menu_add"
+            android:outlineAmbientShadowColor="#FFFFFF"/>
 
-    <Button
-        android:id="@+id/buttonListDeck"
+        <Button
+            android:id="@+id/buttonCreationDeck"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/gradient"
+            android:fontFamily="@font/montserrat_alternates"
+            android:gravity="center|center_horizontal"
+            android:onClick="CreationDeck"
+            android:text="Créer un deck"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="500dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/buttonCreationDeck"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:background="@drawable/gradient"
-        android:fontFamily="@font/montserrat_alternates"
-        android:gravity="center|center_horizontal"
-        android:onClick="AfficherListeDeck"
-        android:text="Afficher Liste Deck"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FFFFFF"
-        android:textSize="26sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="500dp" />
+        android:layout_height="94dp"
+        android:layout_below="@+id/buttonCreationDeck">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/imageListDeck"
+            android:layout_marginTop="14dp"
+            android:background="@android:drawable/ic_menu_view"
+            android:outlineAmbientShadowColor="#FFFFFF"/>
 
+        <Button
+            android:id="@+id/buttonListDeck"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/gradient"
+            android:fontFamily="@font/montserrat_alternates"
+            android:gravity="center|center_horizontal"
+            android:onClick="AfficherListeDeck"
+            android:text="Deck"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="500dp" />
 
-    <Button
-        android:id="@+id/button2"
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/buttonListDeck"
-        android:layout_marginTop="14dp"
-        android:background="@drawable/gradient"
-        android:fontFamily="@font/montserrat_alternates"
-        android:gravity="center|center_horizontal"
-        android:onClick="afficherListeQuestionImage"
-        android:text="Afficher Liste Images"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="#FFFFFF"
-        android:textSize="26sp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="500dp" />
+        android:layout_height="94dp"
+        android:layout_below="@+id/buttonListDeck">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/imageButton2"
+            android:layout_marginTop="14dp"
+            android:background="@android:drawable/ic_menu_view"
+            android:outlineAmbientShadowColor="#FFFFFF"/>
 
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/gradient"
+            android:fontFamily="@font/montserrat_alternates"
+            android:gravity="center|center_horizontal"
+            android:onClick="afficherListeQuestionImage"
+            android:text="Cartes images"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="79dp"
+            tools:layout_editor_absoluteY="500dp" />
+
+    </RelativeLayout>
 </LinearLayout>
