@@ -42,6 +42,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
     String img1;
     String img2;
     String img3;
+    String type="rimage";
 
 
     @Override
@@ -61,35 +62,35 @@ public class CreerCarteReponseImage extends AppCompatActivity {
         Button importer3 = findViewById(R.id.buttonimage3);
 
         importer1.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                            taille = taille++;
-                                            x=1;
-                                            image[0]=true;
-                                            Intent intent1=new Intent(Intent.ACTION_GET_CONTENT);
-                                            Bundle bundle = new Bundle();
-                                            bundle.putSerializable("image3", x);
-                                            intent1.putExtras(bundle);
-                                            intent1.setType("image/*");
-                                            startActivityForResult(Intent.createChooser(intent1,"image1"),1);
-                                        }
-                                    }
+                                         @Override
+                                         public void onClick(View v) {
+                                             taille = taille++;
+                                             x=1;
+                                             image[0]=true;
+                                             Intent intent1=new Intent(Intent.ACTION_GET_CONTENT);
+                                             Bundle bundle = new Bundle();
+                                             bundle.putSerializable("image3", x);
+                                             intent1.putExtras(bundle);
+                                             intent1.setType("image/*");
+                                             startActivityForResult(Intent.createChooser(intent1,"image1"),1);
+                                         }
+                                     }
         );
 
         importer2.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-                                                  taille = taille++;
-                                                  x=2;
-                                                  image[1]=true;
-                                                  Intent intent2=new Intent(Intent.ACTION_GET_CONTENT);
-                                                  Bundle bundle = new Bundle();
-                                                  bundle.putSerializable("image3", x);
-                                                  intent2.putExtras(bundle);
-                                                  intent2.setType("image/*");
-                                                  startActivityForResult(Intent.createChooser(intent2,"image2"),1);
-                                              }
-                                          }
+                                         @Override
+                                         public void onClick(View v) {
+                                             taille = taille++;
+                                             x=2;
+                                             image[1]=true;
+                                             Intent intent2=new Intent(Intent.ACTION_GET_CONTENT);
+                                             Bundle bundle = new Bundle();
+                                             bundle.putSerializable("image3", x);
+                                             intent2.putExtras(bundle);
+                                             intent2.setType("image/*");
+                                             startActivityForResult(Intent.createChooser(intent2,"image2"),1);
+                                         }
+                                     }
         );
 
         importer3.setOnClickListener(new View.OnClickListener() {
@@ -147,21 +148,23 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < brep.length; i++) {
                         idrep = UUID.randomUUID().toString();
                         //si la rep a ete initialise on prend son tableau de byte
                         if((image[i]==true)&&(i==0)){
                             bytee = img1;
-                        }
-                        if((image[i]==true)&&(i==1)){
-                            bytee = img2;
-                        }
-                        if((image[i]==true)&&(i==2)){
-                            bytee = img3;
                         } else {
-                            bytee = null;
+                            if((image[i]==true)&&(i==1)){
+                                bytee = img2;
+                            } else {
+                                if((image[i]==true)&&(i==2)){
+                                    bytee = img3;
+                                } else {
+                                    bytee = null;
+                                }
+                            }
                         }
                         if (brep[i] == true) {
                             br = true;
@@ -169,10 +172,11 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         else {
                             br = false;
                         }
-                        System.out.println("OOOOOOOOOOOOOOOOOOOO string = "+bytee);
-                        ReponseImage reponse = new ReponseImage(idrep,idcarte,br,bytee);
-                        System.out.println(" IDDDDDD carte = "+reponse.getIdCarte());
-                        reponse.save();
+                        if(bytee!=null){
+                            ReponseImage reponse = new ReponseImage(idrep,idcarte,br,bytee);
+                            reponse.save();
+                        }
+
                     }
                     carte.save();
                     quest.save();
@@ -234,21 +238,23 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < brep.length; i++) {
                         idrep = UUID.randomUUID().toString();
                         //si la rep a ete initialise on prend son tableau de byte
                         if((image[i]==true)&&(i==0)){
                             bytee = img1;
-                        }
-                        if((image[i]==true)&&(i==1)){
-                            bytee = img2;
-                        }
-                        if((image[i]==true)&&(i==2)){
-                            bytee = img3;
                         } else {
-                            bytee = null;
+                            if((image[i]==true)&&(i==1)){
+                                bytee = img2;
+                            } else {
+                                if((image[i]==true)&&(i==2)){
+                                    bytee = img3;
+                                } else {
+                                    bytee = null;
+                                }
+                            }
                         }
                         if (brep[i] == true) {
                             br = true;

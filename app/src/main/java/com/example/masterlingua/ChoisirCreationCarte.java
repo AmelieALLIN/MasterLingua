@@ -30,13 +30,22 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void AfficherListeDeck(View view) {
+    public void afficherListeDeck(View view) {
         Intent intent = new Intent(this,AfficherListeDeck.class);
         startActivity(intent);
     }
 
-    public void CreationDeck(View view) {
+    public void creationDeck(View view) {
         Intent intent = new Intent(this,CreerDeck.class);
         startActivity(intent);
     }
+
+
+    public void goswipe(View view) {
+        Intent intent = new Intent(this,SwipeListeCarte.class);
+        startActivity(intent);
+    }
+
+
+
 }

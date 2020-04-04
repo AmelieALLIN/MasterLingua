@@ -34,6 +34,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
     Context context = this;
     byte[]b;
     String img;
+    String type="qimage";
 
 
     @Override
@@ -106,7 +107,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
 
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
@@ -194,7 +195,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                         QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();

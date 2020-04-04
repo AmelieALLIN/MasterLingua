@@ -17,6 +17,7 @@
         <activity android:name=".JouerDeck" />
         <activity android:name=".AfficherListe" />
         <activity android:name=".ChoisirCreationCarte">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,6 +26,8 @@
         </activity>
         <activity android:name=".CreerCarte" />
         <activity android:name=".AfficherCarte" />
+        <activity android:name=".AfficherCarteTexte" />
+
         <activity android:name=".AfficherDeck" />
         <activity android:name=".AfficherListeDeck" />
         <activity android:name=".JouerCarte" />
@@ -33,6 +36,11 @@
         <activity android:name=".AfficherListeQuestionImage" />
         <activity android:name=".AfficherDeckQuestionImage" />
         <activity android:name=".JouerQuestionImage1" />
+        <activity android:name=".SwipeListeCarte"/>
+        <activity android:name=".AfficherCarteQuestionImage"/>
+        <activity android:name=".AfficherCarteReponsesImage"/>
+
+
 
         <meta-data
             android:name="VERSION"

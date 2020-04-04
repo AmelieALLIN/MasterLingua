@@ -2,7 +2,9 @@ package com.example.masterlingua;
 
 import com.orm.SugarRecord;
 
-public class QuestionText extends SugarRecord implements Question{
+import java.io.Serializable;
+
+public class QuestionText extends SugarRecord implements Question {
     private String idquestion;
     private String nomquestion;
     private String idcarte;
