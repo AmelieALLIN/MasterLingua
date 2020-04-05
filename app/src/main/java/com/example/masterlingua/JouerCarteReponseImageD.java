@@ -33,15 +33,17 @@ public class JouerCarteReponseImageD extends AppCompatActivity {
     TextView question;
     Bitmap bmp;
     int ind_br;
+    byte[]b;
     Context context = this;
     int duration = Toast.LENGTH_SHORT;
     private int scorecarte;
+    int scorec;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jouer_carte_reponse_image);
+        setContentView(R.layout.activity_jouer_carte_reponse_imaged);
         question = findViewById(R.id.question);
 
         listeReponse = (GridView) findViewById(R.id.gridRep);

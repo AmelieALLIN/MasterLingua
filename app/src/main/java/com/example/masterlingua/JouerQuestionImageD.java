@@ -15,11 +15,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +35,7 @@ public class JouerQuestionImageD extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jouer_question_image);
+        setContentView(R.layout.activity_jouer_question_imaged);
         reps = (ListView) findViewById(R.id.list);
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
@@ -63,7 +60,10 @@ public class JouerQuestionImageD extends AppCompatActivity {
         }
 
         List<QuestionImage> quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
+        System.out.println("idcarte = "+idc);
         for(int n=0; n<quest.size();n++){
+            System.out.println("id carte = "+quest.get(n).getIdCarte());
+            System.out.println("id carte = "+quest.get(n).getImage());
             byte[] encodeByte = android.util.Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
             Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
             question.setImageBitmap(bmp);
@@ -138,3 +138,4 @@ public class JouerQuestionImageD extends AppCompatActivity {
         }, 2000);
     }
 }
+

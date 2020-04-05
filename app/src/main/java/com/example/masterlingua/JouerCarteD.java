@@ -1,11 +1,8 @@
 package com.example.masterlingua;
-
 import android.content.Context;
-//import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-//import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,7 +34,7 @@ public class JouerCarteD extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.carte);
+        setContentView(R.layout.carted);
         reps = (ListView) findViewById(R.id.list);
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
