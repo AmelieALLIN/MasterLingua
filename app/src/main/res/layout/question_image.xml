@@ -63,7 +63,7 @@
             android:layout_below="@+id/ajouterReponse"
             android:layout_marginTop="0dp"
             android:autofillHints="username"
-            android:inputType="textAutoCorrect"
+            android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
             android:visibility="visible" />
 
         <CheckBox
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkAnswer1"
             android:autofillHints="username"
-            android:inputType="textAutoCorrect"
+            android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
             android:visibility="visible" />
 
         <CheckBox
@@ -108,7 +108,7 @@
             android:layout_below="@+id/checkAnswer2"
             android:layout_marginTop="0dp"
             android:autofillHints="username"
-            android:inputType="textAutoCorrect"
+            android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
             android:visibility="visible" />
 
         <CheckBox

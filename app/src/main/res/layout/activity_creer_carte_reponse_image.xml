@@ -6,9 +6,7 @@
     android:layout_centerVertical="true"
     android:fillViewport="true">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
@@ -45,7 +43,7 @@
             android:layout_below="@+id/question"
             android:layout_alignParentRight="true"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="130dp"
+            android:layout_marginRight="75dp"
             android:fontFamily="@font/montserrat_alternates"
             android:onClick="importerImage1"
             android:text="@string/importer"
@@ -79,7 +77,7 @@
             android:layout_below="@+id/checkAnswer1"
             android:layout_alignParentRight="true"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="130dp"
+            android:layout_marginRight="75dp"
             android:fontFamily="@font/montserrat_alternates"
             android:onClick="importerImage2"
             android:text="@string/importer" />
@@ -112,7 +110,7 @@
             android:layout_below="@+id/checkAnswer2"
             android:layout_alignParentRight="true"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="130dp"
+            android:layout_marginRight="75dp"
             android:fontFamily="@font/montserrat_alternates"
             android:onClick="importerImage3"
             android:text="@string/importer" />

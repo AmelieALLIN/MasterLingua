@@ -137,7 +137,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="114dp"
+        android:layout_height="119dp"
         android:layout_below="@+id/buttonListDeck">
         <ImageView
             android:layout_width="80dp"
@@ -150,7 +150,7 @@
         <Button
             android:id="@+id/button2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="105dp"
             android:layout_marginTop="14dp"
             android:background="@drawable/gradient"
             android:fontFamily="@font/montserrat_alternates"
@@ -163,6 +163,5 @@
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="79dp"
             tools:layout_editor_absoluteY="500dp" />
-
     </RelativeLayout>
 </LinearLayout>

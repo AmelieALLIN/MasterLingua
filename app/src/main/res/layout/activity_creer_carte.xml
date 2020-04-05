@@ -6,8 +6,7 @@
     android:layout_centerVertical="true"
     android:fillViewport="true">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
@@ -23,7 +22,6 @@
             android:fontFamily="@font/montserrat_alternates"
             android:text="@string/page_creation_card"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textColor="#FFFFFF"
             android:textSize="18sp" />
 
         <EditText
@@ -100,7 +98,7 @@
             android:layout_below="@+id/checkAnswer2"
             android:autofillHints="username"
             android:fontFamily="@font/montserrat_alternates"
-            android:inputType="textAutoCorrect"
+            android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
             android:visibility="visible" />
 
         <CheckBox
@@ -117,7 +115,7 @@
             tools:layout_editor_absoluteY="409dp" />
 
         <Button
-            android:id="@+id/validate"
+            android:id="@+id/retour"
             android:layout_width="145dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkAnswer3"
@@ -131,7 +129,7 @@
             android:textSize="14sp" />
 
         <Button
-            android:id="@+id/retour"
+            android:id="@+id/validate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/checkAnswer3"

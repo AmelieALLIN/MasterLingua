@@ -10,10 +10,10 @@
         android:id="@+id/nom_deck"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Deck"
         android:autofillHints="username"
+        android:fontFamily="@font/montserrat_alternates"
         android:hint="@string/nomDeck"
-        android:inputType="textAutoCorrect"
+        android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
         android:visibility="visible" />
 
     <ListView
@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentStart="true"
+        android:fontFamily="@font/montserrat_alternates"
         android:layout_marginStart="0dp"
         android:layout_marginTop="21dp" />
 </RelativeLayout>
