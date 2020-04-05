@@ -17,7 +17,6 @@ public class AfficherListeDeck extends AppCompatActivity {
     List<Deck> decks = Deck.listAll(Deck.class);
     List<String> nom_deck = new ArrayList<>();
     List<Deck> deckfindid = new ArrayList<>();
-    int count=0;
     Deck deck;
 
 
@@ -26,26 +25,26 @@ public class AfficherListeDeck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affiche_listedeck);
 
-        DeckListView = (ListView) findViewById(R.id.myListViewDeck);
+        DeckListView = findViewById(R.id.myListViewDeck);
 
         for (int i = 0; i < decks.size(); i++) {
             nom_deck.add(decks.get(i).getNom_deck());
-            System.out.println(" LAAAAA = "+decks.get(i).getNom_deck());
+            System.out.println(" LAAAAA = " + decks.get(i).getNom_deck());
             System.out.println("LLAAAAAA nom deck = "+nom_deck.get(i));
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, nom_deck);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nom_deck);
         DeckListView.setAdapter(adapter);
 
         DeckListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String nomd = (String) DeckListView.getItemAtPosition(position).toString();
+                String nomd = (String) DeckListView.getItemAtPosition(position);
                 deckfindid = Deck.find(Deck.class, "nomdeck = ?", nomd);
                 for(int i=0;i<deckfindid.size();i++){
                     deck = deckfindid.get(i);
                 }
-                Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                Intent afficherDeck = new Intent(getApplicationContext(), JouerDeck3Type.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("deck", deck);
                 afficherDeck.putExtras(bundle);

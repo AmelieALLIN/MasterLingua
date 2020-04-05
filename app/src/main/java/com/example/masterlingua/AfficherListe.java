@@ -24,7 +24,6 @@ public class AfficherListe extends AppCompatActivity {
     List<Carte> idcarte = new ArrayList<>();
     ArrayList<Carte> l = new ArrayList<>();
     Carte carte;
-    int count=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +53,30 @@ public class AfficherListe extends AppCompatActivity {
                 {
                     carte = idcarte.get(n);
                 }
-                Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarte.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("carte", carte);
-                jouerCarte.putExtras(bundle);
-                startActivity(jouerCarte);
-                finish();
+
+                //System.out.println(carte.getType());
+                //System.out.println(carte.getIdCarte());
+                if(carte.getType().equals("texte")){
+                    System.out.println(carte.getType());
+                    Intent jouerCarteT = new Intent(getApplicationContext(), AfficherCarte.class );
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("carte", carte);
+                    jouerCarteT.putExtras(bundle);
+                    startActivity(jouerCarteT);
+                    finish();
+                }
+
+               else if(carte.getType().equals("rimage")){
+                  System.out.println(carte.getType());
+                    Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class );
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("carte", carte);
+                    jouerCarte.putExtras(bundle);
+                    startActivity(jouerCarte);
+                    finish();
+                }
+
+
             }
         });
     }

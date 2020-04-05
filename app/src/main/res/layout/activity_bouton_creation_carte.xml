@@ -61,8 +61,8 @@
             android:background="@drawable/gradientwithoutcorner"
             android:fontFamily="@font/montserrat_alternates"
             android:gravity="center|clip_vertical|center_horizontal"
-            android:onClick="AfficherListe"
-            android:text="@string/cartes"
+            android:onClick="listeCartes"
+            android:text="@string/list_created_cards"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#FFFFFF"
             android:textSize="26sp"
@@ -92,7 +92,7 @@
             android:background="@drawable/gradientwithoutcorner"
             android:fontFamily="@font/montserrat_alternates"
             android:gravity="center|center_horizontal"
-            android:onClick="CreationDeck"
+            android:onClick="creationDeck"
             android:text="@string/creation_deck"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#FFFFFF"
@@ -124,7 +124,7 @@
             android:background="@drawable/gradientwithoutcorner"
             android:fontFamily="@font/montserrat_alternates"
             android:gravity="center|center_horizontal"
-            android:onClick="AfficherListeDeck"
+            android:onClick="afficherListeDeck"
             android:text="@string/deck"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             android:textColor="#FFFFFF"
@@ -164,4 +164,19 @@
             tools:layout_editor_absoluteX="79dp"
             tools:layout_editor_absoluteY="500dp" />
     </RelativeLayout>
+    <Button
+        android:id="@+id/swipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:gravity="center_horizontal"
+        android:onClick="goswipe"
+        android:text="Créer deck"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="500dp" />
+
 </LinearLayout>

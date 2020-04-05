@@ -28,18 +28,23 @@
         <activity android:name=".ChoisirCreationCarte"/>
         <activity android:name=".CreerCarte" />
         <activity android:name=".AfficherCarte" />
+        <activity android:name=".AfficherCarteTexte" />
         <activity android:name=".AfficherDeck" />
         <activity android:name=".AfficherListeDeck" />
         <activity android:name=".JouerCarte" />
+        <activity android:name=".JouerCarteD" />
         <activity android:name=".CreerCarteQuestionImage" />
         <activity android:name=".JouerQuestionImage" />
         <activity android:name=".AfficherListeQuestionImage" />
         <activity android:name=".AfficherDeckQuestionImage" />
         <activity android:name=".JouerQuestionImage1" />
+        <activity android:name=".SwipeListeCarte" />
+        <activity android:name=".AfficherCarteQuestionImage" />
+        <activity android:name=".AfficherCarteReponsesImage" />
 
         <meta-data
             android:name="VERSION"
-            android:value="11" />
+            android:value="15" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />

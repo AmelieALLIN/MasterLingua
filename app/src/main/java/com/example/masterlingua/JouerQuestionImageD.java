@@ -15,15 +15,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class JouerQuestionImage1 extends AppCompatActivity {
+public class JouerQuestionImageD extends AppCompatActivity {
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
@@ -38,7 +35,7 @@ public class JouerQuestionImage1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.jouer_question_image);
+        setContentView(R.layout.activity_jouer_question_imaged);
         reps = (ListView) findViewById(R.id.list);
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
@@ -63,9 +60,14 @@ public class JouerQuestionImage1 extends AppCompatActivity {
         }
 
         List<QuestionImage> quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
+        System.out.println("idcarte = "+idc);
         for(int n=0; n<quest.size();n++){
+            System.out.println("id carte = "+quest.get(n).getIdCarte());
+            System.out.println("id carte = "+quest.get(n).getImage());
             byte[] encodeByte = android.util.Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
+            System.out.println("encode = "+encodeByte);
             Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+            System.out.println("bmp = "+bmp);
             question.setImageBitmap(bmp);
         }
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
@@ -128,9 +130,9 @@ public class JouerQuestionImage1 extends AppCompatActivity {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(JouerQuestionImage1.this, AfficherDeckQuestionImage.class);
-                retour.putExtra("score",scorecarte);
-                startActivity(retour);
+                {Intent retour = new Intent(JouerQuestionImageD.this, JouerDeck3Type.class);
+                    retour.putExtra("score",scorecarte);
+                    startActivity(retour);
                     finish();
                 }
 
