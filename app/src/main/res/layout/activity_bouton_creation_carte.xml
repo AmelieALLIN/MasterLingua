@@ -28,11 +28,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:gravity="center_horizontal"
-        android:onClick="AfficherListe"
+        android:onClick="listeCartes"
         android:text="@string/list_created_cards"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#000000"
-        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="500dp" />
@@ -45,7 +43,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:gravity="center_horizontal"
-        android:onClick="CreationDeck"
+        android:onClick="creationDeck"
         android:text="Créer un deck"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:ignore="MissingConstraints"
@@ -60,7 +58,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
         android:gravity="center_horizontal"
-        android:onClick="AfficherListeDeck"
+        android:onClick="afficherListeDeck"
         android:text="Afficher Liste Deck"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         tools:ignore="MissingConstraints"
@@ -82,5 +80,24 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="79dp"
         tools:layout_editor_absoluteY="500dp" />
+
+
+
+    <Button
+        android:id="@+id/swipe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:gravity="center_horizontal"
+        android:onClick="goswipe"
+        android:text="Créer deck"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="500dp" />
+
+
 
 </RelativeLayout>
