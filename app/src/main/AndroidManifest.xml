@@ -35,6 +35,7 @@
         <activity android:name=".AfficherDeck" />
         <activity android:name=".AfficherListeDeck" />
         <activity android:name=".JouerCarte" />
+        <activity android:name=".JouerCarteD" />
         <activity android:name=".CreerCarteQuestionImage" />
         <activity android:name=".JouerQuestionImage" />
         <activity android:name=".AfficherListeQuestionImage" />

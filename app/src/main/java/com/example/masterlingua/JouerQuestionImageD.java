@@ -65,7 +65,9 @@ public class JouerQuestionImageD extends AppCompatActivity {
             System.out.println("id carte = "+quest.get(n).getIdCarte());
             System.out.println("id carte = "+quest.get(n).getImage());
             byte[] encodeByte = android.util.Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
+            System.out.println("encode = "+encodeByte);
             Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+            System.out.println("bmp = "+bmp);
             question.setImageBitmap(bmp);
         }
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);

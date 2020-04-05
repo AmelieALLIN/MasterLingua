@@ -28,13 +28,13 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
 
     private CheckBox checkAnswer1, checkAnswer2, checkAnswer3;
     private List<String> answers;
+    private String type="qimage";
     ImageView image;
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
     byte[]b;
     String img;
-    String type="qimage";
     int ok=0;
 
 
@@ -164,7 +164,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                    if (ok==0) {
+                if (ok==0) {
                     CharSequence text = getText(R.string.warning_question);
                     int duration = Toast.LENGTH_SHORT;
 
@@ -198,7 +198,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
 
                     System.out.println(" LAAAAAAAAA   ok1");
                     carte = new Carte(idcarte,type);
-                        QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
+                    QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
                         if (answers.get(i) == bonneReponse) {
@@ -213,6 +213,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                         reponse.save();
                     }
                     carte.save();
+                    System.out.println("--------------------------------------------------------------Type.imagetext--"+carte.getIdCarte());
                     quest.save();
                     Toast.makeText(context, text, duration).show();
 
@@ -289,4 +290,3 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
     }
 
 }
-
