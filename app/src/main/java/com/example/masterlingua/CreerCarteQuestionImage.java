@@ -35,7 +35,6 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
     Context context = this;
     byte[]b;
     String img;
-    String type="qimage";
     int ok=0;
 
 
@@ -214,7 +213,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                         reponse.save();
                     }
                     carte.save();
-                    System.out.println("--------------------------------------------------------------QImage--"+carte.getIdCarte());
+                    System.out.println("--------------------------------------------------------------Type.imagetext--"+carte.getIdCarte());
                     quest.save();
                     Toast.makeText(context, text, duration).show();
 

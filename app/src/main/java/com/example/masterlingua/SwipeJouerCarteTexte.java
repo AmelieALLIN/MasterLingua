@@ -159,7 +159,7 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
             startActivity(jouerCarte);
             finish();
 
-        } else if (carte.getType().equals("rimage")) {
+        } else if (carte.getType().equals("Type.textimage")) {
             Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageR.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
@@ -169,7 +169,7 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
-        } else if (carte.getType().equals("qimage")) {
+        } else if (carte.getType().equals("Type.imagetext")) {
             Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageQ.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));

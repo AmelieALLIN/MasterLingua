@@ -132,7 +132,7 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
             startActivity(jouerCarte);
             finish();
 
-        } else if (carte.getType().equals("rimage")) {
+        } else if (carte.getType().equals("Type.textimage")) {
             Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
@@ -142,7 +142,7 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
-        } else if (carte.getType().equals("qimage")) {
+        } else if (carte.getType().equals("Type.imagetext")) {
             Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionImage.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));

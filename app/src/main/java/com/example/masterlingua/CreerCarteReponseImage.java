@@ -43,7 +43,6 @@ public class CreerCarteReponseImage extends AppCompatActivity {
     String img1;
     String img2;
     String img3;
-    String type="rimage";
 
 
     @Override
@@ -268,7 +267,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
                         reponse.save();
                     }
                     carte.save();
-                    System.out.println("--------------------------------------------------------------RImage--"+carte.getIdCarte());
+                    System.out.println("--------------------------------------------------------------Type.textimage--"+carte.getIdCarte());
                     quest.save();
                     Toast.makeText(context, text, duration).show();
 

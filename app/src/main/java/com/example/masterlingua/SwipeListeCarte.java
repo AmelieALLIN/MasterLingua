@@ -57,7 +57,7 @@ public class SwipeListeCarte extends AppCompatActivity {
                 deck = new Deck(iddeck,nom.getText().toString());
                 deck.save();
 
-                if(carte.getType().equals("texte")){
+                if(carte.getType().equals(Type.texttext)){
                     System.out.println(carte.getType());
                     Intent jouerCarteT = new Intent(getApplicationContext(), AfficherCarteTexte.class );
                     Bundle bundle = new Bundle();
@@ -71,7 +71,7 @@ public class SwipeListeCarte extends AppCompatActivity {
 
                 }
 
-                else if(carte.getType().equals("rimage")){
+                else if(carte.getType().equals(Type.textimage)){
                     System.out.println(carte.getType());
                     Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class );
                     Bundle bundle = new Bundle();
@@ -84,7 +84,7 @@ public class SwipeListeCarte extends AppCompatActivity {
                     finish();
                 }
 
-                else if(carte.getType().equals("qimage")){
+                else if(carte.getType().equals(Type.imagetext)){
                     System.out.println(carte.getType());
                     Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionImage.class );
                     Bundle bundle = new Bundle();

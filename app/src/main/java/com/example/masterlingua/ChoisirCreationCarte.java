@@ -54,7 +54,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
     }
 
     public void DeckMultpile(View view) {
-        String id_deck = UUID.randomUUID().toString();
+        /*String id_deck = UUID.randomUUID().toString();
         String nomdeck = "Deck1";
         Deck deck = new Deck(id_deck,nomdeck);
         deck.save();
@@ -81,7 +81,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         Bundle jouerdeck = new Bundle();
         jouerdeck.putSerializable("deck", deck);
         afficher.putExtras(jouerdeck);
-        startActivity(afficher);
+        startActivity(afficher);*/
     }
 
     public void goswipe(View view) {
@@ -96,7 +96,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             carte = cartes.get(0);
         }
 
-        if (carte.getType().equals("texte")) {
+        if (carte.getType().equals(Type.texttext)) {
             System.out.println(carte.getType());
             Intent jouerCarteT = new Intent(getApplicationContext(), SwipeJouerCarteTexte.class);
             Bundle bundle = new Bundle();
@@ -108,7 +108,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             startActivity(jouerCarteT);
             finish();
 
-        } else if (carte.getType().equals("rimage")) {
+        } else if (carte.getType().equals(Type.textimage)) {
             System.out.println(carte.getType());
             Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageR.class);
             Bundle bundle = new Bundle();
@@ -119,7 +119,7 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
-        } else if (carte.getType().equals("qimage")) {
+        } else if (carte.getType().equals(Type.imagetext)) {
             System.out.println(carte.getType());
             Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageQ.class);
             Bundle bundle = new Bundle();

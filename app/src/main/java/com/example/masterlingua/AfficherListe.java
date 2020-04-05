@@ -66,7 +66,7 @@ public class AfficherListe extends AppCompatActivity {
                     finish();
                 }
 
-               else if(carte.getType().equals("rimage")){
+               else if(carte.getType().equals("Type.textimage")){
                   System.out.println(carte.getType());
                     Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class );
                     Bundle bundle = new Bundle();
