@@ -24,11 +24,11 @@
     // du coup en français ici aussi
     <string name="jouer">Jouer</string>
     <string name="terminate">Sauvegarder</string>
-    <string name="importer">Importer</string>
+    <string name="importer">Importer (JPEG)</string>
     <string name="nomDeck">Nom du deck</string>
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="warning_good_answer">Une seule réponse peut être correcte</string>
     <string name="card_created">Votre carte a bien été créée</string>
     <string name="carte">Carte</string>
-    <string name="importerQuestionImage">Importer ce que vous voulez faire deviner</string>
+    <string name="importerQuestionImage">Importer ce que vous voulez faire deviner (JPEG)</string>
 </resources>
