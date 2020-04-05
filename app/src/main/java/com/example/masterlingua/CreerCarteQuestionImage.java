@@ -28,12 +28,14 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
 
     private CheckBox checkAnswer1, checkAnswer2, checkAnswer3;
     private List<String> answers;
+    private String type="qimage";
     ImageView image;
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
     byte[]b;
     String img;
+    int ok=0;
 
 
     @Override
@@ -106,7 +108,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
 
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
@@ -162,10 +164,11 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                    if (image.getWidth()==0) {
+                if (ok==0) {
                     CharSequence text = getText(R.string.warning_question);
                     int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context, text, duration).show();
+
+                    Toast.makeText(context, "Veuillez insérer une image jpg et deux réponses minimum", duration).show();
                 }
                 else {
                     //String bonneReponse = "";
@@ -194,8 +197,8 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
-                        QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
+                    carte = new Carte(idcarte,type);
+                    QuestionImage quest = new QuestionImage(idquestion,img,idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
                         if (answers.get(i) == bonneReponse) {
@@ -210,6 +213,7 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                         reponse.save();
                     }
                     carte.save();
+                    System.out.println("--------------------------------------------------------------Type.imagetext--"+carte.getIdCarte());
                     quest.save();
                     Toast.makeText(context, text, duration).show();
 
@@ -225,12 +229,6 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
         });
     }
 
-   /* public void importerInmage(View view){
-
-        Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent,"image"),1);
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
@@ -243,6 +241,8 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 b = baos.toByteArray();
                 img=Base64.encodeToString(b, Base64.DEFAULT);
+                ok=1;
+
 
 
             } catch (FileNotFoundException e) {
@@ -290,4 +290,3 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
     }
 
 }
-

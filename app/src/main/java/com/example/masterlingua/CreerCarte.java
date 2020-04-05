@@ -24,6 +24,7 @@ public class CreerCarte extends AppCompatActivity {
     String bonneReponse;
     private boolean b1, b2, b3;
     Context context = this;
+    String type="texte";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class CreerCarte extends AppCompatActivity {
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
 
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
@@ -167,7 +168,7 @@ public class CreerCarte extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte);
+                    carte = new Carte(idcarte,type);
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();

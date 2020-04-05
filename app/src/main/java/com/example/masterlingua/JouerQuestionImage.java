@@ -54,11 +54,7 @@ public class JouerQuestionImage extends AppCompatActivity {
         {
             nom_rep.add(reponses.get(i).getNom());
         }
-        /*if(!reponses.isEmpty()) {
-            for (int i = 0; i<carte.getReponses().size(); i++){
-                reponses.add(carte.getReponses().get(i));
-            }
-        }*/
+
         for(int y=0;y<reponses.size();y++){
             if(reponses.get(y).getbr() == true){
                 ok = reponses.get(y).getNom();
