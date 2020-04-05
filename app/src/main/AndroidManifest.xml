@@ -13,6 +13,9 @@
         <activity android:name=".JouerCarteReponseImageD"></activity>
         <activity android:name=".JouerDeck3Type" />
         <activity android:name=".MenuCreationCarte" />
+        <activity android:name=".SwipeJouerCarteImageR"></activity>
+        <activity android:name=".SwipeJouerCarteImageQ" />
+        <activity android:name=".SwipeJouerCarteTexte" />
         <activity android:name=".JouerCarteReponseImage" />
         <activity android:name=".CreerCarteReponseImage" />
         <activity android:name=".CreerDeck" />
@@ -27,6 +30,7 @@
         </activity>
         <activity android:name=".CreerCarte" />
         <activity android:name=".AfficherCarte" />
+        <activity android:name=".AfficherCarteTexte" />
         <activity android:name=".AfficherDeck" />
         <activity android:name=".AfficherListeDeck" />
         <activity android:name=".JouerCarte" />
@@ -35,6 +39,9 @@
         <activity android:name=".AfficherListeQuestionImage" />
         <activity android:name=".AfficherDeckQuestionImage" />
         <activity android:name=".JouerQuestionImage1" />
+        <activity android:name=".SwipeListeCarte" />
+        <activity android:name=".AfficherCarteQuestionImage" />
+        <activity android:name=".AfficherCarteReponsesImage" />
 
         <meta-data
             android:name="VERSION"

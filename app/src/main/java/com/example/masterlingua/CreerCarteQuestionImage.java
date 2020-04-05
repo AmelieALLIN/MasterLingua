@@ -35,6 +35,8 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
     Context context = this;
     byte[]b;
     String img;
+    String type="qimage";
+    int ok=0;
 
 
     @Override
@@ -163,10 +165,11 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                    if (image.getWidth()==0) {
+                    if (ok==0) {
                     CharSequence text = getText(R.string.warning_question);
                     int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context, text, duration).show();
+
+                    Toast.makeText(context, "Veuillez insérer une image jpg et deux réponses minimum", duration).show();
                 }
                 else {
                     //String bonneReponse = "";
@@ -227,12 +230,6 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
         });
     }
 
-   /* public void importerInmage(View view){
-
-        Intent intent=new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
-        startActivityForResult(Intent.createChooser(intent,"image"),1);
-    }*/
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
@@ -245,6 +242,8 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 b = baos.toByteArray();
                 img=Base64.encodeToString(b, Base64.DEFAULT);
+                ok=1;
+
 
 
             } catch (FileNotFoundException e) {

@@ -9,18 +9,17 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Base64;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,13 +65,15 @@ public class JouerCarteReponseImage extends AppCompatActivity {
 
         rep = ReponseImage.find(ReponseImage.class,"idcarte = ?", idc);
         for(int n=0; n<rep.size();n++){
-            if(rep.get(n).getBr()==true)
-            {
-                ind_br = n;
+            if(rep.get(n).getImage()!=null){
+                if(rep.get(n).getBr()==true)
+                {
+                    ind_br = n;
+                }
+                byte[] encodeByte = Base64.decode(rep.get(n).getImage(), Base64.DEFAULT);
+                bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+                repImage.add(bmp);
             }
-            byte[] encodeByte = Base64.decode(rep.get(n).getImage(), Base64.DEFAULT);
-            bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
-            repImage.add(bmp);
         }
 
         final CustomerAdapter cm = new CustomerAdapter(getApplicationContext(), repImage);

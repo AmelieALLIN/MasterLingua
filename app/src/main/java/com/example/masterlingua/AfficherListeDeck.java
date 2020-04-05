@@ -17,7 +17,6 @@ public class AfficherListeDeck extends AppCompatActivity {
     List<Deck> decks = Deck.listAll(Deck.class);
     List<String> nom_deck = new ArrayList<>();
     List<Deck> deckfindid = new ArrayList<>();
-    int count=0;
     Deck deck;
 
 
