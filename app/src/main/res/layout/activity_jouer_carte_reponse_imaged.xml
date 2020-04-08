@@ -12,7 +12,7 @@
         android:text="@string/carte"
         android:layout_centerHorizontal="true"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#673AB7"
+        android:fontFamily="@font/montserrat_alternates"
         android:textSize="38dp" />
 
     <TextView
@@ -20,8 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:text="Question"
+        android:fontFamily="@font/montserrat_alternates"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#F44336"
         android:textSize="38dp" />
 
     <GridView
@@ -29,6 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:fontFamily="@font/montserrat_alternates"
         android:layout_centerHorizontal="true"
         android:columnWidth="120dp"
         android:gravity="center"

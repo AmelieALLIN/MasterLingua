@@ -85,7 +85,7 @@ public class CreerCarte extends AppCompatActivity {
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
-                        if (answers.get(i) == bonneReponse) {
+                        if (answers.get(i).equals(bonneReponse)) {
                             System.out.println("BBBBBBBBBBBBBBBBBB br "+answers.get(i));
                             br = true;
                         }
@@ -100,27 +100,27 @@ public class CreerCarte extends AppCompatActivity {
                     carte.save();
                     quest.save();
                     Toast.makeText(context, text, duration).show();
-                        //System.out.println(carte.getReponse().get(0));
-                    }
+                    //System.out.println(carte.getReponse().get(0));
+                }
 
-                    //test affichage contenu carte
-                    List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", carte.getIdCarte());
-                    if (!quest.isEmpty())
-                        for(int m=0;m<quest.size();m++){
-                            System.out.println(quest.get(m).getNom_question());
-                        }
-                        // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
-                        Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("carte", carte);
-                        afficherCarte.putExtras(bundle);
-                        afficherCarte.putExtra("valeur", 1);
-                        startActivity(afficherCarte);
-                        finish();
+                //test affichage contenu carte
+                List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", carte.getIdCarte());
+                if (!quest.isEmpty())
+                    for(int m=0;m<quest.size();m++){
+                        System.out.println(quest.get(m).getNom_question());
                     }
-            });
+                // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
+                Intent afficherCarte = new Intent(getApplicationContext(), AfficherCarte.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                afficherCarte.putExtras(bundle);
+                afficherCarte.putExtra("valeur", 1);
+                startActivity(afficherCarte);
+                finish();
+            }
+        });
 
-        retour.setOnClickListener(new View.OnClickListener() {
+        retour.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 String idcarte = UUID.randomUUID().toString();
@@ -171,7 +171,7 @@ public class CreerCarte extends AppCompatActivity {
                     QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
                     for (int i = 0; i < answers.size(); i++) {
                         idrep = UUID.randomUUID().toString();
-                        if (answers.get(i) == bonneReponse) {
+                        if (answers.get(i).equals(bonneReponse)) {
                             br = true;
                         }
                         else

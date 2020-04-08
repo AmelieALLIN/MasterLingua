@@ -13,7 +13,7 @@
         android:fontFamily="@font/montserrat_alternates"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:text="Liste de cartes"
+        android:text="Liste des cartes"
         android:textAlignment="center"
         android:textSize="18sp" />
 

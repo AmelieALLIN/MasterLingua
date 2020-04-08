@@ -24,6 +24,7 @@
     <string name="faux">Mauvaise réponse</string>
     // du coup en français ici aussi
     <string name="jouer">Jouer</string>
+    <string name="commencer">Commencer</string>
     <string name="terminate">Sauvegarder</string>
     <string name="importer">Importer (JPEG)</string>
     <string name="nomDeck">Nom du deck</string>

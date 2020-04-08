@@ -14,6 +14,7 @@
         android:layout_marginTop="20dp"
         android:text="question"
         android:textAlignment="center"
+        android:fontFamily="@font/montserrat_alternates"
         android:textSize="18sp" />
 
     <GridView

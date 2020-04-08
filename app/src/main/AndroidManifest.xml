@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".JouerQuestionImageD"></activity>
+        <activity android:name=".JouerCarteReponseImageD" />
+        <activity android:name=".JouerDeck3Type" />
+        <activity android:name=".SwipeJouerCarteImageR" />
+        <activity android:name=".SwipeJouerCarteImageQ" />
+        <activity android:name=".SwipeJouerCarteTexte" />
         <activity android:name=".MenuCreationCarte"/>
         <activity android:name=".JouerCarteReponseImage" />
         <activity android:name=".CreerCarteReponseImage" />

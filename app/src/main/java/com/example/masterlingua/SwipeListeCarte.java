@@ -37,8 +37,8 @@ public class SwipeListeCarte extends AppCompatActivity {
         setContentView(R.layout.swipelistestart);
 
         start = findViewById(R.id.start);
-       texte=findViewById(R.id.texte);
-       nom=findViewById(R.id.nomdeck);
+        texte=findViewById(R.id.texte);
+        nom=findViewById(R.id.nomdeck);
 
         for (int n=0;n<cartes.size();n++)
         {
@@ -53,53 +53,53 @@ public class SwipeListeCarte extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Veuillez renseigner le nom de votre deck ", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                String iddeck= UUID.randomUUID().toString();
-                deck = new Deck(iddeck,nom.getText().toString());
-                deck.save();
+                    String iddeck= UUID.randomUUID().toString();
+                    deck = new Deck(iddeck,nom.getText().toString());
+                    deck.save();
 
-                if(carte.getType().equals("texte")){
-                    System.out.println(carte.getType());
-                    Intent jouerCarteT = new Intent(getApplicationContext(), AfficherCarteTexte.class );
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("carte", carte);
-                    bundle.putSerializable("liste", (Serializable) cartes);
-                    bundle.putString("iddeck",deck.getId_deck());
-                    bundle.putInt("compteur",compteur);
-                    jouerCarteT.putExtras(bundle);
-                    startActivity(jouerCarteT);
-                    finish();
+                    if(carte.getType().equals("texte")){
+                        System.out.println(carte.getType());
+                        Intent jouerCarteT = new Intent(getApplicationContext(), AfficherCarteTexte.class );
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("carte", carte);
+                        bundle.putSerializable("liste", (Serializable) cartes);
+                        bundle.putString("iddeck",deck.getId_deck());
+                        bundle.putInt("compteur",compteur);
+                        jouerCarteT.putExtras(bundle);
+                        startActivity(jouerCarteT);
+                        finish();
 
-                }
+                    }
 
-                else if(carte.getType().equals("rimage")){
-                    System.out.println(carte.getType());
-                    Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class );
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("carte", carte);
-                    bundle.putSerializable("liste", (Serializable) cartes);
-                    bundle.putString("iddeck",deck.getId_deck());
-                    bundle.putInt("compteur",compteur);
-                    jouerCarte.putExtras(bundle);
-                    startActivity(jouerCarte);
-                    finish();
-                }
+                    else if(carte.getType().equals("rimage")){
+                        System.out.println(carte.getType());
+                        Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class );
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("carte", carte);
+                        bundle.putSerializable("liste", (Serializable) cartes);
+                        bundle.putString("iddeck",deck.getId_deck());
+                        bundle.putInt("compteur",compteur);
+                        jouerCarte.putExtras(bundle);
+                        startActivity(jouerCarte);
+                        finish();
+                    }
 
-                else if(carte.getType().equals("qimage")){
-                    System.out.println(carte.getType());
-                    Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionImage.class );
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("carte", carte);
-                    bundle.putSerializable("liste", (Serializable) cartes);
-                    bundle.putString("iddeck",deck.getId_deck());
-                    bundle.putInt("compteur",compteur);
-                    jouerCarte.putExtras(bundle);
-                    startActivity(jouerCarte);
-                    finish();
-                }
+                    else if(carte.getType().equals("qimage")){
+                        System.out.println(carte.getType());
+                        Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionImage.class );
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("carte", carte);
+                        bundle.putSerializable("liste", (Serializable) cartes);
+                        bundle.putString("iddeck",deck.getId_deck());
+                        bundle.putInt("compteur",compteur);
+                        jouerCarte.putExtras(bundle);
+                        startActivity(jouerCarte);
+                        finish();
+                    }
 
 
-                System.out.println(carte.getIdCarte());
-                System.out.println(cartes.size());
+                    System.out.println(carte.getIdCarte());
+                    System.out.println(cartes.size());
 
 
                 }}
@@ -108,6 +108,3 @@ public class SwipeListeCarte extends AppCompatActivity {
         });
     }
 }
-
-
-
