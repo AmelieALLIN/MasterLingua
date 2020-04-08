@@ -158,42 +158,69 @@ public class CreerCarte extends AppCompatActivity {
                         if(checkAnswer3.isChecked()) b3 = true;
                         if(b3) bonneReponse = answers.get(2);
                     }
+                    int duration = Toast.LENGTH_SHORT;
+                    //Si la case bonne réponse cochée correspond à une réponse vide
+                    boolean[] good_br = new boolean[3];
+                    if(answer1.getText().toString().isEmpty() && checkAnswer1.isChecked()){
+                        duration = Toast.LENGTH_LONG;
+                        CharSequence text = getText(R.string.beware_good_answer);
+                        Toast.makeText(context, text, duration).show();
+                        good_br[0] = false;
+                    }
+                    if(answer2.getText().toString().isEmpty() && checkAnswer2.isChecked()){
+                        duration = Toast.LENGTH_LONG;
+                        CharSequence text = getText(R.string.beware_good_answer);
+                        Toast.makeText(context, text, duration).show();
+                        good_br[1] = false;
+                    }
+                    if(answer3.getText().toString().isEmpty() && checkAnswer3.isChecked()){
+                        duration = Toast.LENGTH_LONG;
+                        CharSequence text = getText(R.string.beware_good_answer);
+                        Toast.makeText(context, text, duration).show();
+                        good_br[2] = false;
+                    }
+                    if(!(answer1.getText().toString().isEmpty() && checkAnswer1.isChecked())) good_br[0] = true;
+                    if(!(answer2.getText().toString().isEmpty() && checkAnswer2.isChecked())) good_br[1] = true;
+                    if(!(answer3.getText().toString().isEmpty() && checkAnswer3.isChecked())) good_br[2] = true;
                     // en faire un logger
                     /*for(int i=0; i<answers.size(); i++){
                         System.out.println(answers.get(i) + i);
                     }*/
                     System.out.println(" LAAAAAAAAA   ok1");
-                    CharSequence text = getText(R.string.card_created);
-                    int duration = Toast.LENGTH_SHORT;
-
-                    System.out.println(" LAAAAAAAAA   ok1");
                     carte = new Carte(idcarte,type);
-                    QuestionText quest = new QuestionText(idquestion,question.getText().toString(),idcarte);
-                    for (int i = 0; i < answers.size(); i++) {
-                        idrep = UUID.randomUUID().toString();
-                        if (answers.get(i).equals(bonneReponse)) {
-                            br = true;
-                        }
-                        else
-                        {
-                            br = false;
-                        }
-                        String nomrep = answers.get(i);
-                        ReponseText reponse = new ReponseText(idrep,nomrep,idcarte,br);
-                        reponse.save();
+                    if(!checkAnswer1.isChecked() && !checkAnswer2.isChecked() && !checkAnswer3.isChecked()){ // si aucune br n'est indiquée
+                        duration = Toast.LENGTH_LONG;
+                        CharSequence text = getText(R.string.bonne_rep);
+                        Toast.makeText(context, text, duration).show();
+                        answers.clear();
                     }
-                    carte.save();
-                    quest.save();
-                    Toast.makeText(context, text, duration).show();
+                    if(checkAnswer1.isChecked() || checkAnswer2.isChecked() || checkAnswer3.isChecked()) {
+                        if(good_br[0] && good_br[1] && good_br[2]){
+                            QuestionText quest = new QuestionText(idquestion, question.getText().toString(), idcarte);
+                            for (int i = 0; i < answers.size(); i++) {
+                                idrep = UUID.randomUUID().toString();
+                                if (answers.get(i).equals(bonneReponse)) {
+                                    br = true;
+                                } else {
+                                    br = false;
+                                }
+                                String nomrep = answers.get(i);
+                                ReponseText reponse = new ReponseText(idrep, nomrep, idcarte, br);
+                                reponse.save();
+                            }
 
-                    // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
-                    Intent afficherCarte = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
-                    startActivity(afficherCarte);
-                    finish();
+                            carte.save();
+                            quest.save();
+                            CharSequence text = getText(R.string.card_created);
+                            Toast.makeText(context, text, duration).show();
+                            Intent afficherCarte = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
+                            startActivity(afficherCarte);
+                            finish();
+                        }
+                    }
                 }
             }
         });
-
     }
 
     public void onCheckBoxClicked(View view){
@@ -227,8 +254,10 @@ public class CreerCarte extends AppCompatActivity {
                     checkAnswer1.setChecked(false);
                     checkAnswer2.setChecked(false);
                 }
+
             }
         });
+        //if (!checkAnswer1.isChecked()){}
 
     }
 }

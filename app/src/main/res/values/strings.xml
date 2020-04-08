@@ -31,7 +31,7 @@
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="warning_good_answer">Une seule réponse peut être correcte</string>
     <string name="warning_level">Vous devez choisir un niveau</string>
-    <string name="card_created">Votre carte a bien été créée</string>
+    <string name="card_created">Votre question est sauvegardée</string>
     <string name="carte">Carte</string>
     <string name="importerQuestionImage">Importer ce que vous voulez faire deviner (JPEG)</string>
     <string name="level">Niveau</string>
@@ -59,6 +59,8 @@
     <string name="category_name">Entrez le nom de votre catégorie</string>
     <string name="logoQuizz">QuizLogo</string>
     <string name="validate">Valider</string>
+    <string name="bonne_rep">Veuillez indiquer la bonne réponse</string>
     <string name="warning_category">Le nom est obligatoire pour valider</string>
     <string name="deck_name">Nom du deck</string>
+    <string name="beware_good_answer">Attention à la bonne réponse que vous cochez</string>
 </resources>

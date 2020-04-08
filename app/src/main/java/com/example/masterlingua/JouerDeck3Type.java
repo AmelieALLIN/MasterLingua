@@ -2,24 +2,17 @@ package com.example.masterlingua;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Base64;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import static java.lang.Integer.parseInt;
@@ -141,7 +134,10 @@ public class JouerDeck3Type extends AppCompatActivity {
                 }
             });
         } else {
-            Toast.makeText(getApplicationContext(), "votre score est de :" + score, Toast.LENGTH_SHORT).show();
+            String pluriel = "";
+            if(score>1) pluriel = "s";
+            int nbTotalCartes = listcarte.size();
+            Toast.makeText(getApplicationContext(), "Votre score est de " + score + " point" + pluriel + " sur " +nbTotalCartes, Toast.LENGTH_SHORT).show();
             scoretemporaire.setText(" ");
             scorefinal.setText("Votre score final = "+score);
             deja_initialise = false;
