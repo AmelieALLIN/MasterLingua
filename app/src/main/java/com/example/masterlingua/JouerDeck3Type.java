@@ -66,7 +66,7 @@ public class JouerDeck3Type extends AppCompatActivity {
             score+=getIntent().getExtras().getInt("score");
             System.out.println("=============================================je suis passser par la");
         }
-//question carte c est le seul truc qui restera
+        //question carte c est le seul truc qui restera
         final ArrayAdapter adapter_cartes = new ArrayAdapter(this, android.R.layout.simple_list_item_1, questioncarte);
         liste_cartes.setAdapter(adapter_cartes);
         scoretemporaire.setText("Score actuel = "+score);

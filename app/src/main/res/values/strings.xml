@@ -2,9 +2,9 @@
     <string name="app_name">MasterLingua</string>
     <string name="attache">WELCOME</string>
     <string name="creation_card">CREER UNE CARTE</string>
-    <string name="creation_card_text">CARTE TEXTE</string>
-    <string name="creation_card_qimage">CARTE QUESTION IMAGEE</string>
-    <string name="creation_card_rimage">CARTE REPONSES IMAGEES</string>
+    <string name="creation_card_text">QUESTION REPONSE</string>
+    <string name="creation_card_qimage">QUESTION EN IMAGE</string>
+    <string name="creation_card_rimage">REPONSES EN IMAGE</string>
     <string name="cartes">Cartes</string>
     <string name="creation_deck">CREER UN DECK</string>
     <string name="deck">DECKS</string>
