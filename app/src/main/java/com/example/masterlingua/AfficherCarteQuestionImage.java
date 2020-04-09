@@ -122,7 +122,6 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
                 {fin();}
             }
 
-
         });
     }
 

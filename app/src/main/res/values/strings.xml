@@ -5,8 +5,7 @@
     <string name="cartes">Cartes</string>
     <string name="creation_deck">Créer un deck</string>
     <string name="deck">Decks</string>
-    <string name="cartes_image">Cartes imagées</string>
-    <string name="list_created_cards">Afficher les cartes</string>
+    <string name="list_created_cards">Cartes</string>
     <string name="page_creation_card">Création de votre carte</string>
     <string name="language_question">En quelle langue est votre question ?</string>
     <string name="choix">Selectionnez</string>
@@ -18,7 +17,7 @@
     </string-array>
     <string name="enter_question">Veuillez indiquer votre question</string>
     <string name="language_answers">En quelle langue doi(ven)t être la(es) réponse(s) ?</string>
-    <string name="add_answer">Vous pouvez ajouter (ou non) une à trois réponses, en indiquant si elle est correcte ou non chaque fois</string>
+    <string name="add_answer">Ajoutez deux à trois réponses (au moins deux)et indiquez la bonne réponse</string>
     <string name="vrai">Bonne réponse</string>
     //le nom est en français (vrai) car le nom "true" est réservé
     <string name="faux">Mauvaise réponse</string>
@@ -28,6 +27,8 @@
     <string name="terminate">Sauvegarder</string>
     <string name="importer">Importer (JPEG)</string>
     <string name="nomDeck">Nom du deck</string>
+    <string name="au_moins_deux">Renseignez deux réponses minimum</string>
+    <string name="au_moins_deux_jpeg">Veuillez insérer une image et deux réponses minimum</string>
     <string name="warning_question">La question est obligatoire pour valider</string>
     <string name="warning_good_answer">Une seule réponse peut être correcte</string>
     <string name="warning_level">Vous devez choisir un niveau</string>

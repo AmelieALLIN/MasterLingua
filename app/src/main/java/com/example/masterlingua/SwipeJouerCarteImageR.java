@@ -76,7 +76,6 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
         final CustomerAdapter cm = new CustomerAdapter(getApplicationContext(), repImage);
         listeReponse.setAdapter(cm);
 
-
         listeReponse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -85,9 +84,10 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
                     listeReponse.setEnabled(false);
                     score += 1;
                     jouer=true;
-
+                    String pluriel = "";
+                    if(score>1) pluriel = "s";
                     if (cartes.size() == 1) {
-                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                         fin();}
                     else {
                         cartes.remove(0);
@@ -98,8 +98,10 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
                     showToastNo();
                     listeReponse.setEnabled(false);
                     jouer=true;
+                    String pluriel = "";
+                    if(score>1) pluriel = "s";
                     if (cartes.size() == 1) {
-                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                         fin();}
                     else {
                         cartes.remove(0);
@@ -110,14 +112,15 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
             }
         });
 
-
         layout.setOnTouchListener(new OnSwipeTouchListener(SwipeJouerCarteImageR.this) {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
+                String pluriel = "";
+                if(score>1) pluriel = "s";
                 if(cartes.size()==1){
                     if(jouer==true){
-                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                         fin();}
 
                     else fin();
@@ -128,13 +131,13 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
 
             }
 
-
             @Override
             public void onSwipeUp(){
                 super.onSwipeUp();
-
+                String pluriel = "";
+                if(score>1) pluriel = "s";
                 if(jouer==true){
-                    Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                     fin();}
 
                 else fin();
@@ -180,7 +183,6 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
             finish();
         }}
 
-
     public void showToastOk() {
         LayoutInflater inflater = getLayoutInflater();
         View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
@@ -211,15 +213,10 @@ public class SwipeJouerCarteImageR extends AppCompatActivity {
         toast.show();
     }
 
-
-
     public void fin(){
         Intent fin = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
         startActivity(fin);
         finish();
     }
-
-
-
 }
 

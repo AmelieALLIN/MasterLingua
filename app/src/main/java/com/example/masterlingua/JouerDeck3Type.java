@@ -139,7 +139,7 @@ public class JouerDeck3Type extends AppCompatActivity {
             int nbTotalCartes = listcarte.size();
             Toast.makeText(getApplicationContext(), "Votre score est de " + score + " point" + pluriel + " sur " +nbTotalCartes, Toast.LENGTH_SHORT).show();
             scoretemporaire.setText(" ");
-            scorefinal.setText("Votre score final = "+score);
+            scorefinal.setText("Votre score final est " + score);
             deja_initialise = false;
 
 

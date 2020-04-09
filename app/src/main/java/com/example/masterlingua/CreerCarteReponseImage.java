@@ -64,7 +64,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
         importer1.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             taille = taille++;
+                                             taille++;
                                              x = 1;
                                              image[0] = true;
                                              Intent intent1 = new Intent(Intent.ACTION_GET_CONTENT);
@@ -80,7 +80,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
         importer2.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             taille = taille++;
+                                             taille++;
                                              x = 2;
                                              image[1] = true;
                                              Intent intent2 = new Intent(Intent.ACTION_GET_CONTENT);
@@ -96,7 +96,7 @@ public class CreerCarteReponseImage extends AppCompatActivity {
         importer3.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             taille = taille++;
+                                             taille++;
                                              x = 3;
                                              image[2] = true;
                                              Intent intent3 = new Intent(Intent.ACTION_GET_CONTENT);
@@ -113,224 +113,119 @@ public class CreerCarteReponseImage extends AppCompatActivity {
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idcarte = UUID.randomUUID().toString();
-                String idquestion = UUID.randomUUID().toString();
-                String idrep;
-                boolean br;
-                checkAnswer1 = findViewById(R.id.checkAnswer1);
-                checkAnswer2 = findViewById(R.id.checkAnswer2);
-                checkAnswer3 = findViewById(R.id.checkAnswer3);
-
-                //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                if (question.getText().toString().isEmpty()) {
-                    CharSequence text = getText(R.string.warning_question);
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context, text, duration).show();
-                } else {
-                    //String bonneReponse = "";
-                    // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
-                    if (checkAnswer1.isChecked()) { // champ de réponse 1
-                        brep[0] = true;
-                    }
-                    if (checkAnswer2.isChecked()) { // champ de réponse 2
-                        brep[1] = true;
-                    }
-                    if (checkAnswer3.isChecked()) { // champ de réponse 3
-                        brep[2] = true;
-                    }
-                    int duration = Toast.LENGTH_SHORT;
-                    boolean[] good_br = new boolean[3];
-                    if (!image[0] && checkAnswer1.isChecked()) {
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.beware_good_answer);
-                        Toast.makeText(context, text, duration).show();
-                        good_br[0] = false;
-                    }
-                    if (!image[1] && checkAnswer2.isChecked()) {
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.beware_good_answer);
-                        Toast.makeText(context, text, duration).show();
-                        good_br[1] = false;
-                    }
-                    if (!image[2] && checkAnswer3.isChecked()) {
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.beware_good_answer);
-                        Toast.makeText(context, text, duration).show();
-                        good_br[2] = false;
-                    }
-                    if (!(!image[0] && checkAnswer1.isChecked())) good_br[0] = true;
-                    if (!(!image[1] && checkAnswer2.isChecked())) good_br[1] = true;
-                    if (!(!image[2] && checkAnswer3.isChecked())) good_br[2] = true;
-                    // en faire un logger
-                    /*for(int i=0; i<answers.size(); i++){
-                        System.out.println(answers.get(i) + i);
-                    }*/
-                    System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte, type);
-                    if (!checkAnswer1.isChecked() && !checkAnswer2.isChecked() && !checkAnswer3.isChecked()) { // si aucune br n'est indiquée
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.bonne_rep);
-                        Toast.makeText(context, text, duration).show();
-                        // VIDER LA LISTE DES REPONSES POUR EVITER DOUBLONS
-                        //for(int i =0; i<3; i++) image[i] = false;
-                    }
-                    if (checkAnswer1.isChecked() || checkAnswer2.isChecked() || checkAnswer3.isChecked()) {
-                        if (good_br[0] && good_br[1] && good_br[2]) {
-                            QuestionText quest = new QuestionText(idquestion, question.getText().toString(), idcarte);
-                            for (int i = 0; i < brep.length; i++) {
-                                idrep = UUID.randomUUID().toString();
-                                //si la rep a ete initialise on prend son tableau de byte
-                                if ((image[i] == true) && (i == 0)) {
-                                    bytee = img1;
-                                } else {
-                                    if ((image[i] == true) && (i == 1)) {
-                                        bytee = img2;
-                                    } else {
-                                        if ((image[i] == true) && (i == 2)) {
-                                            bytee = img3;
-                                        } else {
-                                            bytee = null;
-                                        }
-                                    }
-                                }
-                                if (brep[i] == true) {
-                                    br = true;
-                                } else {
-                                    br = false;
-                                }
-                                if (bytee != null) {
-                                    ReponseImage reponse = new ReponseImage(idrep, idcarte, br, bytee);
-                                    reponse.save();
-                                }
-                            }
-                            CharSequence text = getText(R.string.card_created);
-                            carte.save();
-                            quest.save();
-                            Toast.makeText(context, text, duration).show();
-                            //test affichage contenu carte
-                            List<QuestionText> questi = QuestionText.find(QuestionText.class, "idcarte = ?", carte.getIdCarte());
-                            if (!questi.isEmpty())
-                                for (int m = 0; m < questi.size(); m++) {
-                                    System.out.println(questi.get(m).getNom_question());
-                                }
-                            // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
-                            Intent afficherCarte = new Intent(getApplicationContext(), JouerCarteReponseImage.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("carte", carte);
-                            afficherCarte.putExtras(bundle);
-                            afficherCarte.putExtra("valeur", 1);
-                            startActivity(afficherCarte);
-                            finish();
-                        }
-                    }
-                }
+                boolean jouer = true;
+                creationCarte(JouerCarteReponseImage.class, jouer, taille);
             }
         });
 
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idcarte = UUID.randomUUID().toString();
-                String idquestion = UUID.randomUUID().toString();
-                String idrep;
-                boolean br;
-                checkAnswer1 = findViewById(R.id.checkAnswer1);
-                checkAnswer2 = findViewById(R.id.checkAnswer2);
-                checkAnswer3 = findViewById(R.id.checkAnswer3);
-
-                //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                if (question.getText().toString().isEmpty()) {
-                    CharSequence text = getText(R.string.warning_question);
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context, text, duration).show();
-                } else {
-                    // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
-                    if (checkAnswer1.isChecked()) { // champ de réponse 1
-                        brep[0] = true;
-                    }
-                    if (checkAnswer2.isChecked()) { // champ de réponse 2
-                        brep[1] = true;
-                    }
-                    if (checkAnswer3.isChecked()) { // champ de réponse 3
-                        brep[2] = true;
-                    }
-                    // en faire un logger
-                    /*for(int i=0; i<answers.size(); i++){
-                        System.out.println(answers.get(i) + i);
-                    }*/
-                    System.out.println(" LAAAAAAAAA   ok1");
-                    carte = new Carte(idcarte, type);
-                    int duration = Toast.LENGTH_SHORT;
-                    boolean[] good_br = new boolean[3];
-                    if (!image[0] && checkAnswer1.isChecked()) {
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.beware_good_answer);
-                        Toast.makeText(context, text, duration).show();
-                        good_br[0] = false;
-                    }
-                    if (!image[1] && checkAnswer2.isChecked()) {
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.beware_good_answer);
-                        Toast.makeText(context, text, duration).show();
-                        good_br[1] = false;
-                    }
-                    if (!image[2] && checkAnswer3.isChecked()) {
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.beware_good_answer);
-                        Toast.makeText(context, text, duration).show();
-                        good_br[2] = false;
-                    }
-                    if (!(!image[0] && checkAnswer1.isChecked())) good_br[0] = true;
-                    if (!(!image[1] && checkAnswer2.isChecked())) good_br[1] = true;
-                    if (!(!image[2] && checkAnswer3.isChecked())) good_br[2] = true;
-                    if (!checkAnswer1.isChecked() && !checkAnswer2.isChecked() && !checkAnswer3.isChecked()) { // si aucune br n'est indiquée
-                        duration = Toast.LENGTH_LONG;
-                        CharSequence text = getText(R.string.bonne_rep);
-                        Toast.makeText(context, text, duration).show();
-                        // VIDER LA LISTE DES REPONSES POUR EVITER DOUBLONS
-                    }
-                    if (checkAnswer1.isChecked() || checkAnswer2.isChecked() || checkAnswer3.isChecked()) {
-                        if (good_br[0] && good_br[1] && good_br[2]) {
-                            QuestionText quest = new QuestionText(idquestion, question.getText().toString(), idcarte);
-                            for (int i = 0; i < brep.length; i++) {
-                                idrep = UUID.randomUUID().toString();
-                                //si la rep a ete initialise on prend son tableau de byte
-                                if ((image[i] == true) && (i == 0)) {
-                                    bytee = img1;
-                                } else {
-                                    if ((image[i] == true) && (i == 1)) {
-                                        bytee = img2;
-                                    } else {
-                                        if ((image[i] == true) && (i == 2)) {
-                                            bytee = img3;
-                                        } else {
-                                            bytee = null;
-                                        }
-                                    }
-                                }
-                                if (brep[i] == true) {
-                                    br = true;
-                                } else {
-                                    br = false;
-                                }
-                                ReponseImage reponse = new ReponseImage(idrep, idcarte, br, bytee);
-                                System.out.println(" BYYYYTTTTEEEE carte = " + reponse.getImage());
-                                reponse.save();
-                            }
-                            CharSequence text = getText(R.string.card_created);
-                            carte.save();
-                            quest.save();
-                            Toast.makeText(context, text, duration).show();
-
-                            // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
-                            Intent afficherCarte = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
-                            startActivity(afficherCarte);
-                            finish();
-                        }
-                    }
-                }
+                boolean jouer = false;
+                creationCarte(ChoisirCreationCarte.class, jouer, taille);
             }
         });
+    }
+
+    public void creationCarte (Class nameClassForIntent, boolean jouer, int taille){
+        String idcarte = UUID.randomUUID().toString();
+        String idquestion = UUID.randomUUID().toString();
+        String idrep;
+        boolean br;
+        checkAnswer1 = findViewById(R.id.checkAnswer1);
+        checkAnswer2 = findViewById(R.id.checkAnswer2);
+        checkAnswer3 = findViewById(R.id.checkAnswer3);
+
+        //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
+        if (question.getText().toString().isEmpty()) {
+            CharSequence text = getText(R.string.warning_question);
+            int duration = Toast.LENGTH_SHORT;
+            Toast.makeText(context, text, duration).show();
+        } else {
+            // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
+            if (checkAnswer1.isChecked()) { // champ de réponse 1
+                brep[0] = true;
+            }
+            if (checkAnswer2.isChecked()) { // champ de réponse 2
+                brep[1] = true;
+            }
+            if (checkAnswer3.isChecked()) { // champ de réponse 3
+                brep[2] = true;
+            }
+            System.out.println(" LAAAAAAAAA   ok1");
+            carte = new Carte(idcarte, type);
+            int duration = Toast.LENGTH_SHORT;
+            boolean[] good_br = new boolean[3];
+            if (!image[0] && checkAnswer1.isChecked()) {
+                CharSequence text = getText(R.string.beware_good_answer);
+                Toast.makeText(context, text, duration).show();
+                good_br[0] = false;
+            }
+            if (!image[1] && checkAnswer2.isChecked()) {
+                CharSequence text = getText(R.string.beware_good_answer);
+                Toast.makeText(context, text, duration).show();
+                good_br[1] = false;
+            }
+            if (!image[2] && checkAnswer3.isChecked()) {
+                CharSequence text = getText(R.string.beware_good_answer);
+                Toast.makeText(context, text, duration).show();
+                good_br[2] = false;
+            }
+            if (!(!image[0] && checkAnswer1.isChecked())) good_br[0] = true;
+            if (!(!image[1] && checkAnswer2.isChecked())) good_br[1] = true;
+            if (!(!image[2] && checkAnswer3.isChecked())) good_br[2] = true;
+            if (!checkAnswer1.isChecked() && !checkAnswer2.isChecked() && !checkAnswer3.isChecked()) { // si aucune br n'est indiquée
+                CharSequence text = getText(R.string.bonne_rep);
+                Toast.makeText(context, text, duration).show();
+            }
+            if(!image[1]){
+                CharSequence text = getText(R.string.au_moins_deux);
+                Toast.makeText(context, text, duration).show();
+            }
+            if ((checkAnswer1.isChecked() || checkAnswer2.isChecked() || checkAnswer3.isChecked()) && image[1]) {
+                if (good_br[0] && good_br[1] && good_br[2]) {
+                    QuestionText quest = new QuestionText(idquestion, question.getText().toString(), idcarte);
+                    for (int i = 0; i < brep.length; i++) {
+                        idrep = UUID.randomUUID().toString();
+                        //si la rep a ete initialise on prend son tableau de byte
+                        if ((image[i] == true) && (i == 0)) {
+                            bytee = img1;
+                        } else {
+                            if ((image[i] == true) && (i == 1)) {
+                                bytee = img2;
+                            } else {
+                                if ((image[i] == true) && (i == 2)) {
+                                    bytee = img3;
+                                } else {
+                                    bytee = null;
+                                }
+                            }
+                        }
+                        if (brep[i] == true) {
+                            br = true;
+                        } else {
+                            br = false;
+                        }
+                        ReponseImage reponse = new ReponseImage(idrep, idcarte, br, bytee);
+                        System.out.println(" BYYYYTTTTEEEE carte = " + reponse.getImage());
+                        reponse.save();
+                    }
+                    CharSequence text = getText(R.string.card_created);
+                    carte.save();
+                    quest.save();
+                    Toast.makeText(context, text, duration).show();
+
+                    Intent afficherCarte = new Intent(getApplicationContext(), nameClassForIntent);
+                    if(jouer){
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("carte", carte);
+                        afficherCarte.putExtras(bundle);
+                    }
+                    startActivity(afficherCarte);
+                    finish();
+                }
+            }
+        }
     }
 
     @Override
