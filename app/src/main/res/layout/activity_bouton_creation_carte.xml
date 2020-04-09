@@ -11,19 +11,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp">
+        android:layout_height="132dp">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/imageCreerCarte"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:foreground="@android:drawable/ic_menu_add"
-            android:outlineAmbientShadowColor="#FFFFFF"/>
+            android:outlineAmbientShadowColor="#FFFFFF"/>-->
 
         <Button
             android:id="@+id/goCreerCarte"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="132dp"
             android:layout_marginLeft="0dp"
             android:background="@drawable/gradientwithoutcorner"
             android:fontFamily="@font/montserrat_alternates"
@@ -41,23 +41,23 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="148dp"
         android:layout_below="@+id/goCreerCarte">
 
-        <ImageView
-            android:id="@+id/imageListCarte"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="14dp"
-            android:background="@android:drawable/ic_menu_view"
-            android:outlineAmbientShadowColor="#FFFFFF"/>
+        <!-- <ImageView
+             android:id="@+id/imageListCarte"
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:layout_marginTop="14dp"
+             android:background="@android:drawable/ic_menu_view"
+             android:outlineAmbientShadowColor="#FFFFFF"/>-->
 
         <Button
             android:id="@+id/buttonListCarte"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="148dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/gradientwithoutcorner"
             android:fontFamily="@font/montserrat_alternates"
             android:gravity="center|clip_vertical|center_horizontal"
@@ -73,54 +73,54 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="144dp"
+        android:layout_height="148dp"
         android:layout_below="@+id/buttonListCarte">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/imageCreationDeck"
-            android:layout_marginTop="14dp"
-            android:foreground="@android:drawable/ic_menu_add"
-            android:outlineAmbientShadowColor="#FFFFFF"/>
+        <!-- <ImageView
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:id="@+id/imageCreationDeck"
+             android:layout_marginTop="14dp"
+             android:foreground="@android:drawable/ic_menu_add"
+             android:outlineAmbientShadowColor="#FFFFFF"/>-->
 
-        <Button
-            android:id="@+id/swipe"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/gradientwithoutcorner"
-            android:fontFamily="@font/montserrat_alternates"
-            android:gravity="center|center_horizontal"
-            android:onClick="goswipe"
-            android:text="@string/creation_deck"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="79dp"
-            tools:layout_editor_absoluteY="500dp" />
+         <Button
+             android:id="@+id/swipe"
+             android:layout_width="match_parent"
+             android:layout_height="148dp"
+             android:layout_centerHorizontal="true"
+             android:layout_marginTop="10dp"
+             android:background="@drawable/gradientwithoutcorner"
+             android:fontFamily="@font/montserrat_alternates"
+             android:gravity="center|center_horizontal"
+             android:onClick="goswipe"
+             android:text="@string/creation_deck"
+             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+             android:textColor="#FFFFFF"
+             android:textSize="26sp"
+             tools:ignore="MissingConstraints"
+             tools:layout_editor_absoluteX="79dp"
+             tools:layout_editor_absoluteY="500dp" />
 
-    </RelativeLayout>
+     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="144dp"
-        android:layout_below="@+id/buttonCreationDeck">
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/imageListDeck"
-            android:layout_marginTop="14dp"
-            android:background="@android:drawable/ic_menu_view"
-            android:outlineAmbientShadowColor="#FFFFFF"/>
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:layout_height="148dp"
+         android:layout_below="@+id/buttonCreationDeck">
+         <!--<ImageView
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:id="@+id/imageListDeck"
+             android:layout_marginTop="14dp"
+             android:background="@android:drawable/ic_menu_view"
+             android:outlineAmbientShadowColor="#FFFFFF"/>-->
 
         <Button
             android:id="@+id/buttonListDeck"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="148dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/gradientwithoutcorner"
             android:fontFamily="@font/montserrat_alternates"
             android:gravity="center|center_horizontal"

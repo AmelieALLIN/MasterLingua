@@ -5,4 +5,7 @@
     <color name="myBlue">#D0030C4B</color>
     <color name="secondBlue">#2196F3</color>
     <color name="colorAccent">#FF9800</color>
+    <color name="rose">#FF0040</color>
+    <color name="orange">#FFc040</color>
+    <color name="roose">#E48AB4</color>
 </resources>

@@ -1,11 +1,14 @@
 <resources>
     <string name="app_name">MasterLingua</string>
     <string name="attache">WELCOME</string>
-    <string name="creation_card">Créer une carte</string>
+    <string name="creation_card">CREER UNE CARTE</string>
+    <string name="creation_card_text">CARTE TEXTE</string>
+    <string name="creation_card_qimage">CARTE QUESTION IMAGEE</string>
+    <string name="creation_card_rimage">CARTE REPONSES IMAGEES</string>
     <string name="cartes">Cartes</string>
-    <string name="creation_deck">Créer un deck</string>
-    <string name="deck">Decks</string>
-    <string name="list_created_cards">Cartes</string>
+    <string name="creation_deck">CREER UN DECK</string>
+    <string name="deck">DECKS</string>
+    <string name="list_created_cards">CARTES</string>
     <string name="page_creation_card">Création de votre carte</string>
     <string name="language_question">En quelle langue est votre question ?</string>
     <string name="choix">Selectionnez</string>
