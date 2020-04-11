@@ -5,8 +5,11 @@ android:
   components:
     - platform-tools
     - tools
+
     - build-tools-29.0.2
+
     - android-29
+
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
@@ -20,9 +23,17 @@ script:
     - ./gradlew assembleDebug
 
 deploy:
-  provider: pages
+  provider: releases
+  api-key: $GITHUB_API_KEY
+  file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/app-debug.apk
   skip_cleanup: true
-  github_token: $GITHUB_API_KEY  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
+  name: dev-build-$TRAVIS_TAG
+  body: Automatic build of $TRAVIS_BRANCH ($TRAVIS_COMMIT) built by Travis CI on $(date +'%F %T %Z').
+  prerelease: true
+  overwrite: true
+  target_commitish: $TRAVIS_COMMIT
   on:
-    branch: travis
+    tags: true
+
+after_deploy:
+  - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
