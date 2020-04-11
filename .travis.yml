@@ -32,7 +32,8 @@ deploy:
   prerelease: true
   overwrite: true
   target_commitish: $TRAVIS_COMMIT
-
+  on:
+      branches: Travis
 
 after_deploy:
   - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
