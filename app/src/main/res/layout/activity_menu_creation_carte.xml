@@ -8,11 +8,22 @@
     tools:context=".MenuCreationCarte">
 
     <Button
+        android:id="@+id/iLogo"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="325dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ilogo2"
+        android:onClick="goToTuto" />
+
+    <Button
         android:id="@+id/buttonCarteText"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_width="320dp"
+        android:layout_height="134dp"
+        android:layout_below="@+id/iLogo"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/gradientwithoutcorner"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/gradient"
         android:fontFamily="@font/montserrat_alternates"
         android:gravity="clip_horizontal|center|clip_vertical"
         android:onClick="QuestionText"
@@ -26,12 +37,12 @@
 
     <Button
         android:id="@+id/buttonCarteQimage"
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_width="320dp"
+        android:layout_height="134dp"
         android:layout_below="@+id/buttonCarteText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/gradientwithoutcorner"
+        android:background="@drawable/gradient"
         android:fontFamily="@font/montserrat_alternates"
         android:gravity="clip_horizontal|center|clip_vertical"
         android:onClick="QuestionImage"
@@ -45,12 +56,12 @@
 
     <Button
         android:id="@+id/buttonCarteRepImage"
-        android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_width="320dp"
+        android:layout_height="134dp"
         android:layout_below="@+id/buttonCarteQimage"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@drawable/gradientwithoutcorner"
+        android:background="@drawable/gradient"
         android:fontFamily="@font/montserrat_alternates"
         android:gravity="clip_horizontal|center|clip_vertical"
         android:onClick="ReponseImage"

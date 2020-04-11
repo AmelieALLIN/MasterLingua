@@ -182,7 +182,6 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
         Deck.executeQuery("DELETE FROM DECK WHERE IDDECK = '" +iddeck  + "'");
         CartesDeck.executeQuery("DELETE FROM CARTES_DECK WHERE IDDECK = '" +iddeck  + "'");
     }
-
 }
 
 

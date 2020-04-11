@@ -1,13 +1,22 @@
 <resources>
     <string name="app_name">MasterLingua</string>
     <string name="attache">WELCOME</string>
+    <string name="welcome_tuto">TUTORIEL MASTERLINGUA</string>
+    <string name="intro_card_tuto">Quand vous cliquez sur</string>
+    <string name="swipe_card_left">glissez vers la gauche si vous ne souhaitez pas jouer la carte qui vous est présentée</string>
+    <string name="swipe_up">glissez vers le haut à tout moment pour revenir à la page d\'accueil</string>
+    <string name="intro_deck_tuto">Quand vous cliquez sur</string>
+    <string name="swipe_deck_left">glissez vers la gauche si vous ne souhaitez pas ajouter la carte qui vous est présentée</string>
+    <string name="swipe_deck_right">glissez vers la droite pour y insérer la carte qui vous est présentée</string>
+    <string name="swipe_deck_up">glissez vers le haut à tout moment pour terminer la création de votre collection et revenir à la page d\'accueil</string>
+    <string name="explain_deck">On appelle deck un ensemble ou une famille de cartes.</string>
     <string name="creation_card">CREER UNE CARTE</string>
     <string name="creation_card_text">QUESTION REPONSE</string>
     <string name="creation_card_qimage">QUESTION EN IMAGE</string>
     <string name="creation_card_rimage">REPONSES EN IMAGE</string>
     <string name="cartes">Cartes</string>
-    <string name="creation_deck">CREER UN DECK</string>
-    <string name="deck">DECKS</string>
+    <string name="creation_deck">CREER UNE COLLECTION</string>
+    <string name="deck">COLLECTIONS</string>
     <string name="list_created_cards">CARTES</string>
     <string name="page_creation_card">Création de votre carte</string>
     <string name="language_question">En quelle langue est votre question ?</string>
@@ -20,7 +29,7 @@
     </string-array>
     <string name="enter_question">Veuillez indiquer votre question</string>
     <string name="language_answers">En quelle langue doi(ven)t être la(es) réponse(s) ?</string>
-    <string name="add_answer">Ajoutez deux à trois réponses (au moins deux)et indiquez la bonne réponse</string>
+    <string name="add_answer">Ajoutez deux à trois réponses (au moins deux), et indiquez la bonne réponse en cochant</string>
     <string name="vrai">Bonne réponse</string>
     //le nom est en français (vrai) car le nom "true" est réservé
     <string name="faux">Mauvaise réponse</string>
@@ -29,7 +38,7 @@
     <string name="commencer">Commencer</string>
     <string name="terminate">Sauvegarder</string>
     <string name="importer">Importer (JPEG)</string>
-    <string name="nomDeck">Nom du deck</string>
+    <string name="nomDeck">Nom de la collection</string>
     <string name="au_moins_deux">Renseignez deux réponses minimum</string>
     <string name="au_moins_deux_jpeg">Veuillez insérer une image et deux réponses minimum</string>
     <string name="warning_question">La question est obligatoire pour valider</string>

@@ -148,7 +148,6 @@ public class CreerCarte extends AppCompatActivity {
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("carte", carte);
                         afficherCarte.putExtras(bundle);
-                        afficherCarte.putExtra("valeur", 1);
                     }
                     startActivity(afficherCarte);
                     finish();

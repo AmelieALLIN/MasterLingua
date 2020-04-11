@@ -19,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AfficherTuto"/>
         <activity android:name=".JouerQuestionImageD"></activity>
         <activity android:name=".JouerCarteReponseImageD" />
         <activity android:name=".JouerDeck3Type" />
@@ -50,7 +51,7 @@
 
         <meta-data
             android:name="VERSION"
-            android:value="16" />
+            android:value="18" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />

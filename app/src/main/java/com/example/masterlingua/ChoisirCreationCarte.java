@@ -1,6 +1,7 @@
 package com.example.masterlingua;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChoisirCreationCarte extends AppCompatActivity {
+public class ChoisirCreationCarte extends AppCompatActivity implements Serializable {
 
     List<Carte> cartes = Carte.listAll(Carte.class);
     List<Carte> idcarte = new ArrayList<>();
@@ -29,8 +30,6 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         Intent intent = new Intent(this,MenuCreationCarte.class);
         startActivity(intent);
     }
-
-
 
     public void AfficherListe(View view) {
         Intent intent = new Intent(this,AfficherListe.class);
@@ -58,6 +57,14 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToTuto (View view){
+        String nameToGo = "ChoisirCreationCarte";
+        Intent intent = new Intent(this,AfficherTuto.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("className", nameToGo);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 
     public void listeCartes(View view) {
 
