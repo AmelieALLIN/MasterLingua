@@ -23,4 +23,4 @@ script:
     - ./gradlew assembleDebug
 
 after_success:
-	- bash scripts/update-apk.sh
+    - bash scripts/update-apk.sh
