@@ -41,11 +41,11 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
     List<ReponseText> reponses = new ArrayList<>();
     List<String> nom_rep = new ArrayList<>();
     String ok,idc;
-    static String monfichier;
+     String monfichier;
     Context context = this;
     Button play,stop,pause;
     MediaPlayer mediaPlayer;
-    boolean pausee=false;
+    //boolean pausee=false;
     int t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         reps = findViewById(R.id.list);
         play=findViewById(R.id.play);
         stop=findViewById(R.id.stop);
-        pause=findViewById(R.id.pause);
+        //pause=findViewById(R.id.pause);
         Bundle bundle = getIntent().getExtras();
         carte = (Carte) bundle.getSerializable("carte");
         monfichier=bundle.getString("chemin");
@@ -104,11 +104,21 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pausee==false) {
+                stop.setEnabled(true);
+                play.setEnabled(false);
+                //pause.setEnabled(true);
+                mediaPlayer.start();
+                new Handler().postDelayed(new Runnable() {
+                                              public void run() {
+                                                  stop.setEnabled(false);
+                                                  play.setEnabled(true);
+                                                 // pause.setEnabled(false);
+                                              }
+                                          }, mediaPlayer.getDuration()
+                );
+
+               /* if(pausee==false) {
                     mediaPlayer.start();
-                    stop.setEnabled(true);
-                    play.setEnabled(false);
-                    pause.setEnabled(true);
                     new Handler().postDelayed(new Runnable() {
                                                   public void run() {
                                                       stop.setEnabled(false);
@@ -118,24 +128,19 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                                               }, mediaPlayer.getDuration()
                     );
                 }
-               else{
-                   stop.setEnabled(true);
-                   play.setEnabled(false);
-                   pause.setEnabled(true);
+               else if (pausee==true){
                    pausee=false;
                    mediaPlayer.seekTo(t);
                    mediaPlayer.start();
-
-
                     new Handler().postDelayed(new Runnable() {
                                                   public void run() {
                                                       stop.setEnabled(false);
                                                       play.setEnabled(true);
                                                       pause.setEnabled(false);
                                                   }
-                                              }, (mediaPlayer.getDuration()-t)
+                                              }, ((mediaPlayer.getDuration()-t))
                     );
-               }
+               }*/
 
                 }
 
@@ -147,19 +152,17 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                 mediaPlayer.stop();
                 play.setEnabled(true);
                 stop.setEnabled(false);
-                pause.setEnabled(false);
                 try {
                     mediaPlayer.prepare();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                pausee=false;
             }
         });
 
 
 
-        pause.setOnClickListener(new View.OnClickListener() {
+        /*pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                t = mediaPlayer.getCurrentPosition();
@@ -168,10 +171,13 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                 stop.setEnabled(true);
                 pause.setEnabled(false);
                 pausee=true;
+                System.out.println("temps passé++++++++++++++++++++++++++"+t);
+                System.out.println("temps resntant++++++++++++++++++++++++++"+(mediaPlayer.getDuration()-t));
+
 
 
             }
-        });
+        });*/
 
     }
 
