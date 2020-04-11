@@ -1,32 +1,23 @@
 language: android
-
 jdk: oraclejdk8
-env:
-  global:
-    - ANDROID_API_LEVEL=25
-    - ANDROID_BUILD_TOOLS_VERSION=25.0.0
+
 android:
   components:
-    - tools
     - platform-tools
-    - build-tools-25.0.0
-    - android-22
-    - sys-img-armeabi-v7a-android-22
+    - tools
+
+    - build-tools-27.0.3
+
+    - android-27
+
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-19
+
 
 before_install:
   - yes | sdkmanager "platforms;android-27"
-  - yes | sdkmanager "platforms;android-28"
-  - sudo easy_install cpp-coveralls
 
-before_script:
-  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
-  - emulator -avd test -no-audio -no-window &
-  - android-wait-for-emulator
-  - adb shell input keyevent 82 &
-  - export LANG=en_US.UTF-8
 script:
- - xctool -workspace MZTD.xcworkspace -scheme MZTD -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
- - xctool test -workspace MZTD.xcworkspace -scheme MZTD-Coverage -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
-
-after_success:
-  - ./coveralls.rb --extension m --exclude-folder MZTDTests 
+    - ./gradlew assembleDebug
