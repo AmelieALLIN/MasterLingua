@@ -1,0 +1,66 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreerCarteQuestionSon" >
+
+
+    <ImageView android:layout_height="45dp"
+        android:layout_width="92.5dp"
+        android:src="@drawable/quiz"
+        android:contentDescription="logoGame"
+        android:id="@+id/quiz"/>
+
+    <TextView
+        android:id="@+id/titre"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/quiz"
+        android:layout_centerHorizontal="true"
+        android:text="Votre carte"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+
+    <ImageView
+        android:id="@+id/micImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/titre"
+        android:layout_centerHorizontal="true"
+        android:src="@android:drawable/presence_audio_online" />
+
+    <LinearLayout  android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/micImage"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linear2"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="play" />
+
+        <Button
+            android:id="@+id/pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="pause" />
+
+        <Button
+            android:id="@+id/stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="stop" />
+    </LinearLayout>
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:cacheColorHint="#00000000" />
+
+</RelativeLayout>

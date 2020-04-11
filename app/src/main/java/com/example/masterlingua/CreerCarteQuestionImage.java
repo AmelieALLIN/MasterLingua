@@ -78,11 +78,12 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                 checkAnswer3 = findViewById(R.id.checkAnswer3);
 
                 //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-                if (image.getWidth()==0) {
+                if (ok==0) {
                     CharSequence text = getText(R.string.warning_question);
                     int duration = Toast.LENGTH_SHORT;
-                    Toast.makeText(context, text, duration).show();
-                } else {
+
+                    Toast.makeText(context, "Veuillez insérer une image jpg et deux réponses minimum", duration).show();
+                }else {
                     //String bonneReponse = "";
                     // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
                     if (!answer1.getText().toString().isEmpty()) { // champ de réponse 1
@@ -100,11 +101,6 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
                         if (checkAnswer3.isChecked()) b3 = true;
                         if (b3) bonneReponse = answers.get(2);
                     }
-                    // en faire un logger
-                    //for(int i=0; i<answers.size(); i++){
-                    //    System.out.println(answers.get(i) + i);
-                    //}
-                    // construire la carte avec le bon nombre de réponses en argument
                     CharSequence text = getText(R.string.card_created);
                     int duration = Toast.LENGTH_SHORT;
 
@@ -230,18 +226,18 @@ public class CreerCarteQuestionImage extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
-        if(resultCode == RESULT_OK && requestCode==1){
-            try{
-                InputStream input=getContentResolver().openInputStream(data.getData());
-                Bitmap bitmap= BitmapFactory.decodeStream(input);
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == 1) {
+            try {
+                InputStream input = getContentResolver().openInputStream(data.getData());
+                Bitmap bitmap = BitmapFactory.decodeStream(input);
                 image.setImageBitmap(bitmap);
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
                 b = baos.toByteArray();
-                img=Base64.encodeToString(b, Base64.DEFAULT);
-                ok=1;
-
+                img = Base64.encodeToString(b, Base64.DEFAULT);
+                ok = 1;
 
 
             } catch (FileNotFoundException e) {
