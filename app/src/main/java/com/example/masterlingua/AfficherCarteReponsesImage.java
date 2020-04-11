@@ -168,6 +168,17 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
+        }
+        else if (carte.getType().equals("qson")) {
+            Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionSon.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("carte", cartes.get(0));
+            bundle.putSerializable("liste", (Serializable) cartes);
+            bundle.putString("iddeck",iddeck);
+            bundle.putInt("compteur",compteur);
+            jouerCarte.putExtras(bundle);
+            startActivity(jouerCarte);
+            finish();
         }}
 
 public void fin(){

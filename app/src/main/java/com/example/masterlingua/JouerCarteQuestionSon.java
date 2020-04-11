@@ -43,14 +43,13 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
     String ok,idc;
      String monfichier;
     Context context = this;
-    Button play,stop,pause;
+    Button play,stop;
     MediaPlayer mediaPlayer;
     //boolean pausee=false;
-    int t;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_jouer_carte_question_son);
+        setContentView(R.layout.jouer_carte_question_son);
 
 
         reps = findViewById(R.id.list);
@@ -59,10 +58,14 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         //pause=findViewById(R.id.pause);
         Bundle bundle = getIntent().getExtras();
         carte = (Carte) bundle.getSerializable("carte");
-        monfichier=bundle.getString("chemin");
          idc = carte.getIdCarte();
+        List<QuestionSon> quest = QuestionSon.find(QuestionSon.class,"idcarte = ?", idc);
+        for(int n=0; n<quest.size();n++){
+            monfichier=quest.get(n).getUrl();
+        }
          mediaPlayer=new MediaPlayer();
-        try {
+
+       try {
             mediaPlayer.setDataSource(monfichier);
             mediaPlayer.prepare();
         } catch (IOException e) {

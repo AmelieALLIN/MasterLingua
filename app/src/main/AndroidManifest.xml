@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.masterlingua">
 
-    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="19" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
@@ -15,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JouerCarteQuestionSon"></activity>
+        <activity android:name=".SwipeJouerCarteQuestionSon"></activity>
+        <activity android:name=".AfficherCarteQuestionSon" />
+        <activity android:name=".JouerCarteQuestionSon" />
         <activity android:name=".CreerCarteQuestionSon" />
         <activity android:name=".SwipeJouerCarteImageR" />
         <activity android:name=".SwipeJouerCarteImageQ" />

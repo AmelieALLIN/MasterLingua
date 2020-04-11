@@ -179,7 +179,20 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
-        }}
+        }
+        else if (carte.getType().equals("qson")) {
+            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteQuestionSon.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("carte", cartes.get(0));
+            bundle.putSerializable("liste", (Serializable) cartes);
+            bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
+            jouerCarte.putExtras(bundle);
+            startActivity(jouerCarte);
+            finish();
+        }
+
+    }
 
     public void fin(){
         Intent fin = new Intent(getApplicationContext(), ChoisirCreationCarte.class);

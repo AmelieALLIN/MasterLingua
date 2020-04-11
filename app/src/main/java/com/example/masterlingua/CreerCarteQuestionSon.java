@@ -180,7 +180,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
                 Intent afficherCarte = new Intent(getApplicationContext(), JouerCarteQuestionSon.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("carte", carte);
-                bundle.putString("chemin",monfichier);
+                //bundle.putString("chemin",monfichier);
                 afficherCarte.putExtras(bundle);
                 startActivity(afficherCarte);
                 finish();
@@ -228,7 +228,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
             int duration = Toast.LENGTH_SHORT;
 
             carte = new Carte(idcarte,type);
-            QuestionSon quest = new QuestionSon(idquestion,monaudio(monfichier),idcarte);
+            QuestionSon quest = new QuestionSon(idquestion,monaudio(monfichier),monfichier,idcarte);
             for (int i = 0; i < answers.size(); i++) {
                 idrep = UUID.randomUUID().toString();
                 if (answers.get(i) == bonneReponse) {
