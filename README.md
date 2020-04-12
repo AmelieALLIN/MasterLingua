@@ -24,6 +24,8 @@ using Android as OS
 
 •	Download URL  : [Here](https://github.com/AmelieALLIN/MasterLingua/raw/apk/app-debug.apk)
 
+•      Or Via QR Code : (C:\Users\Lenovo\Downloads\QR.png)
+
 # Licences badges :
 
 We use [shields.io](https://img.shields.io) to generate the license badge automatically from the LICENSE file in the github repository.
