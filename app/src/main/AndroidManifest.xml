@@ -19,6 +19,7 @@
         <activity android:name=".SwipeJouerCarteQuestionSon"></activity>
         <activity android:name=".AfficherCarteQuestionSon" />
         <activity android:name=".JouerCarteQuestionSon" />
+        <activity android:name=".JouerCarteQuestionSonD" />
         <activity android:name=".CreerCarteQuestionSon" />
         <activity android:name=".SwipeJouerCarteImageR" />
         <activity android:name=".SwipeJouerCarteImageQ" />

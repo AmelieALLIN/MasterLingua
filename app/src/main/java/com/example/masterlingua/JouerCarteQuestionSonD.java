@@ -1,19 +1,10 @@
 package com.example.masterlingua;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.AudioFormat;
 import android.media.MediaPlayer;
-import android.net.rtp.AudioStream;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,23 +16,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JouerCarteQuestionSon extends AppCompatActivity {
+public class JouerCarteQuestionSonD extends AppCompatActivity {
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
     List<String> nom_rep = new ArrayList<>();
     String ok,idc;
-     String monfichier;
+    String monfichier;
     Context context = this;
     Button play,stop;
     MediaPlayer mediaPlayer;
@@ -59,14 +46,14 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         //pause=findViewById(R.id.pause);
         Bundle bundle = getIntent().getExtras();
         carte = (Carte) bundle.getSerializable("carte");
-         idc = carte.getIdCarte();
+        idc = carte.getIdCarte();
         List<QuestionSon> quest = QuestionSon.find(QuestionSon.class,"idcarte = ?", idc);
         for(int n=0; n<quest.size();n++){
             monfichier=quest.get(n).getUrl();
         }
-         mediaPlayer=new MediaPlayer();
+        mediaPlayer=new MediaPlayer();
 
-       try {
+        try {
             mediaPlayer.setDataSource(monfichier);
             mediaPlayer.prepare();
         } catch (IOException e) {
@@ -118,7 +105,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                                               public void run() {
                                                   stop.setEnabled(false);
                                                   play.setEnabled(true);
-                                                 // pause.setEnabled(false);
+                                                  // pause.setEnabled(false);
                                               }
                                           }, mediaPlayer.getDuration()
                 );
@@ -148,7 +135,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                     );
                }*/
 
-                }
+            }
 
         });
 
@@ -224,7 +211,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
             public void run() {
 
                 {
-                    Intent retour = new Intent(JouerCarteQuestionSon.this, ChoisirCreationCarte.class);
+                    Intent retour = new Intent(JouerCarteQuestionSonD.this, JouerDeck3Type.class);
                     retour.putExtra("score",scorecarte);
                     startActivity(retour);
                     finish();
@@ -234,3 +221,14 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         }, 2000);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
