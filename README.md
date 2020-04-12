@@ -25,7 +25,8 @@ using Android as OS
 •	Download URL  : [Here](https://github.com/AmelieALLIN/MasterLingua/raw/apk/app-debug.apk)
 
 •      Or Via QR Code :
-<img src='https://chart.googleapis.com/chart? cht=qr&chl=https%3A%2F%2Fgithub.com%2FAmelieALLIN%2FMasterLingua%2Fraw%2Fapk%2Fapp-debug.apk&chs=180x180&choe=UTF-8&chld=L|2' alt='qr code'><a href='https://www.qrcode-generator.de/'border='0' style='cursor:default' rel='nofollow'></a>
+
+<img src='https://chart.googleapis.com/chart?cht=qr&chl=https%3A%2F%2Fgithub.com%2FAmelieALLIN%2FMasterLingua%2Fraw%2Fapk%2Fapp-debug.apk&chs=180x180&choe=UTF-8&chld=L|2' alt='qr code'><a href='https://www.qrcode-generator.de/' border='0' style='cursor:default' rel='nofollow'></a>
 
 # Licences badges :
 
