@@ -101,7 +101,7 @@ public class CreerDeck extends AppCompatActivity {
 
 
                     case R.id.menu_play:
-                        Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                        Intent afficherDeck = new Intent(getApplicationContext(), JouerDeck3Type.class);
                         Bundle bundle = new Bundle();
                         //System.out.println("DEEEEEECCKKKKKKKKK = "+deckstat.getNom_deck());
                         bundle.putSerializable("deck", deck);

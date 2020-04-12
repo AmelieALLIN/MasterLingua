@@ -168,6 +168,7 @@ public class JouerDeck3Type extends AppCompatActivity {
         retour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                deja_initialise = false;
                 Intent finalintent = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
                 startActivity(finalintent);
             }
