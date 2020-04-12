@@ -27,5 +27,5 @@ after_success:
     
 branches:
   only:
-    - develop
+    - dev
     - Travis
