@@ -22,7 +22,7 @@ using Android as OS
  
 # Installation :
 
-•	Download URL  : [here](https://github.com/AmelieALLIN/MasterLingua/raw/apk/app-debug.apk)
+•	Download URL  : [Here](https://github.com/AmelieALLIN/MasterLingua/raw/apk/app-debug.apk)
 
 # Licences badges :
 
