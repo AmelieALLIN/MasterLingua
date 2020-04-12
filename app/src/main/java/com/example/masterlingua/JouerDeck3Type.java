@@ -132,6 +132,22 @@ public class JouerDeck3Type extends AppCompatActivity {
                                 finish();
                                 questioncarte.remove(position);
                                 deja_initialise = true;
+                            } else {
+                                if (listcarte.get(indice).getType().equals("qson")) {
+                                    carte = listcarte.get(indice);
+                                    System.out.println("********************* type son");
+                                    System.out.println("********************* type carte ="+carte.getType());
+                                    System.out.println("********************* id carte ="+carte.getIdCarte());
+                                    Intent afficher = new Intent(getApplicationContext(), JouerCarteQuestionSonD.class);
+                                    Bundle jouerCTT = new Bundle();
+                                    jouerCTT.putSerializable("carte", carte);//si marche pas 2eme classe
+                                    afficher.putExtras(jouerCTT);
+                                    startActivity(afficher);
+                                    System.out.println("********************* 3");
+                                    finish();
+                                    questioncarte.remove(position);
+                                    deja_initialise = true;
+                                }
                             }
                         }
                     }

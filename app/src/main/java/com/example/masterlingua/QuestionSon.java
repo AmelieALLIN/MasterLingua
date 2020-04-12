@@ -2,17 +2,20 @@ package com.example.masterlingua;
 
 import com.orm.SugarRecord;
 
-public class QuestionSon extends SugarRecord implements Question{
+public class QuestionSon extends SugarRecord implements Question {
     private String idquestion;
     private String idcarte;
-
+    String son;
+    String url;
     public QuestionSon(){
 
     }
 
-    public QuestionSon(String id_question, String id_carte) {
-        this.idquestion = id_question;
-        this.idcarte = id_carte;
+    public QuestionSon(String idquestion,String audio,String url, String idcarte) {
+        this.idquestion = idquestion;
+        this.idcarte = idcarte;
+        son=audio;
+        this.url=url;
     }
 
     @Override
@@ -24,4 +27,11 @@ public class QuestionSon extends SugarRecord implements Question{
     public String getIdCarte() {
         return idcarte;
     }
+
+
+    public String getSon(){
+        return this.son;
+    }
+
+    public String getUrl(){return this.url;}
 }

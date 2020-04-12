@@ -1,87 +1,108 @@
 package com.example.masterlingua;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-public class SwipeJouerCarteImageQ extends AppCompatActivity {
+public class SwipeJouerCarteQuestionSon extends AppCompatActivity {
+    static int score;
+    static boolean jouer;
     ListView reps;
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
-    List<QuestionImage> quest=new ArrayList<>();
     List<String> nom_rep = new ArrayList<>();
-    ImageView question;
-    String ok,iddeck;
+    String ok, idc;
+    String monfichier;
+    Context context = this;
     List<Carte> cartes;
-    LinearLayout layout;
-    static int score;
-    Context context=this;
-    static boolean jouer;
-
+    Button play, stop;
+    MediaPlayer mediaPlayer;
+    RelativeLayout layout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.afficher_carte_image_question);
-        reps =  findViewById(R.id.list);
-        layout = findViewById(R.id.layout);
-        question= findViewById(R.id.q);
-        Bundle bundle = getIntent().getExtras();
-
-
-        carte = (Carte) bundle.getSerializable("carte");
-        cartes= (List<Carte>) bundle.getSerializable("liste");
+        setContentView(R.layout.jouer_carte_question_son);
+    reps = findViewById(R.id.list);
+    play= findViewById(R.id.play);
+    stop= findViewById(R.id.stop);
+    layout=findViewById(R.id.layout);
+    Bundle bundle = getIntent().getExtras();
+    carte =(Carte)bundle.getSerializable("carte");
+        cartes = (List<Carte>) bundle.getSerializable("liste");
         score=bundle.getInt("score");
         jouer=bundle.getBoolean("jouer");
-        String idc = carte.getIdCarte();
-        reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
-        for(int i=0;i<reponses.size();i++)
-        {
-            nom_rep.add(reponses.get(i).getNom());
-        }
+    idc =carte.getIdCarte();
+    List<QuestionSon> quest = QuestionSon.find(QuestionSon.class, "idcarte = ?", idc);
+        for(
+    int n = 0; n<quest.size();n++)
 
-        for(int y=0;y<reponses.size();y++){
-            if(reponses.get(y).getbr() == true){
-                ok = reponses.get(y).getNom();
-            }
-        }
+    {
+        monfichier = quest.get(n).getUrl();
+    }
 
-        quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
-        for(int n=0; n<quest.size();n++){
-            byte[] encodeByte = Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
-            Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
-            question.setImageBitmap(bmp);
+    mediaPlayer=new
+
+    MediaPlayer();
+
+       try
+
+    {
+        mediaPlayer.setDataSource(monfichier);
+        mediaPlayer.prepare();
+    } catch(
+    IOException e)
+
+    {
+        e.printStackTrace();
+    }
+
+    reponses =ReponseText.find(ReponseText .class,"idcarte = ?",idc);
+        for(
+    int i = 0;i<reponses.size();i++)
+
+    {
+        nom_rep.add(reponses.get(i).getNom());
+    }
+
+        for(
+    int y = 0;y<reponses.size();y++)
+
+    {
+        if (reponses.get(y).getbr() == true) {
+            ok = reponses.get(y).getNom();
         }
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
+    }
+
+
+    final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nom_rep);
         reps.setAdapter(adapter);
-
-
-
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
+
 
                 if (choix.equals(ok)) {
                     showToastOk();
@@ -90,8 +111,8 @@ public class SwipeJouerCarteImageQ extends AppCompatActivity {
                     jouer=true;
 
                     if (cartes.size() == 1) {
-                            Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
-                            fin();}
+                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        fin();}
                     else {
                         cartes.remove(0);
                         next();
@@ -102,10 +123,9 @@ public class SwipeJouerCarteImageQ extends AppCompatActivity {
                     reps.setEnabled(false);
                     jouer=true;
                     if (cartes.size() == 1) {
-                            Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
-
-                            fin();}
-                       else {
+                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        fin();}
+                    else {
                         cartes.remove(0);
                         next();
                     }
@@ -115,7 +135,30 @@ public class SwipeJouerCarteImageQ extends AppCompatActivity {
             }
         });
 
-        layout.setOnTouchListener(new OnSwipeTouchListener(SwipeJouerCarteImageQ.this) {
+
+
+        play.setOnClickListener(new View.OnClickListener()
+
+    {
+        @Override
+        public void onClick (View v){
+        stop.setEnabled(true);
+        play.setEnabled(false);
+        mediaPlayer.start();
+        new Handler().postDelayed(new Runnable() {
+                                      public void run() {
+                                          stop.setEnabled(false);
+                                          play.setEnabled(true);
+                                      }
+                                  }, mediaPlayer.getDuration()
+        );
+
+
+
+    }
+
+    });
+        layout.setOnTouchListener(new OnSwipeTouchListener(SwipeJouerCarteQuestionSon.this) {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
@@ -144,8 +187,60 @@ public class SwipeJouerCarteImageQ extends AppCompatActivity {
                 else fin();
             }
         });
+
+        stop.setOnClickListener(new View.OnClickListener()
+
+    {
+        @Override
+        public void onClick (View v){
+        mediaPlayer.stop();
+        play.setEnabled(true);
+        stop.setEnabled(false);
+        try {
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    });
+
+
+}
+    public void showToastOk() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
+
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        toastImage.setImageResource(R.drawable.good);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+
+        toast.show();
     }
 
+    public void showToastNo() {
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
+
+        ImageView toastImage = layout.findViewById(R.id.toast_image);
+        toastImage.setImageResource(R.drawable.bad);
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+
+        toast.show();
+    }
+
+    public void fin(){
+        Intent fin = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
+        startActivity(fin);
+        finish();
+    }
     public void next(){
         carte = cartes.get(0);
         System.out.println("iddd"+carte.getIdCarte());
@@ -183,6 +278,7 @@ public class SwipeJouerCarteImageQ extends AppCompatActivity {
             startActivity(jouerCarte);
             finish();
         }
+
         else if (carte.getType().equals("qson")) {
             Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteQuestionSon.class);
             Bundle bundle = new Bundle();
@@ -193,46 +289,7 @@ public class SwipeJouerCarteImageQ extends AppCompatActivity {
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
-        }}
-    public void showToastOk() {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
-
-        ImageView toastImage = layout.findViewById(R.id.toast_image);
-        toastImage.setImageResource(R.drawable.good);
-
-        Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
-
-        toast.show();
+        }
     }
-
-    public void showToastNo() {
-        LayoutInflater inflater = getLayoutInflater();
-        View layout = inflater.inflate(R.layout.toast_no, (ViewGroup) findViewById(R.id.toast_root));
-
-        ImageView toastImage = layout.findViewById(R.id.toast_image);
-        toastImage.setImageResource(R.drawable.bad);
-
-        Toast toast = new Toast(getApplicationContext());
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.setDuration(Toast.LENGTH_SHORT);
-        toast.setView(layout);
-
-        toast.show();
-    }
-    public void fin(){
-        Intent fin = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
-        startActivity(fin);
-        finish();
-    }
-
-
-
-
 }
-
-
 

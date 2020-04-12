@@ -28,4 +28,11 @@ public class MenuCreationCarte extends AppCompatActivity {
         Intent intent = new Intent(this,CreerCarteReponseImage.class);
         startActivity(intent);
     }
+
+
+    public void questionAudio (View view) {
+        Intent intent = new Intent(this,CreerCarteQuestionSon.class);
+        startActivity(intent);
+    }
+
 }

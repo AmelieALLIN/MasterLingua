@@ -96,7 +96,18 @@ public class SwipeListeCarte extends AppCompatActivity {
                     startActivity(jouerCarte);
                     finish();
                 }
-
+                else if(carte.getType().equals("qson")){
+                    System.out.println(carte.getType());
+                    Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionSon.class );
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("carte", carte);
+                    bundle.putSerializable("liste", (Serializable) cartes);
+                    bundle.putString("iddeck",deck.getId_deck());
+                    bundle.putInt("compteur",compteur);
+                    jouerCarte.putExtras(bundle);
+                    startActivity(jouerCarte);
+                    finish();
+                }
 
                 System.out.println(carte.getIdCarte());
                 System.out.println(cartes.size());
