@@ -91,4 +91,12 @@ public class AfficherDeck extends AppCompatActivity {
             deja_initialise = false;
         }
     }
+    public void goToTuto (View view){
+        String nameToGo = "AfficherDeck";
+        Intent intent = new Intent(this,AfficherTuto.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("className", nameToGo);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }

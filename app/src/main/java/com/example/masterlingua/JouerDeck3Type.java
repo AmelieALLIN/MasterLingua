@@ -47,7 +47,6 @@ public class JouerDeck3Type extends AppCompatActivity {
             score = 0;
         }
 
-
         if (deja_initialise == false) {
             cartedecks = CartesDeck.findWithQuery(CartesDeck.class, "Select * from CARTES_DECK where iddeck = ?", deck.getId_deck());
             for (int i = 0; i < cartedecks.size(); i++) {
@@ -56,7 +55,7 @@ public class JouerDeck3Type extends AppCompatActivity {
                 for (int j = 0; j < cartes.size(); j++) {
                     listcarte.add(cartes.get(j));
                 }
-                questioncarte.add("Question " + i);
+                questioncarte.add("Question " + (i+1));
             }
         }
         for (int k = 0; k < listcarte.size(); k++) {
@@ -69,7 +68,7 @@ public class JouerDeck3Type extends AppCompatActivity {
         //question carte c est le seul truc qui restera
         final ArrayAdapter adapter_cartes = new ArrayAdapter(this, android.R.layout.simple_list_item_1, questioncarte);
         liste_cartes.setAdapter(adapter_cartes);
-        scoretemporaire.setText("Score actuel = " + score);
+        scoretemporaire.setText("Score actuel : " + score);
         if (questioncarte.size() != 0) {
             liste_cartes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -139,9 +138,8 @@ public class JouerDeck3Type extends AppCompatActivity {
             int nbTotalCartes = listcarte.size();
             Toast.makeText(getApplicationContext(), "Votre score est de " + score + " point" + pluriel + " sur " + nbTotalCartes, Toast.LENGTH_SHORT).show();
             scoretemporaire.setText(" ");
-            scorefinal.setText("Votre score final est " + score);
+            scorefinal.setText("Votre score final est " + score + " point" + pluriel + " sur " + nbTotalCartes);
             deja_initialise = false;
-
 
         }
 
@@ -152,14 +150,5 @@ public class JouerDeck3Type extends AppCompatActivity {
                 startActivity(finalintent);
             }
         });
-    }
-
-    public void goToTuto(View view) {
-        String nameToGo = "JouerDeck3Type";
-        Intent intent = new Intent(this, AfficherTuto.class);
-        Bundle bundle = new Bundle();
-        bundle.putString("className", nameToGo);
-        intent.putExtras(bundle);
-        startActivity(intent);
     }
 }

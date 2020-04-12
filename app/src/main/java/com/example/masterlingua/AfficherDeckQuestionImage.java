@@ -115,7 +115,7 @@ public class AfficherDeckQuestionImage extends AppCompatActivity {
                 }
             });}
         else
-            Toast.makeText(getApplicationContext(), "votre score est de :"+score, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Votre score est de :"+score, Toast.LENGTH_SHORT).show();
         deja_initialise=false;
 
 

@@ -12,22 +12,12 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/iLogo"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="325dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/ilogo2"
-            android:onClick="goToTuto" />
-
         <TextView
             android:id="@+id/liste"
             android:layout_width="fill_parent"
             android:layout_height="58dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_below="@+id/iLogo"
             android:fontFamily="@font/montserrat_alternates"
             android:text="Liste de cartes"
             android:textAlignment="center"
@@ -58,7 +48,7 @@
             android:layout_height="58dp"
             android:layout_below="@+id/liste_cartes"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat_alternates"
             android:text=" "
             android:textAlignment="center"
