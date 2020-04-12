@@ -22,7 +22,7 @@ using Android as OS
  
 # Installation :
 
-•	Download URL  :
+•	Download URL  : [here](https://github.com/AmelieALLIN/MasterLingua/raw/apk/app-debug.apk)
 
 # Licences badges :
 
@@ -37,7 +37,6 @@ We use [shields.io](https://img.shields.io) to generate the license badge automa
  
  Then, the provided ```.travis.yml``` and ```build.gradle``` files will do the job.
     
- You can download the latest apk from [here](https://github.com/AmelieALLIN/MasterLingua/raw/apk/app-debug.apk)
 
 # Test Coverage :
 
