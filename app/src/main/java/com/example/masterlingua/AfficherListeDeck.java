@@ -44,7 +44,7 @@ public class AfficherListeDeck extends AppCompatActivity {
                 for(int i=0;i<deckfindid.size();i++){
                     deck = deckfindid.get(i);
                 }
-                Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                Intent afficherDeck = new Intent(getApplicationContext(), JouerDeck3Type.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("deck", deck);
                 afficherDeck.putExtras(bundle);

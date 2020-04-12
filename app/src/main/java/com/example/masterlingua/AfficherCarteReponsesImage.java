@@ -117,6 +117,21 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
             }
 
             @Override
+            public void onSwipeRight() {
+                super.onSwipeRight();
+                if(cartes.size()==1){
+                    ajoutercartedeck();
+
+                    fin();
+                }
+                else{
+                    ajoutercartedeck();
+
+                    cartes.remove(0);
+                    next();}
+            }
+
+            @Override
             public void onSwipeUp(){
                 super.onSwipeUp();
 
