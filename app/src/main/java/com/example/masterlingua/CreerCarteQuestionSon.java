@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -40,17 +41,17 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
     ImageView i;
     private CheckBox checkAnswer1, checkAnswer2, checkAnswer3;
     String bonneReponse;
-    String type="qson";
+    String type = "qson";
     MediaRecorder mRecorder;
     MediaPlayer mediaPlayer;
-    Button start, stop, play,stop_play,validate,save;
-    String monfichier="";
-    EditText answer1,answer2,answer3;
+    Button start, stop, play, stop_play, validate, save;
+    String monfichier = "";
+    EditText answer1, answer2, answer3;
     private boolean b1, b2, b3;
     private List<String> answers;
     Carte carte;
-    int ok=0;
-    Context context=this;
+    int ok = 0;
+    Context context = this;
 
     public static final int request_code = 1000;
 
@@ -58,29 +59,29 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creer_carte_question_son);
-        start=findViewById(R.id.start);
-        stop=findViewById(R.id.stop);
-        play=findViewById(R.id.play);
-        stop_play=findViewById(R.id.stopPlay);
-        text=findViewById(R.id.text1);
+        start = findViewById(R.id.start);
+        stop = findViewById(R.id.stop);
+        play = findViewById(R.id.play);
+        stop_play = findViewById(R.id.stopPlay);
+        text = findViewById(R.id.text1);
         answers = new ArrayList<>();
         validate = findViewById(R.id.validate);
-        save=findViewById(R.id.save);
-        i=findViewById(R.id.micImage);
-         answer1 = findViewById(R.id.answer1);
-         answer2 = findViewById(R.id.answer2);
-         answer3 = findViewById(R.id.answer3);
+        save = findViewById(R.id.save);
+        i = findViewById(R.id.micImage);
+        answer1 = findViewById(R.id.answer1);
+        answer2 = findViewById(R.id.answer2);
+        answer3 = findViewById(R.id.answer3);
         checkAnswer1 = findViewById(R.id.checkAnswer1);
         checkAnswer2 = findViewById(R.id.checkAnswer2);
         checkAnswer3 = findViewById(R.id.checkAnswer3);
 
-        if (checkPermissionFromDevice()){
+        if (checkPermissionFromDevice()) {
 
             start.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    monfichier= Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+
-                            UUID.randomUUID()+"AudioFile.mp3";
+                    monfichier = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" +
+                            UUID.randomUUID() + "AudioFile.mp3";
 
                     SetupMediaRecorder();
 
@@ -105,7 +106,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
                     start.setEnabled(true);
                     stop.setEnabled(false);
                     stop_play.setEnabled(false);
-                    mediaPlayer=new MediaPlayer();
+                    mediaPlayer = new MediaPlayer();
                     try {
                         mediaPlayer.setDataSource(monfichier);
                         mediaPlayer.prepare();
@@ -122,10 +123,8 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
                     stop.setEnabled(false);
                     play.setEnabled(false);
                     stop_play.setEnabled(true);
-                    new Handler().postDelayed(new Runnable()
-                                              {
-                                                  public void run()
-                                                  {
+                    new Handler().postDelayed(new Runnable() {
+                                                  public void run() {
                                                       stop_play.setEnabled(false);
                                                       start.setEnabled(true);
                                                       play.setEnabled(true);
@@ -152,29 +151,28 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
                 }
             });
 
-        }
-        else {
+        } else {
 
             requestPermissionFromDevice();
 
         }
-        save.setOnClickListener(new View.OnClickListener(){
+        save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-             saveCard();
-                    // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
-                    Intent afficherCarte = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("carte", carte);
-                    afficherCarte.putExtras(bundle);
-                    startActivity(afficherCarte);
-                    finish();
-                }
+            public void onClick(View v) {
+                saveCard();
+                // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
+                Intent afficherCarte = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                afficherCarte.putExtras(bundle);
+                startActivity(afficherCarte);
+                finish();
+            }
 
         });
-        validate.setOnClickListener(new View.OnClickListener(){
+        validate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 saveCard();
                 // mettre dans le bundle les informations de la carte créée pour les transmetre à l'activité qui va afficher la carte
                 Intent afficherCarte = new Intent(getApplicationContext(), JouerCarteQuestionSon.class);
@@ -187,69 +185,98 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
             }
 
         });
-
-
-
     }
 
-
-    private void saveCard(){
+    private void saveCard() {
         String idcarte = UUID.randomUUID().toString();
         String idquestion = UUID.randomUUID().toString();
         String idrep;
         boolean br;
         //si le champ de la question est vide : toast pour dire que la question est obligatoire pour valider la carte
-        if (ok==0) {
+        if (ok == 0) {
             CharSequence text = getText(R.string.warning_question);
             int duration = Toast.LENGTH_SHORT;
 
             Toast.makeText(context, "Veuillez enregistrer votre question et deux réponses minimum", duration).show();
-        }
-        else {
+        } else {
             // vérifier si chaque champ de réponse est vide, sinon ajouter la réponse à la liste answers
-            if(!answer1.getText().toString().isEmpty()){ // champ de réponse 1
+            if (!answer1.getText().toString().isEmpty()) { // champ de réponse 1
                 answers.add(answer1.getText().toString());
-                if(checkAnswer1.isChecked()) b1 = true;
-                if(b1) bonneReponse = answers.get(0);
+                if (checkAnswer1.isChecked()) b1 = true;
+                if (b1) bonneReponse = answers.get(0);
             }
-            if(!answer2.getText().toString().isEmpty()){ // champ de réponse 2
+            if (!answer2.getText().toString().isEmpty()) { // champ de réponse 2
                 answers.add(answer2.getText().toString());
-                if(checkAnswer2.isChecked()) b2 = true;
-                if(b2) bonneReponse = answers.get(1);
+                if (checkAnswer2.isChecked()) b2 = true;
+                if (b2) bonneReponse = answers.get(1);
             }
-            if(!answer3.getText().toString().isEmpty()){ // champ de réponse 3
+            if (!answer3.getText().toString().isEmpty()) { // champ de réponse 3
                 answers.add(answer3.getText().toString());
-                if(checkAnswer3.isChecked()) b3 = true;
-                if(b3) bonneReponse = answers.get(2);
+                if (checkAnswer3.isChecked()) b3 = true;
+                if (b3) bonneReponse = answers.get(2);
             }
 
             System.out.println(" LAAAAAAAAA   ok1");
-            CharSequence text = getText(R.string.card_created);
             int duration = Toast.LENGTH_SHORT;
-
-            carte = new Carte(idcarte,type);
-            QuestionSon quest = new QuestionSon(idquestion,monaudio(monfichier),monfichier,idcarte);
-            for (int i = 0; i < answers.size(); i++) {
-                idrep = UUID.randomUUID().toString();
-                if (answers.get(i) == bonneReponse) {
-                    br = true;
-                }
-                else
-                {
-                    br = false;
-                }
-                String nomrep = answers.get(i);
-                ReponseText reponse = new ReponseText(idrep,nomrep,idcarte,br);
-                reponse.save();
+            boolean[] good_br = new boolean[3];
+            if (answer1.getText().toString().isEmpty() && checkAnswer1.isChecked()) {
+                CharSequence text = getText(R.string.beware_good_answer);
+                Toast.makeText(context, text, duration).show();
+                good_br[0] = false;
             }
-            carte.save();
-            quest.save();
-            Toast.makeText(context, text, duration).show();
-    }
+            if (answer2.getText().toString().isEmpty() && checkAnswer2.isChecked()) {
+                CharSequence text = getText(R.string.beware_good_answer);
+                Toast.makeText(context, text, duration).show();
+                good_br[1] = false;
+            }
+            if (answer3.getText().toString().isEmpty() && checkAnswer3.isChecked()) {
+                CharSequence text = getText(R.string.beware_good_answer);
+                Toast.makeText(context, text, duration).show();
+                good_br[2] = false;
+            }
+            if (!(answer1.getText().toString().isEmpty() && checkAnswer1.isChecked()))
+                good_br[0] = true;
+            if (!(answer2.getText().toString().isEmpty() && checkAnswer2.isChecked()))
+                good_br[1] = true;
+            if (!(answer3.getText().toString().isEmpty() && checkAnswer3.isChecked()))
+                good_br[2] = true;
+
+            carte = new Carte(idcarte, type);
+            if (!checkAnswer1.isChecked() && !checkAnswer2.isChecked() && !checkAnswer3.isChecked()) { // si aucune br n'est indiquée
+                CharSequence text = getText(R.string.bonne_rep);
+                Toast.makeText(context, text, duration).show();
+                answers.clear();
+            }
+            if (!(answers.size() >= 2)) {
+                CharSequence text = getText(R.string.au_moins_deux);
+                Toast.makeText(context, text, duration).show();
+                answers.clear();
+            }
+            if ((checkAnswer1.isChecked() || checkAnswer2.isChecked() || checkAnswer3.isChecked()) && answers.size() >= 2) {
+                if (good_br[0] && good_br[1] && good_br[2] && answers.size() >= 2) {
+                    QuestionSon quest = new QuestionSon(idquestion, monaudio(monfichier), monfichier, idcarte);
+                    for (int i = 0; i < answers.size(); i++) {
+                        idrep = UUID.randomUUID().toString();
+                        if (answers.get(i) == bonneReponse) {
+                            br = true;
+                        } else {
+                            br = false;
+                        }
+                        String nomrep = answers.get(i);
+                        ReponseText reponse = new ReponseText(idrep, nomrep, idcarte, br);
+                        reponse.save();
+                    }
+                    CharSequence text = getText(R.string.card_created);
+                    carte.save();
+                    quest.save();
+                    Toast.makeText(context, text, duration).show();
+                }
+            }
+        }
     }
 
     private void SetupMediaRecorder() {
-        mRecorder=new MediaRecorder();
+        mRecorder = new MediaRecorder();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
@@ -257,7 +284,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
     }
 
     private void requestPermissionFromDevice() {
-        ActivityCompat.requestPermissions(this,new String[]{
+        ActivityCompat.requestPermissions(this, new String[]{
                         Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.RECORD_AUDIO},
                 request_code);
@@ -266,16 +293,14 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case request_code:
-            {
-                if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED ){
-                    Toast.makeText(getApplicationContext(),"permission granted...",Toast.LENGTH_SHORT).show();
+        switch (requestCode) {
+            case request_code: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getApplicationContext(), "permission granted...", Toast.LENGTH_SHORT).show();
                     startActivity(getIntent());
                     finish();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(),"permission denied...",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "permission denied...", Toast.LENGTH_SHORT).show();
                     startActivity(getIntent());
                     finish();
                 }
@@ -285,14 +310,12 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
     }
 
     private boolean checkPermissionFromDevice() {
-        int storage_permission= ContextCompat.checkSelfPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE);
-        int recorder_permssion=ContextCompat.checkSelfPermission(this,Manifest.permission.RECORD_AUDIO);
+        int storage_permission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        int recorder_permssion = ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO);
         return storage_permission == PackageManager.PERMISSION_GRANTED && recorder_permssion == PackageManager.PERMISSION_GRANTED;
     }
 
-
-    private String monaudio(String url)
-    {
+    private String monaudio(String url) {
         String audio = "";
         URL u = null;
         InputStream is = null;
@@ -301,75 +324,72 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
         try {
             u = new URL(url);
             is = u.openStream();
-            HttpURLConnection huc = (HttpURLConnection)u.openConnection();
+            HttpURLConnection huc = (HttpURLConnection) u.openConnection();
 
-            if(huc != null)
-            {
-                InputStream inputStream =  huc.getInputStream();
+            if (huc != null) {
+                InputStream inputStream = huc.getInputStream();
                 byte[] buff = new byte[8000];
                 int bytesRead = 0;
 
                 ByteArrayOutputStream bao = new ByteArrayOutputStream();
 
-                while((bytesRead = inputStream.read(buff)) != -1) {
+                while ((bytesRead = inputStream.read(buff)) != -1) {
                     bao.write(buff, 0, bytesRead);
                 }
 
                 data = bao.toByteArray();
-                audio=Base64.encodeToString(data,Base64.DEFAULT);
+                audio = Base64.encodeToString(data, Base64.DEFAULT);
 
             }
-        }catch (MalformedURLException mue) {
+        } catch (MalformedURLException mue) {
             mue.printStackTrace();
         } catch (IOException ioe) {
             ioe.printStackTrace();
         } finally {
             try {
-                if(is != null){
+                if (is != null) {
                     is.close();
                 }
-            }catch (IOException ioe) {
+            } catch (IOException ioe) {
 
             }
 
         }
         return audio;
     }
-    public void onCheckBoxClicked(View view){
+
+    public void onCheckBoxClicked(View view) {
         checkAnswer1 = findViewById(R.id.checkAnswer1);
         checkAnswer2 = findViewById(R.id.checkAnswer2);
         checkAnswer3 = findViewById(R.id.checkAnswer3);
 
         // s'assurer qu'au total une seule réponse est cochée correcte
-        checkAnswer1.setOnClickListener(new View.OnClickListener(){
+        checkAnswer1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(((CheckBox)v).isChecked()){
+            public void onClick(View v) {
+                if (((CheckBox) v).isChecked()) {
                     checkAnswer2.setChecked(false);
                     checkAnswer3.setChecked(false);
                 }
             }
         });
-        checkAnswer2.setOnClickListener(new View.OnClickListener(){
+        checkAnswer2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(((CheckBox)v).isChecked()){
+            public void onClick(View v) {
+                if (((CheckBox) v).isChecked()) {
                     checkAnswer1.setChecked(false);
                     checkAnswer3.setChecked(false);
                 }
             }
         });
-        checkAnswer3.setOnClickListener(new View.OnClickListener(){
+        checkAnswer3.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                if(((CheckBox)v).isChecked()){
+            public void onClick(View v) {
+                if (((CheckBox) v).isChecked()) {
                     checkAnswer1.setChecked(false);
                     checkAnswer2.setChecked(false);
                 }
             }
         });
-
     }
-
-
 }

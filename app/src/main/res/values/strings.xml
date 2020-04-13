@@ -10,9 +10,14 @@
     <string name="swipe_deck_right">glissez vers la droite pour y insérer la carte qui vous est présentée</string>
     <string name="swipe_deck_up">glissez vers le haut à tout moment pour terminer la création de votre collection et revenir à la page d\'accueil</string>
     <string name="explain_deck">On appelle deck un ensemble ou une famille de cartes.</string>
+    <string name="begin_audio">Enregistrer</string>
+    <string name="stop_audio">Stop</string>
+    <string name="play_audio">Ecouter</string>
+    <string name="stop_play_audio">Arrêter l\'écoute</string>
     <string name="creation_card">CREER UNE CARTE</string>
     <string name="creation_card_text">QUESTION REPONSE</string>
     <string name="creation_card_qimage">QUESTION EN IMAGE</string>
+    <string name="creation_card_qson">QUESTION AUDIO</string>
     <string name="creation_card_rimage">REPONSES EN IMAGE</string>
     <string name="cartes">Cartes</string>
     <string name="creation_deck">CREER UNE COLLECTION</string>
@@ -28,6 +33,7 @@
         <item>@string/language2</item>
     </string-array>
     <string name="enter_question">Veuillez indiquer votre question</string>
+    <string name="enter_audio_question">Veuillez enregistrer votre question</string>
     <string name="language_answers">En quelle langue doi(ven)t être la(es) réponse(s) ?</string>
     <string name="add_answer">Ajoutez deux à trois réponses (au moins deux), et indiquez la bonne réponse en cochant</string>
     <string name="vrai">Bonne réponse</string>
