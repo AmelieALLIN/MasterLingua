@@ -107,7 +107,18 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             finish();
         }
 
-
+        else if(carte.getType().equals("qson")){
+            System.out.println(carte.getType());
+            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteQuestionSon.class );
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("carte", carte);
+            bundle.putSerializable("liste", (Serializable) cartes);
+            bundle.putInt("score",score);
+            bundle.putBoolean("jouer",jouer);
+            jouerCarte.putExtras(bundle);
+            startActivity(jouerCarte);
+            finish();
+        }
 
 
     }

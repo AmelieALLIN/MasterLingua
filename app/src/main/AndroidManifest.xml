@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.masterlingua">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="false"
@@ -13,6 +16,11 @@
         <activity android:name=".JouerQuestionImageD"></activity>
         <activity android:name=".JouerCarteReponseImageD" />
         <activity android:name=".JouerDeck3Type" />
+        <activity android:name=".SwipeJouerCarteQuestionSon"></activity>
+        <activity android:name=".AfficherCarteQuestionSon" />
+        <activity android:name=".JouerCarteQuestionSon" />
+        <activity android:name=".JouerCarteQuestionSonD" />
+        <activity android:name=".CreerCarteQuestionSon" />
         <activity android:name=".SwipeJouerCarteImageR" />
         <activity android:name=".SwipeJouerCarteImageQ" />
         <activity android:name=".SwipeJouerCarteTexte" />

@@ -47,8 +47,6 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
         layout = findViewById(R.id.layout);
         question= findViewById(R.id.q);
         Bundle bundle = getIntent().getExtras();
-
-
         carte = (Carte) bundle.getSerializable("carte");
         cartes= (List<Carte>) bundle.getSerializable("liste");
         iddeck=bundle.getString("iddeck");
@@ -154,6 +152,17 @@ public class AfficherCarteQuestionImage extends AppCompatActivity {
             finish();
         } else if (carte.getType().equals("qimage")) {
             Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionImage.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("carte", cartes.get(0));
+            bundle.putSerializable("liste", (Serializable) cartes);
+            bundle.putString("iddeck",iddeck);
+            bundle.putInt("compteur",compteur);
+            jouerCarte.putExtras(bundle);
+            startActivity(jouerCarte);
+            finish();
+        }
+        else if (carte.getType().equals("qson")) {
+            Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionSon.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);

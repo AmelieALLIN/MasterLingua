@@ -7,7 +7,6 @@ public class QuestionImage extends SugarRecord implements Question {
     private String idcarte;
 
     String image;
-    //byte[] image;
 
     public QuestionImage(){
 
