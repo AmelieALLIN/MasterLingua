@@ -4,19 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/Deck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nom du deck" />
-
     <EditText
         android:id="@+id/nomdeck"
-        android:layout_width="wrap_content"
+        android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Deck"
         android:autofillHints="username"
-        android:inputType="textAutoCorrect"
+        android:fontFamily="@font/montserrat_alternates"
+        android:hint="@string/nomDeck"
+        android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
         android:visibility="visible" />
 
     <GridView
@@ -24,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nomdeck"
-
+        android:fontFamily="@font/montserrat_alternates"
         android:layout_alignParentTop="true"
         android:layout_marginTop="65dp"
         android:columnWidth="120dp"

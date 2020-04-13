@@ -5,19 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChoisirCreationCarte extends AppCompatActivity {
+public class ChoisirCreationCarte extends AppCompatActivity implements Serializable {
 
     List<Carte> cartes = Carte.listAll(Carte.class);
     List<Carte> idcarte = new ArrayList<>();
     Carte carte;
-    int score=0;
-    boolean jouer=false;
+    int score = 0;
+    boolean jouer = false;
 
 
     @Override
@@ -30,8 +29,6 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         Intent intent = new Intent(this,MenuCreationCarte.class);
         startActivity(intent);
     }
-
-
 
     public void AfficherListe(View view) {
         Intent intent = new Intent(this,AfficherListe.class);
@@ -59,10 +56,18 @@ public class ChoisirCreationCarte extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToTuto (View view){
+        String nameToGo = "ChoisirCreationCarte";
+        Intent intent = new Intent(this,AfficherTuto.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("className", nameToGo);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 
     public void listeCartes(View view) {
 
-        for (int n=0;n<cartes.size();n++)
+        for (int n=0; n<cartes.size(); n++)
         {
             carte = cartes.get(0);
         }
@@ -78,7 +83,6 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             jouerCarteT.putExtras(bundle);
             startActivity(jouerCarteT);
             finish();
-
         }
 
         else if(carte.getType().equals("rimage")){
@@ -119,7 +123,5 @@ public class ChoisirCreationCarte extends AppCompatActivity {
             startActivity(jouerCarte);
             finish();
         }
-
-
     }
 }

@@ -14,8 +14,8 @@ public class SplashScreen extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent premierePage = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
-                startActivity(premierePage);
+                Intent tuto = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
+                startActivity(tuto);
                 finish();
             }
         }, SPLASH_TIME_OUT);

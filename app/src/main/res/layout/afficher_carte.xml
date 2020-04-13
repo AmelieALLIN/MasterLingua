@@ -3,32 +3,26 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/affichQ"
-        android:layout_width="match_parent"
-        android:layout_height="86dp"
-        android:text="@string/carte"
-        android:layout_centerHorizontal="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#673AB7"
-        android:textSize="38dp" />
 
     <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
-        android:layout_height="86dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat_alternates"
         android:text="Question"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#F44336"
-        android:textSize="38dp" />
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/rep1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:fontFamily="@font/montserrat_alternates"
         android:text="TextView"
-        android:textColor="#3F51B5"
-        android:textSize="38dp"
+        android:layout_marginTop="60dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="26sp"
 
         />
 
@@ -37,8 +31,9 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:text="TextView"
-        android:textColor="#3F51B5"
-        android:textSize="38dp"
+        android:fontFamily="@font/montserrat_alternates"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="26sp"
         />
 
     <TextView
@@ -46,15 +41,22 @@
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:text="TextView"
-        android:textColor="#3F51B5"
-        android:textSize="38dp"
+        android:fontFamily="@font/montserrat_alternates"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="26sp"
         />
 
     <Button
         android:id="@+id/buttonreturn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/rep3"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/gradientwithoutcorner"
+        android:fontFamily="@font/montserrat_alternates"
+        android:onClick="retourchoix"
         android:text="Return"
-        android:onClick="retourchoix"/>
+        android:textColor="#FFFFFF"
+        android:textSize="14sp" />
 
 </LinearLayout>

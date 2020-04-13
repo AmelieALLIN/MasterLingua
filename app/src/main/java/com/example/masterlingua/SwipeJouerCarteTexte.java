@@ -36,8 +36,6 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
     static int score;
     static boolean jouer;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +50,6 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
         cartes = (List<Carte>) bundle.getSerializable("liste");
         score=bundle.getInt("score");
         jouer=bundle.getBoolean("jouer");
-
 
         String idc = carte.getIdCarte();
         reponses = ReponseText.find(ReponseText.class, "idcarte = ?", idc);
@@ -77,15 +74,15 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
 
-
                 if (choix.equals(ok)) {
                     showToastOk();
                     reps.setEnabled(false);
                     score += 1;
                     jouer=true;
-
+                    String pluriel = "";
+                    if(score>1) pluriel = "s";
                     if (cartes.size() == 1) {
-                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                         fin();}
                     else {
                         cartes.remove(0);
@@ -96,28 +93,28 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
                     showToastNo();
                     reps.setEnabled(false);
                     jouer=true;
+                    String pluriel = "";
+                    if(score>1) pluriel = "s";
                     if (cartes.size() == 1) {
-                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                         fin();}
                     else {
                         cartes.remove(0);
                         next();
                     }
-
                 }
-
             }
         });
-
-
 
         layout.setOnTouchListener(new OnSwipeTouchListener(SwipeJouerCarteTexte.this) {
             @Override
             public void onSwipeLeft() {
                 super.onSwipeLeft();
+                String pluriel = "";
+                if(score>1) pluriel = "s";
                 if(cartes.size()==1){
                     if(jouer==true){
-                        Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                         fin();}
 
                     else fin();
@@ -128,20 +125,19 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
 
             }
 
-
             @Override
             public void onSwipeUp(){
                 super.onSwipeUp();
-
+                String pluriel = "";
+                if(score>1) pluriel = "s";
                 if(jouer==true){
-                    Toast.makeText(context, "votre score est:" +score, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Votre score est de " +score + " point" + pluriel, Toast.LENGTH_SHORT).show();
                     fin();}
 
                 else fin();
             }
         });
     }
-
 
     public void next(){
         carte = cartes.get(0);
@@ -230,7 +226,6 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
         toast.show();
     }
 
-
     public void retour()
     {
         new Handler().postDelayed(new Runnable() {
@@ -246,7 +241,6 @@ public class SwipeJouerCarteTexte extends AppCompatActivity {
             }
         }, 2000);
     }
-
 }
 
 

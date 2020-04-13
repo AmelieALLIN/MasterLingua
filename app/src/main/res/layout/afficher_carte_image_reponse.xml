@@ -11,9 +11,10 @@
         android:layout_width="fill_parent"
         android:layout_height="58dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="question"
         android:textAlignment="center"
+        android:fontFamily="@font/montserrat_alternates"
         android:textSize="18sp" />
 
     <GridView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/question"
         android:layout_marginTop="60dp"
         android:clickable="false"
         android:columnWidth="120dp"

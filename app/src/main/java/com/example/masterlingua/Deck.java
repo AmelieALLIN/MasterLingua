@@ -22,11 +22,11 @@ public class Deck extends SugarRecord implements Serializable {
     }
 
 
-   public String getId_deck(){
+    public String getId_deck(){
         return iddeck;
-   }
+    }
 
-   public String getNom_deck(){
+    public String getNom_deck(){
         return nomdeck;
-   }
+    }
 }

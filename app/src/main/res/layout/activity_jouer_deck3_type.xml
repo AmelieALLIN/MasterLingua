@@ -1,56 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/liste"
+    <LinearLayout
+
         android:layout_width="fill_parent"
-        android:layout_height="58dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Liste de cartes"
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/scoretempo"
-        android:layout_width="fill_parent"
-        android:layout_height="58dp"
-        android:layout_below="@+id/liste"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text=" "
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        <TextView
+            android:id="@+id/liste"
+            android:layout_width="fill_parent"
+            android:layout_height="58dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="Liste de cartes"
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
-    <ListView
-        android:id="@+id/liste_cartes"
-        android:layout_width="fill_parent"
-        android:layout_height="277dp"
-        android:cacheColorHint="#00000000"></ListView>
+        <TextView
+            android:id="@+id/scoretempo"
+            android:layout_width="fill_parent"
+            android:layout_height="58dp"
+            android:layout_below="@+id/liste"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text=" "
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/scorefinal"
-        android:layout_width="fill_parent"
-        android:layout_height="58dp"
-        android:layout_below="@+id/liste_cartes"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text=" "
-        android:textAlignment="center"
-        android:textSize="18sp" />
+        <ListView
+            android:id="@+id/liste_cartes"
+            android:layout_width="fill_parent"
+            android:layout_height="277dp"
+            android:cacheColorHint="#00000000"
+            android:fontFamily="@font/montserrat_alternates"></ListView>
 
-    <Button
-        android:id="@+id/buttonretour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_below="@+id/scorefinal"
-        android:text="retour" />
+        <TextView
+            android:id="@+id/scorefinal"
+            android:layout_width="fill_parent"
+            android:layout_height="58dp"
+            android:layout_below="@+id/liste_cartes"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text=" "
+            android:textAlignment="center"
+            android:textSize="18sp" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/buttonretour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/scorefinal"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="false"
+            android:background="@drawable/gradient"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="retour"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+</ScrollView>

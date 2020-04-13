@@ -10,12 +10,14 @@
         android:id="@+id/q"
         android:layout_width="match_parent"
         android:layout_height="237dp"
+        android:layout_marginTop="10dp"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <ListView
         android:id="@+id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/q"
         android:layout_marginTop="60dp"
         android:cacheColorHint="#00000000"
         android:clickable="false" />

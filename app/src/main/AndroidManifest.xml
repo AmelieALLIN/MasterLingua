@@ -9,10 +9,20 @@
         android:name="com.orm.SugarApp"
         android:allowBackup="false"
         android:icon="@drawable/logo_icon"
-        android:roundIcon="@drawable/logo_icon"
         android:label="@string/app_name"
+        android:roundIcon="@drawable/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AfficherTuto"/>
         <activity android:name=".JouerQuestionImageD"></activity>
         <activity android:name=".JouerCarteReponseImageD" />
         <activity android:name=".JouerDeck3Type" />
@@ -24,18 +34,13 @@
         <activity android:name=".SwipeJouerCarteImageR" />
         <activity android:name=".SwipeJouerCarteImageQ" />
         <activity android:name=".SwipeJouerCarteTexte" />
-        <activity android:name=".MenuCreationCarte" />
+        <activity android:name=".MenuCreationCarte"/>
         <activity android:name=".JouerCarteReponseImage" />
         <activity android:name=".CreerCarteReponseImage" />
         <activity android:name=".CreerDeck" />
         <activity android:name=".JouerDeck" />
         <activity android:name=".AfficherListe" />
-        <activity android:name=".ChoisirCreationCarte">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ChoisirCreationCarte"/>
         <activity android:name=".CreerCarte" />
         <activity android:name=".AfficherCarte" />
         <activity android:name=".AfficherCarteTexte" />
@@ -54,7 +59,7 @@
 
         <meta-data
             android:name="VERSION"
-            android:value="16" />
+            android:value="19" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
@@ -64,7 +69,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

@@ -35,7 +35,7 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
     Bitmap bmp;
     int ind_br;
     Context context = this;
-    String jointuredeckcarte,iddeck;
+    String jointuredeckcarte, iddeck;
     List<Carte> cartes;
     LinearLayout layout;
     static int compteur;
@@ -46,33 +46,32 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.afficher_carte_image_reponse);
         question = findViewById(R.id.question);
-        layout=findViewById(R.id.layout);
+        layout = findViewById(R.id.layout);
 
         listeReponse = (GridView) findViewById(R.id.gridRep);
 
         Bundle bundle = getIntent().getExtras();
-        Intent intent=getIntent();
+        Intent intent = getIntent();
 
         carte = (Carte) bundle.getSerializable("carte");
         String idc = carte.getIdCarte();
-        cartes= (List<Carte>) bundle.getSerializable("liste");
-        iddeck=bundle.getString("iddeck");
-        compteur=bundle.getInt("compteur");
+        cartes = (List<Carte>) bundle.getSerializable("liste");
+        iddeck = bundle.getString("iddeck");
+        compteur = bundle.getInt("compteur");
 
-        List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
-        for(int n=0; n<quest.size();n++){
+        List<QuestionText> quest = QuestionText.find(QuestionText.class, "idcarte = ?", idc);
+        for (int n = 0; n < quest.size(); n++) {
             question.setText(quest.get(n).getNom_question());
         }
 
-        rep = ReponseImage.find(ReponseImage.class,"idcarte = ?", idc);
-        for(int n=0; n<rep.size();n++){
-            if(rep.get(n).getImage()!=null){
-                if(rep.get(n).getBr()==true)
-                {
+        rep = ReponseImage.find(ReponseImage.class, "idcarte = ?", idc);
+        for (int n = 0; n < rep.size(); n++) {
+            if (rep.get(n).getImage() != null) {
+                if (rep.get(n).getBr() == true) {
                     ind_br = n;
                 }
                 byte[] encodeByte = Base64.decode(rep.get(n).getImage(), Base64.DEFAULT);
-                bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+                bmp = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
                 repImage.add(bmp);
             }
         }
@@ -93,39 +92,38 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
                     } else {
                         fin();
                     }
+                } else {
+                    cartes.remove(0);
+                    next();
                 }
-                else{
-                cartes.remove(0);
-                next();}
 
             }
 
             @Override
             public void onSwipeRight() {
                 super.onSwipeRight();
-                if(cartes.size()==1){
+                if (cartes.size() == 1) {
                     ajoutercartedeck();
 
                     fin();
-                }
-                else{
+                } else {
                     ajoutercartedeck();
 
                     cartes.remove(0);
-                    next();}
+                    next();
+                }
             }
 
             @Override
-            public void onSwipeUp(){
+            public void onSwipeUp() {
                 super.onSwipeUp();
 
-                if(compteur==0){
+                if (compteur == 0) {
                     supprimerdeck();
                     fin();
+                } else {
+                    fin();
                 }
-
-                else
-                {fin();}
             }
 
         });
@@ -133,16 +131,16 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
 
     public void next(){
         carte = cartes.get(0);
-        System.out.println("iddd"+carte.getIdCarte());
-        System.out.println("tyyype"+carte.getType());
+        System.out.println("iddd" + carte.getIdCarte());
+        System.out.println("tyyype" + carte.getType());
 
         if (carte.getType().equals("texte")) {
             Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteTexte.class);
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putString("iddeck",iddeck);
-            bundle.putInt("compteur",compteur);
+            bundle.putString("iddeck", iddeck);
+            bundle.putInt("compteur", compteur);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
@@ -152,8 +150,8 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putString("iddeck",iddeck);
-            bundle.putInt("compteur",compteur);
+            bundle.putString("iddeck", iddeck);
+            bundle.putInt("compteur", compteur);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
@@ -162,8 +160,8 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putSerializable("carte", cartes.get(0));
             bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putString("iddeck",iddeck);
-            bundle.putInt("compteur",compteur);
+            bundle.putString("iddeck", iddeck);
+            bundle.putInt("compteur", compteur);
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
@@ -178,7 +176,8 @@ public class AfficherCarteReponsesImage extends AppCompatActivity {
             jouerCarte.putExtras(bundle);
             startActivity(jouerCarte);
             finish();
-        }}
+        }
+    }
 
 public void fin(){
     Intent fin = new Intent(getApplicationContext(), AfficherListeDeck.class);
@@ -186,15 +185,15 @@ public void fin(){
     finish();
 }
 
-    public void ajoutercartedeck(){
+    public void ajoutercartedeck() {
         jointuredeckcarte = UUID.randomUUID().toString();
-        CartesDeck carteDeck = new CartesDeck(jointuredeckcarte,iddeck,carte.getIdCarte());
+        CartesDeck carteDeck = new CartesDeck(jointuredeckcarte, iddeck, carte.getIdCarte());
         carteDeck.save();
-        compteur+=1;
-    }
-    public void supprimerdeck(){
-        Deck.executeQuery("DELETE FROM DECK WHERE IDDECK = '" +iddeck  + "'");
+        compteur += 1;
     }
 
+    public void supprimerdeck() {
+        Deck.executeQuery("DELETE FROM DECK WHERE IDDECK = '" + iddeck + "'");
+    }
 }
 

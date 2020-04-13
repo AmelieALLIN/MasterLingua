@@ -90,4 +90,12 @@ public class AfficherListe extends AppCompatActivity {
             }
         });
     }
+    public void goToTuto (View view){
+        String nameToGo = "AfficherListe";
+        Intent intent = new Intent(this,AfficherTuto.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("className", nameToGo);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }
