@@ -31,7 +31,7 @@ public class JouerCarteQuestionSonD extends AppCompatActivity {
     String ok,idc;
     String monfichier;
     Context context = this;
-    ImageButton play,stop;
+    Button play,stop;
     MediaPlayer mediaPlayer;
     private int scorecarte;
     //boolean pausee=false;

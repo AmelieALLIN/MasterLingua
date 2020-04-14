@@ -37,7 +37,7 @@ public class SwipeJouerCarteQuestionSon extends AppCompatActivity {
     String monfichier;
     Context context = this;
     List<Carte> cartes;
-    ImageButton play, stop;
+    Button play, stop;
     MediaPlayer mediaPlayer;
     RelativeLayout layout;
 

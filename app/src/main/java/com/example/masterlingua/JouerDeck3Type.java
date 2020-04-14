@@ -80,7 +80,7 @@ public class JouerDeck3Type extends AppCompatActivity {
                     for (int j = 0; j < listcarte.size(); j++) {
                         System.out.println("3333333333333333333333333333333333333333333333333333333id carte= " + listcarte.get(j).getIdCarte());
                     }
-                    System.out.println("oooooooooooooooooooooooooooooooooooooo" + listcarte.get(1).getType());
+//                    System.out.println("oooooooooooooooooooooooooooooooooooooo" + listcarte.get(1).getType());
                     if (listcarte.get(indice).getType().equals("texte")) {
                         carte = listcarte.get(indice);
                         System.out.println("********************* type texttext");
