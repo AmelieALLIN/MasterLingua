@@ -92,7 +92,7 @@ public class CreerDeck extends AppCompatActivity {
                 switch (item.getItemId()){
 
                     case R.id.menu_save:
-//action on clicking contextual action bar menu item
+                        //action on clicking contextual action bar menu item
                         Toast.makeText(getApplicationContext(), "Deck sauvegardé", Toast.LENGTH_SHORT).show();
                         Intent retour = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
                         startActivity(retour);
@@ -101,7 +101,7 @@ public class CreerDeck extends AppCompatActivity {
 
 
                     case R.id.menu_play:
-                        Intent afficherDeck = new Intent(getApplicationContext(), AfficherDeck.class);
+                        Intent afficherDeck = new Intent(getApplicationContext(), JouerDeck3Type.class);
                         Bundle bundle = new Bundle();
                         //System.out.println("DEEEEEECCKKKKKKKKK = "+deckstat.getNom_deck());
                         bundle.putSerializable("deck", deck);

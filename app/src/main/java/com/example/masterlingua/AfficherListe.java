@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,6 @@ public class AfficherListe extends AppCompatActivity {
     List<Carte> idcarte = new ArrayList<>();
     ArrayList<Carte> l = new ArrayList<>();
     Carte carte;
-    int count=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,13 +55,47 @@ public class AfficherListe extends AppCompatActivity {
                 {
                     carte = idcarte.get(n);
                 }
-                Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarte.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("carte", carte);
-                jouerCarte.putExtras(bundle);
-                startActivity(jouerCarte);
-                finish();
+
+
+                if(carte.getType().equals("texte")){
+                    System.out.println(carte.getType());
+                    Intent jouerCarteT = new Intent(getApplicationContext(), AfficherCarte.class );
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("carte", carte);
+                    jouerCarteT.putExtras(bundle);
+                    startActivity(jouerCarteT);
+                    finish();
+                }
+
+               else if(carte.getType().equals("rimage")){
+                  System.out.println(carte.getType());
+                    Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteReponsesImage.class );
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("carte", carte);
+                    jouerCarte.putExtras(bundle);
+                    startActivity(jouerCarte);
+                    finish();
+                }
+                else if(carte.getType().equals("qson")){
+                    System.out.println(carte.getType());
+                    Intent jouerCarte = new Intent(getApplicationContext(), AfficherCarteQuestionSon.class );
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("carte", carte);
+                    jouerCarte.putExtras(bundle);
+                    startActivity(jouerCarte);
+                    finish();
+                }
+
+
             }
         });
+    }
+    public void goToTuto (View view){
+        String nameToGo = "AfficherListe";
+        Intent intent = new Intent(this,AfficherTuto.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("className", nameToGo);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

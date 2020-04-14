@@ -33,18 +33,16 @@ public class JouerQuestionImage extends AppCompatActivity {
     ImageView question;
     String ok;
     Context context = this;
-    int duration = Toast.LENGTH_SHORT;
-    private int scorecarte;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jouer_question_image);
-        reps = (ListView) findViewById(R.id.list);
+        reps = findViewById(R.id.list);
         question= findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
-        Intent intent=getIntent();
 
 
         carte = (Carte) bundle.getSerializable("carte");
@@ -54,11 +52,7 @@ public class JouerQuestionImage extends AppCompatActivity {
         {
             nom_rep.add(reponses.get(i).getNom());
         }
-        /*if(!reponses.isEmpty()) {
-            for (int i = 0; i<carte.getReponses().size(); i++){
-                reponses.add(carte.getReponses().get(i));
-            }
-        }*/
+
         for(int y=0;y<reponses.size();y++){
             if(reponses.get(y).getbr() == true){
                 ok = reponses.get(y).getNom();
@@ -68,7 +62,8 @@ public class JouerQuestionImage extends AppCompatActivity {
         List<QuestionImage> quest = QuestionImage.find(QuestionImage.class,"idcarte = ?", idc);
         for(int n=0; n<quest.size();n++){
             byte[] encodeByte = Base64.decode(quest.get(n).getImage(), Base64.DEFAULT);
-            Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+           Bitmap bmp= BitmapFactory.decodeByteArray(encodeByte,0,encodeByte.length);
+
             question.setImageBitmap(bmp);
 
         }
@@ -81,11 +76,11 @@ public class JouerQuestionImage extends AppCompatActivity {
                 if(choix.equals(ok))
                 {showToastOk();
                     retour();
-                    scorecarte=1;}
+                    }
                 else
                 {showToastNo();
                     retour();
-                    scorecarte=0;
+
                 }
             }
         });

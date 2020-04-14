@@ -1,26 +1,98 @@
 <resources>
     <string name="app_name">MasterLingua</string>
-    <string name="creation_card">Créer une carte</string>
-    <string name="page_creation_card">Création de votre carte</string>
-    <string name="language_question">En quelle langue est votre question ?</string>
-    <string name="choix">Selectionnez</string>
-    <string name="language1">Français</string>
-    <string name="language2">Español</string>
+    <string name="attache">WELCOME</string>
+    <string name="exceptionDeck1">Before clicking on </string>
+    <string name="exceptionDeck2">that allows you to view your card collections,
+        make sure you have created a collection (made up of previously created cards)</string>
+    <string name="exceptionCard1">Before clicking on </string>
+    <string name="exceptionCard2">that allows you to view your cards, make sure
+        to have created them</string>
+    <string name="go_back">Return</string>
+    <string name="beware">BEWARE</string>
+    <string name="welcome_tuto">MASTERLINGUA TUTORIAL</string>
+    <string name="intro_card_tuto">When you click on</string>
+    <string name="swipe_card_left">swipe to the left if you don’t want to play
+        the card presented to you</string>
+    <string name="swipe_up">swipe up at any time to return to the page
+        home</string>
+    <string name="intro_deck_tuto">When you click on</string>
+    <string name="swipe_deck_left">swipe to the left if you don’t want to add
+        the card presented to you</string>
+    <string name="swipe_deck_right">swipe to the right to insert the card
+        presented to you</string>
+    <string name="swipe_deck_up">swipe up at any time to complete the creation
+        of your collection and return to home page</string>
+    <string name="begin_audio">Save</string>
+    <string name="stop_audio">Stop</string>
+    <string name="play_audio">Listen</string>
+    <string name="stop_play_audio">Stop listening</string>
+    <string name="creation_card">CREATE A CARD</string>
+    <string name="creation_card_text">QUESTION ANSWERS</string>
+    <string name="creation_card_qimage">PICTURED QUESTION</string>
+    <string name="creation_card_qson">AUDIO QUESTION</string>
+    <string name="creation_card_rimage">PICTURED ANSWERS</string>
+    <string name="cartes">Cards</string>
+    <string name="creation_deck">CREATE A COLLECTION</string>
+    <string name="deck">COLLECTIONS</string>
+    <string name="list_created_cards">CARDS</string>
+    <string name="page_creation_card">Creation of your card</string>
+    <string name="language_question">What is the language of your question?</string>
+    <string name="choix">Select</string>
+    <string name="language1">French</string>
+    <string name="language2">Spanish</string>
     <string-array name="languages_names">
         <item>@string/language1</item>
         <item>@string/language2</item>
     </string-array>
-    <string name="enter_question">Veuillez indiquer votre question</string>
-    <string name="language_answers">En quelle langue doi(ven)t être la(es) réponse(s) ?</string>
-    <string name="add_answer">Vous pouvez ajouter (ou non) une à trois réponses, en indiquant si elle est correcte ou non chaque fois</string>
-    <string name="vrai">Bonne réponse</string>
+    <string name="enter_question">Please indicate your question</string>
+    <string name="enter_audio_question">Please save your question</string>
+    <string name="language_answers">What is the language of your answers ?</string>
+    <string name="add_answer">Add two to three responses (at least two), and indicate
+        the correct answer by checking</string>
+    <string name="vrai">Good answer</string>
     //le nom est en français (vrai) car le nom "true" est réservé
-    <string name="faux">Mauvaise réponse</string>
+    <string name="faux">Bad answer</string>
     // du coup en français ici aussi
-    <string name="jouer">Jouer la carte</string>
-    <string name="terminate">Sauvegarder la carte</string>
-    <string name="warning_question">La question est obligatoire pour valider</string>
-    <string name="warning_good_answer">Une seule réponse peut être correcte</string>
-    <string name="card_created">Votre carte a bien été créée</string>
-    <string name="carte">Carte</string>
+    <string name="jouer">Play</string>
+    <string name="commencer">Start</string>
+    <string name="terminate">Save</string>
+    <string name="importer">Import (JPEG)</string>
+    <string name="nomDeck">Name of the collection</string>
+    <string name="au_moins_deux">Fill in two answers minimum</string>
+    <string name="au_moins_deux_jpeg">Please insert one image and two answers minimum</string>
+    <string name="warning_question">The question is mandatory to validate</string>
+    <string name="warning_good_answer">Only one answer can be the good one</string>
+    <string name="warning_level">You need to chose a level</string>
+    <string name="card_created">Your card is saved</string>
+    <string name="carte">Card</string>
+    <string name="importerQuestionImage">Import what you want to do guess (JPEG)</string>
+    <string name="level">Level</string>
+    <string name="english">English</string>
+    <string name="spanish">Spanish</string>
+    <string name="faune">Wildlife</string>
+    <string name="flore">Flora</string>
+    <string name="test">Selection</string>
+    <string name="test2">WESH</string>
+    <string name="test3">pi ou pas</string>
+    <string name="test4">THANKS</string>
+    <string name="test5">Tesssssst</string>
+    <string-array name="category_names">
+        <item>@string/test5</item>
+        <item>@string/english</item>
+        <item>@string/spanish</item>
+        <item>@string/faune</item>
+        <item>@string/flore</item>
+        <item>@string/test</item>
+        <item>@string/test2</item>
+        <item>@string/test3</item>
+        <item>@string/test4</item>
+    </string-array>
+    <string name="selectCategory">Categories</string>
+    <string name="category_name">Indicate the name of your category</string>
+    <string name="logoQuizz">QuizLogo</string>
+    <string name="validate">Validate</string>
+    <string name="bonne_rep">Please indicate the good answer</string>
+    <string name="warning_category">The name is required to validate</string>
+    <string name="deck_name">Name of the deck</string>
+    <string name="beware_good_answer">Beware, the correct answer does not correspond to any answer</string>
 </resources>

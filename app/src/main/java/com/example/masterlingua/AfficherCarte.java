@@ -1,11 +1,9 @@
 package com.example.masterlingua;
 
 import android.content.Context;
-//import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-//import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,15 +37,14 @@ public class AfficherCarte extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.carte);
         reps = (ListView) findViewById(R.id.list);
-        question= findViewById(R.id.question);
+        question = findViewById(R.id.question);
         Bundle bundle = getIntent().getExtras();
-        Intent intent=getIntent();
+        Intent intent = getIntent();
 
         carte = (Carte) bundle.getSerializable("carte");
         String idc = carte.getIdCarte();
-        reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
-        for(int i=0;i<reponses.size();i++)
-        {
+        reponses = ReponseText.find(ReponseText.class, "idcarte = ?", idc);
+        for (int i = 0; i < reponses.size(); i++) {
             nom_rep.add(reponses.get(i).getNom());
         }
         /*if(!reponses.isEmpty()) {
@@ -55,40 +52,35 @@ public class AfficherCarte extends AppCompatActivity {
                 reponses.add(carte.getReponses().get(i));
             }
         }*/
-        for(int y=0;y<reponses.size();y++){
-            if(reponses.get(y).getbr() == true){
+        for (int y = 0; y < reponses.size(); y++) {
+            if (reponses.get(y).getbr() == true) {
                 ok = reponses.get(y).getNom();
             }
         }
 
-        List<QuestionText> quest = QuestionText.find(QuestionText.class,"idcarte = ?", idc);
-        for(int n=0; n<quest.size();n++){
+        List<QuestionText> quest = QuestionText.find(QuestionText.class, "idcarte = ?", idc);
+        for (int n = 0; n < quest.size(); n++) {
             question.setText(quest.get(n).getNom_question());
         }
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nom_rep);
         reps.setAdapter(adapter);
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
-                if(choix.equals(ok))
-                {showToastOk();
+                if (choix.equals(ok)) {
+                    showToastOk();
                     retour();
                     reps.setEnabled(false);
-                scorecarte=1;
-                    }
-                else
-                {showToastNo();
-                    scorecarte=0;
+                    scorecarte = 1;
+                } else {
+                    showToastNo();
+                    scorecarte = 0;
                     reps.setEnabled(false);
                     retour();
                 }
             }
         });
-
-
-
-
     }
 
     public void showToastOk() {
@@ -121,15 +113,15 @@ public class AfficherCarte extends AppCompatActivity {
         toast.show();
     }
 
-    public void retour()
-    {
+    public void retour() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                {Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
-                startActivity(retour);
-                finish();
+                {
+                    Intent retour = new Intent(AfficherCarte.this, ChoisirCreationCarte.class);
+                    startActivity(retour);
+                    finish();
                 }
 
             }

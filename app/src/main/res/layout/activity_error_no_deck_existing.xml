@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="330dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#E6FFFFFF"
+        android:onClick="fermer"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:tint="#F3332828" />
+
+    <TextView
+        android:id="@+id/beware"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/close"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_alternates"
+        android:text="@string/beware"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/exceptionDeck1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/beware"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/exceptionDeck1"></TextView>
+
+    <ImageView
+        android:id="@+id/collections"
+        android:layout_width="126dp"
+        android:layout_height="39dp"
+        android:layout_below="@+id/beware"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="25dp"
+        tools:srcCompat="@drawable/collectionsbutton" />
+
+    <TextView
+        android:id="@+id/exceptionDeck2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
+        android:text="@string/exceptionDeck2"
+        android:layout_below="@+id/exceptionDeck1"></TextView>
+
+    <ImageView
+        android:id="@+id/createCollection"
+        android:layout_width="126dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/exceptionDeck1"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="80dp"
+        tools:srcCompat="@drawable/createdeck" />
+</RelativeLayout>

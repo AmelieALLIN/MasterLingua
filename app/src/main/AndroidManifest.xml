@@ -2,47 +2,75 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.masterlingua">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name="com.orm.SugarApp"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuCreationCarte"></activity>
+        <activity android:name=".SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ExceptionNoDeckCreated"/>
+        <activity android:name=".ExceptionNoCardCreated"/>
+        <activity android:name=".AfficherTuto"/>
+        <activity android:name=".JouerQuestionImageD"></activity>
+        <activity android:name=".JouerCarteReponseImageD" />
+        <activity android:name=".JouerDeck3Type" />
+        <activity android:name=".SwipeJouerCarteQuestionSon"></activity>
+        <activity android:name=".AfficherCarteQuestionSon" />
+        <activity android:name=".JouerCarteQuestionSon" />
+        <activity android:name=".JouerCarteQuestionSonD" />
+        <activity android:name=".CreerCarteQuestionSon" />
+        <activity android:name=".SwipeJouerCarteImageR" />
+        <activity android:name=".SwipeJouerCarteImageQ" />
+        <activity android:name=".SwipeJouerCarteTexte" />
+        <activity android:name=".MenuCreationCarte"/>
         <activity android:name=".JouerCarteReponseImage" />
         <activity android:name=".CreerCarteReponseImage" />
         <activity android:name=".CreerDeck" />
         <activity android:name=".JouerDeck" />
         <activity android:name=".AfficherListe" />
-        <activity android:name=".ChoisirCreationCarte">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ChoisirCreationCarte"/>
         <activity android:name=".CreerCarte" />
         <activity android:name=".AfficherCarte" />
+        <activity android:name=".AfficherCarteTexte" />
         <activity android:name=".AfficherDeck" />
         <activity android:name=".AfficherListeDeck" />
         <activity android:name=".JouerCarte" />
+        <activity android:name=".JouerCarteD" />
         <activity android:name=".CreerCarteQuestionImage" />
         <activity android:name=".JouerQuestionImage" />
         <activity android:name=".AfficherListeQuestionImage" />
         <activity android:name=".AfficherDeckQuestionImage" />
         <activity android:name=".JouerQuestionImage1" />
+        <activity android:name=".SwipeListeCarte" />
+        <activity android:name=".AfficherCarteQuestionImage" />
+        <activity android:name=".AfficherCarteReponsesImage" />
 
         <meta-data
             android:name="VERSION"
-            android:value="11" />
+            android:value="19" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.example" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

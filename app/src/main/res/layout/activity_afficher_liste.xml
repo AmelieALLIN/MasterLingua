@@ -6,12 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".AfficherListe">
 
+    <EditText
+        android:id="@+id/nom_deck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints="username"
+        android:hint="@string/deck_name"
+        android:inputType="textAutoCorrect|textCapSentences"
+        android:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/spinCategories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nom_deck"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="-46dp"
+        android:layout_marginRight="-4dp"
+        android:fontFamily="@font/montserrat_alternates"
+        android:dropDownSelector="@color/colorPrimary"
+        android:entries="@array/category_names"
+        android:text="@string/selectCategory" />
+
     <ListView
         android:id="@+id/myListView"
-        android:layout_below="@+id/nom_deck"
+        android:layout_below="@+id/spinCategories"
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:layout_alignParentStart="true"
+        android:fontFamily="@font/montserrat_alternates"
         android:layout_marginStart="0dp"
         android:layout_marginTop="21dp" />
 </RelativeLayout>

@@ -84,8 +84,19 @@ public class AfficherDeck extends AppCompatActivity {
                 deja_initialise=true;
                 }
             });}
-        else
-            Toast.makeText(getApplicationContext(), "votre score est de :"+score, Toast.LENGTH_SHORT).show();
-            deja_initialise=false;
+        else {
+            String pluriel = "";
+            if (score > 1) pluriel = "s";
+            Toast.makeText(getApplicationContext(), "Votre score est de " + score + " point" + pluriel, Toast.LENGTH_SHORT).show();
+            deja_initialise = false;
+        }
+    }
+    public void goToTuto (View view){
+        String nameToGo = "AfficherDeck";
+        Intent intent = new Intent(this,AfficherTuto.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("className", nameToGo);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

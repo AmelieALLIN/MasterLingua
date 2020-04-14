@@ -1,0 +1,234 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".CreerCarteQuestionSon">
+
+
+        <TextView
+            android:id="@+id/creationCarte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat_alternates"
+            android:text="@string/page_creation_card"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/creationCarte"
+            android:text="@string/enter_audio_question"
+            android:fontFamily="@font/montserrat_alternates"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp" />
+
+
+        <ImageView
+            android:id="@+id/micImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/text1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="50dp"
+            android:src="@android:drawable/presence_audio_online" />
+
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/start"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/begin_audio"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:enabled="false"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/stop_audio"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/linear1"
+            android:layout_marginLeft="100dp"
+            android:layout_below="@+id/linear1"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/play_audio"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/stopPlay"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="-10dp"
+                android:enabled="false"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/stop_play_audio"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/linear2"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            tools:ignore="MissingDefaultResource">
+
+            <TextView
+                android:id="@+id/ajouterReponse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/image"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/add_answer"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <EditText
+                android:id="@+id/answer1"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ajouterReponse"
+                android:autofillHints="username"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
+                android:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/checkAnswer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/answer1"
+                android:checked="false"
+                android:onClick="onCheckBoxClicked"
+                android:text="@string/vrai"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="166dp"
+                tools:layout_editor_absoluteY="409dp" />
+
+            <EditText
+                android:id="@+id/answer2"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkAnswer1"
+                android:autofillHints="username"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
+                android:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/checkAnswer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/answer2"
+                android:checked="false"
+                android:onClick="onCheckBoxClicked"
+                android:text="@string/vrai"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="166dp"
+                tools:layout_editor_absoluteY="409dp" />
+
+            <EditText
+                android:id="@+id/answer3"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkAnswer2"
+                android:layout_marginTop="0dp"
+                android:autofillHints="username"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:inputType="textAutoCorrect|textCapSentences|textAutoComplete"
+                android:visibility="visible" />
+
+            <CheckBox
+                android:id="@+id/checkAnswer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/answer3"
+                android:layout_marginTop="0dp"
+                android:checked="false"
+                android:onClick="onCheckBoxClicked"
+                android:text="@string/vrai"
+                android:layout_marginLeft="10dp"
+                android:fontFamily="@font/montserrat_alternates"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="166dp"
+                tools:layout_editor_absoluteY="409dp" />
+
+            <Button
+                android:id="@+id/validate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkAnswer3"
+                android:layout_centerVertical="false"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="213dp"
+                android:background="@drawable/gradient"
+                android:fontFamily="@font/montserrat_alternates"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:text="@string/jouer" />
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/checkAnswer3"
+                android:layout_centerVertical="false"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/gradient"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/terminate"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

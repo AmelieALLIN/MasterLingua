@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:fontFamily="@font/montserrat_alternates"
         android:columnWidth="120dp"
         android:gravity="center"
         android:numColumns="auto_fit" />
