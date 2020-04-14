@@ -40,7 +40,6 @@ public class JouerCarteQuestionSonD extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jouer_carte_question_son);
 
-
         reps = findViewById(R.id.list);
         play=findViewById(R.id.play);
         stop=findViewById(R.id.stop);

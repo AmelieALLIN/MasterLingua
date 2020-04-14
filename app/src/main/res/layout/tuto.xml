@@ -54,7 +54,7 @@
             android:layout_below="@+id/welcomeTuto"
             android:layout_marginLeft="200dp"
             android:layout_marginTop="25dp"
-            app:srcCompat="@drawable/cardbutton" />
+            app:srcCompat="@drawable/cardsbutton" />
 
         <ImageView
             android:id="@+id/swipeLeft"

@@ -59,6 +59,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creer_carte_question_son);
+        //pointRougePlay = findViewById(R.id.pointRougePlay);
         start = findViewById(R.id.start);
         stop = findViewById(R.id.stop);
         play = findViewById(R.id.play);
@@ -91,6 +92,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    //pointRougePlay.setVisibility(View.VISIBLE);
                     start.setEnabled(false);
                     stop.setEnabled(true);
                     play.setEnabled(false);
@@ -101,6 +103,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
             stop.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //pointRougePlay.setVisibility(View.INVISIBLE);
                     mRecorder.stop();
                     play.setEnabled(true);
                     start.setEnabled(true);
@@ -125,6 +128,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
                     stop_play.setEnabled(true);
                     new Handler().postDelayed(new Runnable() {
                                                   public void run() {
+                                                      //pointRougePlay.setVisibility(View.VISIBLE);
                                                       stop_play.setEnabled(false);
                                                       start.setEnabled(true);
                                                       play.setEnabled(true);
@@ -138,6 +142,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
             stop_play.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //pointRougePlay.setVisibility(View.INVISIBLE);
                     mediaPlayer.stop();
                     SetupMediaRecorder();
                     start.setEnabled(true);
@@ -152,9 +157,7 @@ public class CreerCarteQuestionSon extends AppCompatActivity {
             });
 
         } else {
-
             requestPermissionFromDevice();
-
         }
         save.setOnClickListener(new View.OnClickListener() {
             @Override

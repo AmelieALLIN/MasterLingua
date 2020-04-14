@@ -45,6 +45,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
     Context context = this;
     Button play, stop;
     MediaPlayer mediaPlayer;
+    ImageView pointRougePlay;
     private int scorecarte;
 
     //boolean pausee=false;
@@ -53,7 +54,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.jouer_carte_question_son);
 
-
+        pointRougePlay = findViewById(R.id.pointRougePlay);
         reps = findViewById(R.id.list);
         play = findViewById(R.id.play);
         stop = findViewById(R.id.stop);
@@ -84,7 +85,6 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
             }
         }
 
-
         final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nom_rep);
         reps.setAdapter(adapter);
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -99,15 +99,14 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                     showToastNo();
                     retour();
                     scorecarte = 0;
-
                 }
             }
         });
 
-
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pointRougePlay.setVisibility(View.VISIBLE);
                 stop.setEnabled(true);
                 play.setEnabled(false);
                 //pause.setEnabled(true);
@@ -153,6 +152,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pointRougePlay.setVisibility(View.INVISIBLE);
                 mediaPlayer.stop();
                 play.setEnabled(true);
                 stop.setEnabled(false);
@@ -163,8 +163,6 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                 }
             }
         });
-
-
 
         /*pause.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,9 +175,6 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                 pausee=true;
                 System.out.println("temps passé++++++++++++++++++++++++++"+t);
                 System.out.println("temps resntant++++++++++++++++++++++++++"+(mediaPlayer.getDuration()-t));
-
-
-
             }
         });*/
 
