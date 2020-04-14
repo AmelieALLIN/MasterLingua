@@ -18,7 +18,7 @@ public class ExceptionNoDeckCreated extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pageAccueil = new Intent(getApplicationContext(), MenuCreationCarte.class);
+                Intent pageAccueil = new Intent(getApplicationContext(), ChoisirCreationCarte.class);
                 startActivity(pageAccueil);
                 finish();
             }

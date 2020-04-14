@@ -55,7 +55,7 @@ public class JouerDeck3Type extends AppCompatActivity {
                 for (int j = 0; j < cartes.size(); j++) {
                     listcarte.add(cartes.get(j));
                 }
-                questioncarte.add("Question " + (i+1));
+                questioncarte.add("Question " + i);
             }
         }
         for (int k = 0; k < listcarte.size(); k++) {

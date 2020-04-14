@@ -25,20 +25,17 @@ public class AfficherListeDeck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affiche_listedeck);
 
-        try{
-            decks.isEmpty();
-        }catch (Exception e) {
-            if (decks.isEmpty()) {
-                Intent intent = new Intent(this, AfficherTuto.class);
-                startActivity(intent);
-                finish();
-            }
+        if (decks.isEmpty()) {
+            Intent intent = new Intent(this, ExceptionNoDeckCreated.class);
+            startActivity(intent);
+            finish();
         }
+
         DeckListView = findViewById(R.id.myListViewDeck);
         for (int i = 0; i < decks.size(); i++) {
             nom_deck.add(decks.get(i).getNom_deck());
             System.out.println(" LAAAAA = " + decks.get(i).getNom_deck());
-            System.out.println("LLAAAAAA nom deck = "+nom_deck.get(i));
+            System.out.println("LLAAAAAA nom deck = " + nom_deck.get(i));
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, nom_deck);
@@ -49,7 +46,7 @@ public class AfficherListeDeck extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String nomd = (String) DeckListView.getItemAtPosition(position);
                 deckfindid = Deck.find(Deck.class, "nomdeck = ?", nomd);
-                for(int i=0;i<deckfindid.size();i++){
+                for (int i = 0; i < deckfindid.size(); i++) {
                     deck = deckfindid.get(i);
                 }
                 Intent afficherDeck = new Intent(getApplicationContext(), JouerDeck3Type.class);
@@ -61,9 +58,10 @@ public class AfficherListeDeck extends AppCompatActivity {
             }
         });
     }
-    public void goToTuto (View view){
+
+    public void goToTuto(View view) {
         String nameToGo = "AfficherListeDeck";
-        Intent intent = new Intent(this,AfficherTuto.class);
+        Intent intent = new Intent(this, AfficherTuto.class);
         Bundle bundle = new Bundle();
         bundle.putString("className", nameToGo);
         intent.putExtras(bundle);
