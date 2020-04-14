@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ExceptionNoDeckCreated"/>
+        <activity android:name=".ExceptionNoCardCreated"/>
         <activity android:name=".AfficherTuto"/>
         <activity android:name=".JouerQuestionImageD"></activity>
         <activity android:name=".JouerCarteReponseImageD" />

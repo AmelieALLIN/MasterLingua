@@ -36,7 +36,7 @@
         android:layout_below="@id/micImage"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="20dp"
-        android:src="@android:drawable/play" />
+        android:src="@drawable/play" />
 
 
     <ImageButton
@@ -46,7 +46,7 @@
         android:layout_below="@id/micImage"
         android:layout_marginLeft="210dp"
         android:layout_marginTop="20dp"
-        android:src="@android:drawable/stop" />
+        android:src="@drawable/stop" />
 
     <ListView
         android:id="@+id/list"

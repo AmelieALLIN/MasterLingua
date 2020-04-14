@@ -67,61 +67,60 @@ public class ChoisirCreationCarte extends AppCompatActivity implements Serializa
 
     public void listeCartes(View view) {
 
-        for (int n=0; n<cartes.size(); n++)
-        {
-            carte = cartes.get(0);
-        }
-
-        if(carte.getType().equals("texte")){
-            System.out.println(carte.getType());
-            Intent jouerCarteT = new Intent(getApplicationContext(), SwipeJouerCarteTexte.class );
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("carte", carte);
-            bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putInt("score",score);
-            bundle.putBoolean("jouer",jouer);
-            jouerCarteT.putExtras(bundle);
-            startActivity(jouerCarteT);
+        if (cartes.isEmpty()) {
+            Intent intent = new Intent(this, ExceptionNoCardCreated.class);
+            startActivity(intent);
             finish();
-        }
+        } else {
+            for (int n = 0; n < cartes.size(); n++) {
+                carte = cartes.get(0);
+            }
 
-        else if(carte.getType().equals("rimage")){
-            System.out.println(carte.getType());
-            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageR.class );
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("carte", carte);
-            bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putInt("score",score);
-            bundle.putBoolean("jouer",jouer);
-            jouerCarte.putExtras(bundle);
-            startActivity(jouerCarte);
-            finish();
-        }
-
-        else if(carte.getType().equals("qimage")){
-            System.out.println(carte.getType());
-            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageQ.class );
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("carte", carte);
-            bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putInt("score",score);
-            bundle.putBoolean("jouer",jouer);
-            jouerCarte.putExtras(bundle);
-            startActivity(jouerCarte);
-            finish();
-        }
-
-        else if(carte.getType().equals("qson")){
-            System.out.println(carte.getType());
-            Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteQuestionSon.class );
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("carte", carte);
-            bundle.putSerializable("liste", (Serializable) cartes);
-            bundle.putInt("score",score);
-            bundle.putBoolean("jouer",jouer);
-            jouerCarte.putExtras(bundle);
-            startActivity(jouerCarte);
-            finish();
+            if (carte.getType().equals("texte")) {
+                System.out.println(carte.getType());
+                Intent jouerCarteT = new Intent(getApplicationContext(), SwipeJouerCarteTexte.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                bundle.putSerializable("liste", (Serializable) cartes);
+                bundle.putInt("score", score);
+                bundle.putBoolean("jouer", jouer);
+                jouerCarteT.putExtras(bundle);
+                startActivity(jouerCarteT);
+                finish();
+            } else if (carte.getType().equals("rimage")) {
+                System.out.println(carte.getType());
+                Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageR.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                bundle.putSerializable("liste", (Serializable) cartes);
+                bundle.putInt("score", score);
+                bundle.putBoolean("jouer", jouer);
+                jouerCarte.putExtras(bundle);
+                startActivity(jouerCarte);
+                finish();
+            } else if (carte.getType().equals("qimage")) {
+                System.out.println(carte.getType());
+                Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteImageQ.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                bundle.putSerializable("liste", (Serializable) cartes);
+                bundle.putInt("score", score);
+                bundle.putBoolean("jouer", jouer);
+                jouerCarte.putExtras(bundle);
+                startActivity(jouerCarte);
+                finish();
+            } else if (carte.getType().equals("qson")) {
+                System.out.println(carte.getType());
+                Intent jouerCarte = new Intent(getApplicationContext(), SwipeJouerCarteQuestionSon.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("carte", carte);
+                bundle.putSerializable("liste", (Serializable) cartes);
+                bundle.putInt("score", score);
+                bundle.putBoolean("jouer", jouer);
+                jouerCarte.putExtras(bundle);
+                startActivity(jouerCarte);
+                finish();
+            }
         }
     }
 }

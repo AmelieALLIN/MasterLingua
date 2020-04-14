@@ -30,6 +30,11 @@ public class SwipeListeCarte extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (cartes.isEmpty()) {
+            Intent intent = new Intent(this, ExceptionNoCardCreated.class);
+            startActivity(intent);
+            finish();
+        }
         setContentView(R.layout.swipelistestart);
 
         start = findViewById(R.id.start);
