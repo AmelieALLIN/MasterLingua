@@ -25,8 +25,16 @@ public class AfficherListeDeck extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affiche_listedeck);
 
+        try{
+            decks.isEmpty();
+        }catch (Exception e) {
+            if (decks.isEmpty()) {
+                Intent intent = new Intent(this, AfficherTuto.class);
+                startActivity(intent);
+                finish();
+            }
+        }
         DeckListView = findViewById(R.id.myListViewDeck);
-
         for (int i = 0; i < decks.size(); i++) {
             nom_deck.add(decks.get(i).getNom_deck());
             System.out.println(" LAAAAA = " + decks.get(i).getNom_deck());
