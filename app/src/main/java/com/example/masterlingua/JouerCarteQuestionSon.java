@@ -40,12 +40,13 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
     Carte carte;
     List<ReponseText> reponses = new ArrayList<>();
     List<String> nom_rep = new ArrayList<>();
-    String ok,idc;
-     String monfichier;
+    String ok, idc;
+    String monfichier;
     Context context = this;
-    Button play,stop;
+    Button play, stop;
     MediaPlayer mediaPlayer;
     private int scorecarte;
+
     //boolean pausee=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,53 +55,50 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
 
 
         reps = findViewById(R.id.list);
-        play=findViewById(R.id.play);
-        stop=findViewById(R.id.stop);
+        play = findViewById(R.id.play);
+        stop = findViewById(R.id.stop);
         //pause=findViewById(R.id.pause);
         Bundle bundle = getIntent().getExtras();
         carte = (Carte) bundle.getSerializable("carte");
-         idc = carte.getIdCarte();
-        List<QuestionSon> quest = QuestionSon.find(QuestionSon.class,"idcarte = ?", idc);
-        for(int n=0; n<quest.size();n++){
-            monfichier=quest.get(n).getUrl();
+        idc = carte.getIdCarte();
+        List<QuestionSon> quest = QuestionSon.find(QuestionSon.class, "idcarte = ?", idc);
+        for (int n = 0; n < quest.size(); n++) {
+            monfichier = quest.get(n).getUrl();
         }
-         mediaPlayer=new MediaPlayer();
+        mediaPlayer = new MediaPlayer();
 
-       try {
+        try {
             mediaPlayer.setDataSource(monfichier);
             mediaPlayer.prepare();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        reponses = ReponseText.find(ReponseText.class,"idcarte = ?", idc);
-        for(int i=0;i<reponses.size();i++)
-        {
+        reponses = ReponseText.find(ReponseText.class, "idcarte = ?", idc);
+        for (int i = 0; i < reponses.size(); i++) {
             nom_rep.add(reponses.get(i).getNom());
         }
 
-        for(int y=0;y<reponses.size();y++){
-            if(reponses.get(y).getbr() == true){
+        for (int y = 0; y < reponses.size(); y++) {
+            if (reponses.get(y).getbr() == true) {
                 ok = reponses.get(y).getNom();
             }
         }
 
 
-
-        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,nom_rep);
+        final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nom_rep);
         reps.setAdapter(adapter);
         reps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String choix = parent.getItemAtPosition(position).toString();
-                if(choix.equals(ok))
-                {showToastOk();
+                if (choix.equals(ok)) {
+                    showToastOk();
                     retour();
-                    scorecarte=1;
-                }
-                else
-                {showToastNo();
+                    scorecarte = 1;
+                } else {
+                    showToastNo();
                     retour();
-                    scorecarte=0;
+                    scorecarte = 0;
 
                 }
             }
@@ -118,7 +116,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                                               public void run() {
                                                   stop.setEnabled(false);
                                                   play.setEnabled(true);
-                                                 // pause.setEnabled(false);
+                                                  // pause.setEnabled(false);
                                               }
                                           }, mediaPlayer.getDuration()
                 );
@@ -148,7 +146,7 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
                     );
                }*/
 
-                }
+            }
 
         });
 
@@ -217,15 +215,14 @@ public class JouerCarteQuestionSon extends AppCompatActivity {
         toast.show();
     }
 
-    public void retour()
-    {
+    public void retour() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 {
                     Intent retour = new Intent(JouerCarteQuestionSon.this, ChoisirCreationCarte.class);
-                    retour.putExtra("score",scorecarte);
+                    retour.putExtra("score", scorecarte);
                     startActivity(retour);
                     finish();
                 }
