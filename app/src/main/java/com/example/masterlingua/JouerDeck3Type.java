@@ -156,7 +156,6 @@ public class JouerDeck3Type extends AppCompatActivity {
             scoretemporaire.setText(" ");
             scorefinal.setText("Votre score final est " + score + " point" + pluriel + " sur " + nbTotalCartes);
             deja_initialise = false;
-
         }
 
         retour.setOnClickListener(new View.OnClickListener() {
